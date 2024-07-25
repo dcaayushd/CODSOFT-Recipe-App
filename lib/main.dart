@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:recipo_recipe_app/home.dart';
 
 void main() {
   runApp(const MainApp());
@@ -9,12 +10,15 @@ class MainApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
-      home: Scaffold(
-        body: Center(
-          child: Text('Recipe App!'),
-        ),
+    return  MaterialApp(
+      debugShowCheckedModeBanner: false,
+            title: 'Recipe App',
+            theme: ThemeData(
+
+        primarySwatch: Colors.blue,
       ),
+          home: const HomeScreen(),
     );
-}
+
+  }
 }
