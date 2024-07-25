@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recipo_recipe_app/home.dart';
+import 'package:recipo_recipe_app/screens/home.dart';
 
 void main() {
   runApp(const MainApp());
