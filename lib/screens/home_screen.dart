@@ -1,4 +1,10 @@
+import 'dart:convert';
+import 'dart:developer';
 import 'package:flutter/material.dart';
+
+import 'package:http/http.dart';
+
+import '../models/recipe_model.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -8,7 +14,29 @@ class HomeScreen extends StatefulWidget {
 }
 
 class HomeScreenState extends State<HomeScreen> {
+  List<RecipeModel> recipeList = <RecipeModel>[];
   TextEditingController searchController = TextEditingController();
+
+  getRecipes(String query) async {
+    String url =
+        "https://api.edamam.com/search?q=$query&{your_app_id}&app_key={your_application_key}";
+
+    Response response = await get(Uri.parse(url));
+    Map data = jsonDecode(response.body);
+
+    data["hits"].forEach((element) {
+      RecipeModel recipeModel = RecipeModel();
+      recipeModel = RecipeModel.fromMap(element["recipe"]);
+      recipeList.add(recipeModel);
+      log(recipeList.toString());
+    });
+
+    recipeList.forEach((Recipe) {
+      log(Recipe.appLabel);
+      log(Recipe.appCalories.toString());
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,8 +55,6 @@ class HomeScreenState extends State<HomeScreen> {
               //Search Bar
               SafeArea(
                 child: Container(
-                  //Search Wala Container
-
                   padding: const EdgeInsets.symmetric(horizontal: 8),
                   margin:
                       const EdgeInsets.symmetric(horizontal: 24, vertical: 20),
@@ -43,10 +69,7 @@ class HomeScreenState extends State<HomeScreen> {
                               "") {
                             debugPrint("Blank search");
                           } else {
-                            Navigator.pushReplacementNamed(context, "/loading",
-                                arguments: {
-                                  "searchText": searchController.text,
-                                });
+                            getRecipes(searchController.text);
                           }
                         },
                         child: Container(
