@@ -1,3 +1,3 @@
-# recipo_recipe_app
+# Recipo_recipe_app
 
 A new Flutter project.
