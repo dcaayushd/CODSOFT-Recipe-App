@@ -1,3 +1,3 @@
 # Recipo_recipe_app
 
-A new Flutter project.
+Flutter Recipe App.
