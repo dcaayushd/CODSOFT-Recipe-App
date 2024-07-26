@@ -2,9 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:recipo/models/core/recipe.dart';
 import 'package:recipo/models/helper/recipe_helper.dart';
 import 'package:recipo/views/screens/delicious_today_page.dart';
-import 'package:recipo/views/screens/newly_posted_page.dart';
-import 'package:recipo/views/screens/profile_page.dart';
-import 'package:recipo/views/screens/search_page.dart';
+import 'package:recipo/views/screens/newly_posted_screen.dart';
+import 'package:recipo/views/screens/profile_Screen.dart';
+import 'package:recipo/views/screens/profile_screen.dart';
+import 'package:recipo/views/screens/search_screen.dart';
+import 'package:recipo/views/screens/profile_screen.dart';
 import 'package:recipo/views/utils/AppColor.dart';
 import 'package:recipo/views/widgets/custom_app_bar.dart';
 import 'package:recipo/views/widgets/dummy_search_bar.dart';
@@ -37,8 +39,8 @@ class _HomeScreenState extends State<HomeScreen> {
         showProfilePhoto: true,
         profilePhoto: AssetImage('assets/images/pp.png'),
         profilePhotoOnPressed: () {
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => ProfilePage()));
+            Navigator.of(context)
+              .push(MaterialPageRoute(builder: (context) => ProfileScreen()));
         },
       ),
       body: Stack(
@@ -77,15 +79,15 @@ class _HomeScreenState extends State<HomeScreen> {
                           DummySearchBar(
                             routeTo: () {
                               Navigator.of(context).push(
-                                MaterialPageRoute(
-                                  builder: (context) => SearchPage(),
+       MaterialPageRoute(
+                                  builder: (context) => SearchScreen(),
                                 ),
                               );
                             },
                             openFilter: () {
                               Navigator.of(context).push(
                                 MaterialPageRoute(
-                                  builder: (context) => SearchPage(
+                                  builder: (context) => SearchScreen(
                                     openFilterModal: true,
                                   ),
                                 ),
@@ -111,9 +113,9 @@ class _HomeScreenState extends State<HomeScreen> {
                                 TextButton(
                                   onPressed: () {
                                     Navigator.of(context).push(
-                                      MaterialPageRoute(
+       MaterialPageRoute(
                                         builder: (context) =>
-                                            DeliciousTodayPage(),
+                                            DeliciousTodayScreen(),
                                       ),
                                     );
                                   },
@@ -209,8 +211,8 @@ class _HomeScreenState extends State<HomeScreen> {
                           ),
                           TextButton(
                             onPressed: () {
-                              Navigator.of(context).push(MaterialPageRoute(
-                                  builder: (context) => NewlyPostedPage()));
+                              Navigator.of(context).push(       MaterialPageRoute(
+                                  builder: (context) => NewlyPostedScreen()));
                             },
                             child: Text('see all'),
                             style: TextButton.styleFrom(
