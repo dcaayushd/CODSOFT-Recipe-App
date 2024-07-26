@@ -1,25 +1,52 @@
-name: recipo_recipe_app
-description: "A new Flutter project."
+name: recipo
+description: A new Flutter project.
 publish_to: "none"
-version: 0.1.0
+version: 1.0.0+1
 
 environment:
   sdk: ">=3.4.3 <4.0.0"
 
 dependencies:
+  cupertino_icons: ^1.0.2
   flutter:
     sdk: flutter
-  http: ^1.2.2
+  flutter_svg: ^0.22.0
 
 dev_dependencies:
-  flutter_lints: ^3.0.0
   flutter_test:
     sdk: flutter
 
 flutter:
   uses-material-design: true
 
+  assets:
+    - assets/images/
+    - assets/icons/
+    - assets/fonts/
+
   fonts:
-    - family: Poppins
+    - family: inter
       fonts:
-        - asset: fonts/Poppins-SemiBold.ttf
+        - asset: assets/fonts/inter/Inter-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/inter/Inter-Medium.ttf
+          weight: 500
+        - asset: assets/fonts/inter/Inter-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/inter/Inter-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/inter/Inter-ExtraBold.ttf
+          weight: 800
+        - asset: assets/fonts/inter/Inter-Black.ttf
+          weight: 900
+    - family: Open Sans
+      fonts:
+        - asset: assets/fonts/open sans/OpenSans-Regular.ttf
+          weight: 400
+        - asset: assets/fonts/open sans/OpenSans-SemiBold.ttf
+          weight: 600
+        - asset: assets/fonts/open sans/OpenSans-Bold.ttf
+          weight: 700
+        - asset: assets/fonts/open sans/OpenSans-ExtraBold.ttf
+          weight: 800
+
