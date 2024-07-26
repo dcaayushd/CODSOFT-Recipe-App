@@ -1,23 +1,25 @@
 import 'package:flutter/material.dart';
-import 'package:recipo_recipe_app/screens/home_screen.dart';
+import 'package:flutter/services.dart';
+import 'package:recipo/views/screens/home_screen.dart';
 
 void main() {
-  runApp(const MainApp());
+  SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
+    systemNavigationBarColor: Colors.black,
+    systemNavigationBarIconBrightness: Brightness.light,
+  ));
+  runApp(MyApp());
 }
 
-class MainApp extends StatelessWidget {
-  const MainApp({super.key});
-
+class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'Recipe App',
       theme: ThemeData(
-        fontFamily: "Poppins",
-        primarySwatch: Colors.blue,
+        fontFamily: 'Open Sans',
+        scaffoldBackgroundColor: Colors.white,
       ),
-      home: const HomeScreen(),
+      home: HomeScreen(),
     );
   }
 }
