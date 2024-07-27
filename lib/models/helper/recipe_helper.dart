@@ -66,20 +66,36 @@ class RecipeHelper {
               ))
           .toList();
 
-  static Recipe popularRecipe = Recipe(
-    title: popularRecipeRawData['title'] as String? ?? '',
-    photo: popularRecipeRawData['photo'] as String? ?? '',
-    calories: popularRecipeRawData['calories'] as String? ?? '',
-    time: popularRecipeRawData['time'] as String? ?? '',
-    description: popularRecipeRawData['description'] as String? ?? '',
-    reviews: Review.toList(
-        popularRecipeRawData['reviews'] as List<Map<String, Object?>>? ?? []),
-    tutorial: TutorialStep.toList(
-        popularRecipeRawData['tutorial'] as List<Map<String, Object?>>? ?? []),
-    ingredients: Ingredient.toList(
-        popularRecipeRawData['ingredients'] as List<Map<String, Object?>>? ??
-            []),
-  );
+  // static Recipe popularRecipe = Recipe(
+  //   title: popularRecipeRawData['title'] as String? ?? '',
+  //   photo: popularRecipeRawData['photo'] as String? ?? '',
+  //   calories: popularRecipeRawData['calories'] as String? ?? '',
+  //   time: popularRecipeRawData['time'] as String? ?? '',
+  //   description: popularRecipeRawData['description'] as String? ?? '',
+  //   reviews: Review.toList(
+  //       popularRecipeRawData['reviews'] as List<Map<String, Object?>>? ?? []),
+  //   tutorial: TutorialStep.toList(
+  //       popularRecipeRawData['tutorial'] as List<Map<String, Object?>>? ?? []),
+  //   ingredients: Ingredient.toList(
+  //       popularRecipeRawData['ingredients'] as List<Map<String, Object?>>? ??
+  //           []),
+  // );
+
+  static List<Recipe> popularRecipes = popularRecipeRawData
+      .map((data) => Recipe(
+            title: data['title'] as String? ?? '',
+            photo: data['photo'] as String? ?? '',
+            calories: data['calories'] as String? ?? '',
+            time: data['time'] as String? ?? '',
+            description: data['description'] as String? ?? '',
+            reviews: Review.toList(
+                data['reviews'] as List<Map<String, Object?>>? ?? []),
+            tutorial: TutorialStep.toList(
+                data['tutorial'] as List<Map<String, Object?>>? ?? []),
+            ingredients: Ingredient.toList(
+                data['ingredients'] as List<Map<String, Object?>>? ?? []),
+          ))
+      .toList();
 
   static List<Recipe> searchResultRecipe = (recipeSearchResultRawData)
       .map((data) => Recipe(
@@ -114,85 +130,245 @@ class RecipeHelper {
       .toList();
 }
 
-var popularRecipeRawData = {
-  'title': 'Green Healthy Meat & Vegetable Pizza.',
-  'photo': 'assets/images/popularnowpizza.jpg',
-  'calories': '1500 Cal',
-  'time': '25 min',
-  'description':
-      'A delicious and nutritious twist on classic pizza. This green pizza features a whole wheat crust topped with pesto, lean ground turkey, and an array of colorful vegetables for a balanced and satisfying meal.',
-  'ingredients': [
-    {
-      'name': 'Whole wheat pizza dough',
-      'size': '450 g',
-    },
-    {
-      'name': 'Pesto sauce',
-      'size': '1/2 cup',
-    },
-    {
-      'name': 'Ground turkey',
-      'size': '250 g',
-    },
-    {
-      'name': 'Bell peppers',
-      'size': '2, sliced',
-    },
-    {
-      'name': 'Baby spinach',
-      'size': '2 cups',
-    }
-  ],
-  'tutorial': [
-    {
-      'step': '1. Prepare the dough',
-      'description':
-          'Preheat oven to 425°F (220°C). Roll out the whole wheat pizza dough on a lightly floured surface to fit your baking sheet or pizza stone.',
-    },
-    {
-      'step': '2. Add the sauce and meat',
-      'description':
-          'Spread the pesto sauce evenly over the dough. Cook the ground turkey in a pan until browned, then sprinkle it over the pesto.',
-    },
-    {
-      'step': '3. Add vegetables',
-      'description':
-          'Arrange sliced bell peppers and baby spinach leaves over the meat. Feel free to add other vegetables of your choice.',
-    },
-    {
-      'step': '4. Bake the pizza',
-      'description':
-          'Bake the pizza in the preheated oven for 15-20 minutes, or until the crust is golden and crispy.',
-    },
-    {
-      'step': '5. Serve',
-      'description':
-          'Remove from oven, let cool for a few minutes, then slice and serve your delicious green healthy meat & vegetable pizza!',
-    },
-  ],
-  'reviews': [
-    {
-      'username': '@pizzalover',
-      'review':
-          'Never thought a healthy pizza could taste this good! The pesto and turkey combo is a winner.',
-    },
-    {
-      'username': '@fitfoodie',
-      'review':
-          'Great macros and tastes amazing. I added some red onions for extra flavor and it was perfect!',
-    },
-    {
-      'username': '@healthymom',
-      'review':
-          'My kids loved this pizza! It\'s a great way to sneak in more veggies into their diet.',
-    },
-    {
-      'username': '@gymrat',
-      'review':
-          'Awesome post-workout meal. High in protein and complex carbs. Will definitely make again!',
-    },
-  ]
-};
+var popularRecipeRawData = [
+  {
+    'title': 'Green Healthy Meat & Vegetable Pizza.',
+    'photo': 'assets/images/popularnowpizza.jpg',
+    'calories': '1500 Cal',
+    'time': '25 min',
+    'description':
+        'A delicious and nutritious twist on classic pizza. This green pizza features a whole wheat crust topped with pesto, lean ground turkey, and an array of colorful vegetables for a balanced and satisfying meal.',
+    'ingredients': [
+      {
+        'name': 'Whole wheat pizza dough',
+        'size': '450 g',
+      },
+      {
+        'name': 'Pesto sauce',
+        'size': '1/2 cup',
+      },
+      {
+        'name': 'Ground turkey',
+        'size': '250 g',
+      },
+      {
+        'name': 'Bell peppers',
+        'size': '2, sliced',
+      },
+      {
+        'name': 'Baby spinach',
+        'size': '2 cups',
+      }
+    ],
+    'tutorial': [
+      {
+        'step': '1. Prepare the dough',
+        'description':
+            'Preheat oven to 425°F (220°C). Roll out the whole wheat pizza dough on a lightly floured surface to fit your baking sheet or pizza stone.',
+      },
+      {
+        'step': '2. Add the sauce and meat',
+        'description':
+            'Spread the pesto sauce evenly over the dough. Cook the ground turkey in a pan until browned, then sprinkle it over the pesto.',
+      },
+      {
+        'step': '3. Add vegetables',
+        'description':
+            'Arrange sliced bell peppers and baby spinach leaves over the meat. Feel free to add other vegetables of your choice.',
+      },
+      {
+        'step': '4. Bake the pizza',
+        'description':
+            'Bake the pizza in the preheated oven for 15-20 minutes, or until the crust is golden and crispy.',
+      },
+      {
+        'step': '5. Serve',
+        'description':
+            'Remove from oven, let cool for a few minutes, then slice and serve your delicious green healthy meat & vegetable pizza!',
+      },
+    ],
+    'reviews': [
+      {
+        'username': '@pizzalover',
+        'review':
+            'Never thought a healthy pizza could taste this good! The pesto and turkey combo is a winner.',
+      },
+      {
+        'username': '@fitfoodie',
+        'review':
+            'Great macros and tastes amazing. I added some red onions for extra flavor and it was perfect!',
+      },
+      {
+        'username': '@healthymom',
+        'review':
+            'My kids loved this pizza! It\'s a great way to sneak in more veggies into their diet.',
+      },
+      {
+        'username': '@gymrat',
+        'review':
+            'Awesome post-workout meal. High in protein and complex carbs. Will definitely make again!',
+      },
+    ],
+  },
+  {
+    'title': 'Chocolate Pancake.',
+    'photo': 'assets/images/sweetfood2.jpg',
+    'calories': '870 Cal',
+    'time': '32 min',
+    'description':
+        'Decadent chocolate pancakes that are a chocolate lover\'s dream breakfast. These rich, fluffy pancakes are infused with cocoa for a luxurious twist on the classic pancake, perfect for special occasions or when you need a chocolatey treat.',
+    'ingredients': [
+      {
+        'name': 'All-purpose flour',
+        'size': '1 1/2 cups',
+      },
+      {
+        'name': 'Unsweetened cocoa powder',
+        'size': '1/4 cup',
+      },
+      {
+        'name': 'Milk',
+        'size': '1 1/4 cups',
+      },
+      {
+        'name': 'Eggs',
+        'size': '2',
+      },
+      {
+        'name': 'Chocolate chips',
+        'size': '1/2 cup',
+      }
+    ],
+    'tutorial': [
+      {
+        'step': '1. Mix dry ingredients',
+        'description':
+            'In a large bowl, whisk together flour, cocoa powder, sugar, baking powder, and a pinch of salt.',
+      },
+      {
+        'step': '2. Combine wet ingredients',
+        'description':
+            'In another bowl, mix milk, eggs, melted butter, and vanilla extract.',
+      },
+      {
+        'step': '3. Make the batter',
+        'description':
+            'Pour the wet ingredients into the dry and mix until just combined. Fold in chocolate chips.',
+      },
+      {
+        'step': '4. Cook the pancakes',
+        'description':
+            'Heat a non-stick skillet over medium heat. Pour 1/4 cup of batter for each pancake. Cook until bubbles form, then flip and cook the other side.',
+      },
+      {
+        'step': '5. Serve',
+        'description':
+            'Stack the chocolate pancakes on plates. Serve with additional chocolate chips, whipped cream, or maple syrup as desired.',
+      },
+    ],
+    'reviews': [
+      {
+        'username': '@chocoholic',
+        'review':
+            'These are a chocolate lover\'s dream! So rich and decadent. Perfect for satisfying my sweet tooth.',
+      },
+      {
+        'username': '@breakfastqueen',
+        'review':
+            'Made these for a special birthday breakfast and they were a hit! Felt like eating dessert for breakfast.',
+      },
+      {
+        'username': '@fitfoodie',
+        'review':
+            'A bit indulgent but worth it for a treat. I added some sliced bananas on top for balance.',
+      },
+      {
+        'username': '@brunchclub',
+        'review':
+            'These were the star of our brunch party. Everyone was impressed and asked for the recipe!',
+      },
+    ]
+  },
+  {
+    'title': 'Brown Chopstick Bowl',
+    'photo': 'assets/images/recom2.jpg',
+    'calories': '1500 Cal',
+    'time': '25 min',
+    'description':
+        'A hearty and nutritious Asian-inspired bowl featuring brown rice, a medley of stir-fried vegetables, and your choice of protein. This balanced meal is perfect for a satisfying lunch or dinner.',
+    'ingredients': [
+      {
+        'name': 'Brown rice',
+        'size': '1 cup',
+      },
+      {
+        'name': 'Mixed vegetables',
+        'size': '2 cups',
+      },
+      {
+        'name': 'Tofu or chicken',
+        'size': '200 g',
+      },
+      {
+        'name': 'Soy sauce',
+        'size': '2 tbsp',
+      },
+      {
+        'name': 'Sesame oil',
+        'size': '1 tsp',
+      }
+    ],
+    'tutorial': [
+      {
+        'step': '1. Cook the rice',
+        'description':
+            'Rinse the brown rice and cook it according to package instructions. This usually takes about 20-25 minutes.',
+      },
+      {
+        'step': '2. Prepare the protein',
+        'description':
+            'If using tofu, press it to remove excess water and cut into cubes. If using chicken, cut it into bite-sized pieces. Season with a bit of salt and pepper.',
+      },
+      {
+        'step': '3. Stir-fry the vegetables',
+        'description':
+            'Heat a wok or large pan over medium-high heat. Add a bit of oil and stir-fry your mixed vegetables until they\'re crisp-tender.',
+      },
+      {
+        'step': '4. Cook the protein',
+        'description':
+            'Push the vegetables to one side of the pan and add your protein. Cook until the tofu is golden or the chicken is cooked through.',
+      },
+      {
+        'step': '5. Combine and serve',
+        'description':
+            'Add the cooked brown rice to the pan. Drizzle with soy sauce and sesame oil, then toss everything together. Serve in bowls and enjoy your Brown Chopstick Bowl!',
+      },
+    ],
+    'reviews': [
+      {
+        'username': '@healthyeater',
+        'review':
+            'Love how customizable this recipe is! I used a mix of broccoli, carrots, and snap peas. So good!',
+      },
+      {
+        'username': '@fitfoodie',
+        'review':
+            'Great macros in this meal. I added some sriracha for an extra kick. Will definitely make again!',
+      },
+      {
+        'username': '@busycook',
+        'review':
+            'Quick, easy, and delicious. This has become my go-to weeknight dinner recipe.',
+      },
+      {
+        'username': '@veggielover',
+        'review':
+            'I used extra-firm tofu and it was perfect. The sesame oil really adds a nice flavor to the dish.',
+      },
+    ]
+  },
+];
 
 var featuredRecipeRawData = [
   {
@@ -587,6 +763,85 @@ var featuredRecipeRawData = [
         'username': '@healthnut',
         'review':
             'Nutritionally balanced and delicious. I added a sprinkle of chia seeds for extra omega-3s.',
+      },
+    ]
+  },
+  {
+    'title': 'Chocolate Pancake.',
+    'photo': 'assets/images/sweetfood2.jpg',
+    'calories': '870 Cal',
+    'time': '32 min',
+    'description':
+        'Decadent chocolate pancakes that are a chocolate lover\'s dream breakfast. These rich, fluffy pancakes are infused with cocoa for a luxurious twist on the classic pancake, perfect for special occasions or when you need a chocolatey treat.',
+    'ingredients': [
+      {
+        'name': 'All-purpose flour',
+        'size': '1 1/2 cups',
+      },
+      {
+        'name': 'Unsweetened cocoa powder',
+        'size': '1/4 cup',
+      },
+      {
+        'name': 'Milk',
+        'size': '1 1/4 cups',
+      },
+      {
+        'name': 'Eggs',
+        'size': '2',
+      },
+      {
+        'name': 'Chocolate chips',
+        'size': '1/2 cup',
+      }
+    ],
+    'tutorial': [
+      {
+        'step': '1. Mix dry ingredients',
+        'description':
+            'In a large bowl, whisk together flour, cocoa powder, sugar, baking powder, and a pinch of salt.',
+      },
+      {
+        'step': '2. Combine wet ingredients',
+        'description':
+            'In another bowl, mix milk, eggs, melted butter, and vanilla extract.',
+      },
+      {
+        'step': '3. Make the batter',
+        'description':
+            'Pour the wet ingredients into the dry and mix until just combined. Fold in chocolate chips.',
+      },
+      {
+        'step': '4. Cook the pancakes',
+        'description':
+            'Heat a non-stick skillet over medium heat. Pour 1/4 cup of batter for each pancake. Cook until bubbles form, then flip and cook the other side.',
+      },
+      {
+        'step': '5. Serve',
+        'description':
+            'Stack the chocolate pancakes on plates. Serve with additional chocolate chips, whipped cream, or maple syrup as desired.',
+      },
+    ],
+    'reviews': [
+      {
+        'username': '@chocoholic',
+        'review':
+            'These are a chocolate lover\'s dream! So rich and decadent. Perfect for satisfying my sweet tooth.',
+      },
+      {
+        'username': '@breakfastqueen',
+        'review':
+            'Made these for a special birthday breakfast and they were a hit! Felt like eating dessert for breakfast.',
+      },
+      {
+        'username': '@fitfoodie',
+        'review':
+            'A bit indulgent but worth it for a treat. I added some sliced bananas on top for balance.',
+      },
+      {
+        'username': '@brunchclub',
+        'review':
+            'These were the star of our brunch party. Everyone was impressed and asked for the recipe!',
       },
     ]
   },
