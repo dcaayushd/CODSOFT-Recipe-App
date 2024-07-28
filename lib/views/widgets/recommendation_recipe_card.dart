@@ -44,8 +44,7 @@ class RecommendationRecipeCard extends StatelessWidget {
                   fontSize: 14,
                   fontWeight: FontWeight.w600,
                   fontFamily: 'inter',
-                  // color: useWhiteText ? Colors.white : Colors.black,
-                  color: useWhiteText ? Colors.grey[400] : Colors.black,
+                  color: useWhiteText ? Colors.white : Colors.black,
                 ),
                 maxLines: 1,
                 overflow: TextOverflow.ellipsis,
@@ -57,9 +56,7 @@ class RecommendationRecipeCard extends StatelessWidget {
                 children: [
                   SvgPicture.asset(
                     'assets/icons/fire-filled.svg',
-                    // color: useWhiteText ? Colors.white : Colors.black,
-                    color: useWhiteText ? Colors.grey[400] : Colors.black,
-
+                    color: useWhiteText ? Colors.white : Colors.black,
                     width: 12,
                     height: 12,
                   ),
@@ -69,8 +66,7 @@ class RecommendationRecipeCard extends StatelessWidget {
                       data.calories,
                       style: TextStyle(
                         fontSize: 10,
-                        // color: useWhiteText ? Colors.white : Colors.black,
-                        color: useWhiteText ? Colors.grey[400] : Colors.black,
+                        color: useWhiteText ? Colors.white : Colors.black,
                       ),
                     ),
                   ),
@@ -80,8 +76,7 @@ class RecommendationRecipeCard extends StatelessWidget {
                   Icon(
                     Icons.alarm,
                     size: 12,
-                    // color: useWhiteText ? Colors.white : Colors.black,
-                    color: useWhiteText ? Colors.grey[400] : Colors.black,
+                    color: useWhiteText ? Colors.white : Colors.black,
                   ),
                   Container(
                     margin: EdgeInsets.only(left: 5),
@@ -89,8 +84,7 @@ class RecommendationRecipeCard extends StatelessWidget {
                       data.time,
                       style: TextStyle(
                         fontSize: 10,
-                        // color: useWhiteText ? Colors.white : Colors.black,
-                        color: useWhiteText ? Colors.grey[400] : Colors.black,
+                        color: useWhiteText ? Colors.white : Colors.black,
                       ),
                     ),
                   ),
