@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:recipo/views/screens/home_screen.dart';
+import 'package:recipo/views/screens/screen_switcher.dart';
 
 void main() {
   SystemChrome.setSystemUIOverlayStyle(SystemUiOverlayStyle(
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         fontFamily: 'Open Sans',
         scaffoldBackgroundColor: Colors.white,
       ),
-      home: HomeScreen(),
+      home: ScreenSwitcher(),
     );
   }
 }
