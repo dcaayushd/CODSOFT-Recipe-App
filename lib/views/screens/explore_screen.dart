@@ -1,6 +1,5 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
+import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:recipo/models/core/recipe.dart';
@@ -12,18 +11,29 @@ import 'package:recipo/views/widgets/popular_recipe_card.dart';
 import 'package:recipo/views/widgets/recommendation_recipe_card.dart';
 
 class ExploreScreen extends StatelessWidget {
-  final Recipe popularRecipe = RecipeHelper.popularRecipe;
+  // final Recipe popularRecipe = RecipeHelper.popularRecipes;
+  final List<Recipe> popularRecipes = RecipeHelper.popularRecipes;
+
   final List<Recipe> sweetFoodRecommendationRecipe =
       RecipeHelper.sweetFoodRecommendationRecipe;
 
   @override
   Widget build(BuildContext context) {
+    final ScrollController _scrollController = ScrollController();
+
+    _scrollController.addListener(() {
+      if (_scrollController.position.pixels <= 0 &&
+          _scrollController.position.userScrollDirection ==
+              ScrollDirection.forward) {
+        _scrollController.position.jumpTo(0);
+      }
+    });
     return Scaffold(
       appBar: AppBar(
         backgroundColor: AppColor.primary,
         foregroundColor: Colors.white,
         elevation: 0,
-        centerTitle: false,
+        centerTitle: true,
         title: Text('Explore Recipe',
             style: TextStyle(
                 fontFamily: 'inter',
@@ -33,8 +43,8 @@ class ExploreScreen extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.of(context)
-                  .push(MaterialPageRoute(builder: (context) => SearchScreen()));
+              Navigator.of(context).push(
+                  MaterialPageRoute(builder: (context) => SearchScreen()));
             },
             icon: SvgPicture.asset('assets/icons/search.svg',
                 color: Colors.white),
@@ -43,6 +53,7 @@ class ExploreScreen extends StatelessWidget {
         systemOverlayStyle: SystemUiOverlayStyle.light,
       ),
       body: ListView(
+        controller: _scrollController,
         shrinkWrap: true,
         physics: BouncingScrollPhysics(),
         children: [
@@ -51,7 +62,13 @@ class ExploreScreen extends StatelessWidget {
             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             width: MediaQuery.of(context).size.width,
             height: 245,
-            color: AppColor.primary,
+            decoration: BoxDecoration(
+              color: AppColor.primary,
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(30),
+                bottomRight: Radius.circular(30),
+              ),
+            ),
             child: Wrap(
               spacing: 16,
               runSpacing: 16,
@@ -81,7 +98,7 @@ class ExploreScreen extends StatelessWidget {
             width: MediaQuery.of(context).size.width,
             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
             child: PopularRecipeCard(
-              data: popularRecipe,
+              data: popularRecipes,
             ),
           ),
           Container(
