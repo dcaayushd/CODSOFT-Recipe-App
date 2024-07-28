@@ -102,7 +102,13 @@ class _SearchScreenState extends State<SearchScreen> {
           Container(
             width: MediaQuery.of(context).size.width,
             height: 145,
-            color: AppColor.primary,
+            decoration: BoxDecoration(
+              color: AppColor.primary,
+              borderRadius: BorderRadius.only(
+                bottomLeft: Radius.circular(30),
+                bottomRight: Radius.circular(30),
+              ),
+            ),
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
@@ -142,12 +148,12 @@ class _SearchScreenState extends State<SearchScreen> {
                               ),
                               prefixIconConstraints:
                                   BoxConstraints(maxHeight: 20),
-                              contentPadding:
-                                  EdgeInsets.symmetric(horizontal: 17),
+                              contentPadding: EdgeInsets.symmetric(
+                                  horizontal: 17, vertical: 15),
                               focusedBorder: InputBorder.none,
                               border: InputBorder.none,
                               prefixIcon: Visibility(
-                                visible: searchInputController.text.isEmpty,
+                                // visible: searchInputController.text.isEmpty,
                                 child: Container(
                                   margin: EdgeInsets.only(left: 10, right: 12),
                                   child: SvgPicture.asset(
