@@ -79,6 +79,12 @@ class _NewlyPostedScreenState extends State<NewlyPostedScreen> {
           },
         ),
         systemOverlayStyle: SystemUiOverlayStyle.light,
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomLeft: Radius.circular(20),
+            bottomRight: Radius.circular(20),
+          ),
+        ),
       ),
       body: Stack(
         children: [
