@@ -13,11 +13,13 @@ import 'package:recipo/views/widgets/recipe_tile.dart';
 import 'package:recipo/views/widgets/recommendation_recipe_card.dart';
 
 class HomeScreen extends StatefulWidget {
+  const HomeScreen({super.key});
+
   @override
-  _HomeScreenState createState() => _HomeScreenState();
+  HomeScreenState createState() => HomeScreenState();
 }
 
-class _HomeScreenState extends State<HomeScreen> {
+class HomeScreenState extends State<HomeScreen> {
   List<Recipe> featuredRecipe = RecipeHelper.featuredRecipe;
   List<Recipe> recommendationRecipe = RecipeHelper.recommendationRecipe;
   List<Recipe> newlyPostedRecipe = RecipeHelper.newlyPostedRecipe;
@@ -61,7 +63,7 @@ class _HomeScreenState extends State<HomeScreen> {
     });
 
     // Simulate network request
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
 
     // Update data
     setState(() {
@@ -76,12 +78,12 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
-        title: Text(
+        title: const Text(
           'Recipo',
           style: TextStyle(fontFamily: 'inter', fontWeight: FontWeight.w700),
         ),
         showProfilePhoto: true,
-        profilePhoto: AssetImage('assets/images/pp.png'),
+        profilePhoto: const AssetImage('assets/images/pp.png'),
         profilePhotoOnPressed: () {
           Navigator.of(context)
               .push(MaterialPageRoute(builder: (context) => ProfileScreen()));
@@ -93,7 +95,7 @@ class _HomeScreenState extends State<HomeScreen> {
             height: 270,
             decoration: BoxDecoration(
               color: AppColor.primary,
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(30),
                 bottomRight: Radius.circular(30),
               ),
@@ -124,18 +126,18 @@ class _HomeScreenState extends State<HomeScreen> {
               Expanded(
                 child: SingleChildScrollView(
                   controller: _scrollController,
-                  physics: AlwaysScrollableScrollPhysics(),
+                  physics: const AlwaysScrollableScrollPhysics(),
                   child: Column(
                     children: [
                       // Delicious Today
                       Container(
-                        margin: EdgeInsets.only(top: 12),
-                        padding: EdgeInsets.symmetric(horizontal: 16),
+                        margin: const EdgeInsets.only(top: 12),
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
                         width: MediaQuery.of(context).size.width,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Text(
+                            const Text(
                               'Delicious Today',
                               style: TextStyle(
                                   color: Colors.white,
@@ -149,55 +151,55 @@ class _HomeScreenState extends State<HomeScreen> {
                                     builder: (context) =>
                                         DeliciousTodayScreen()));
                               },
-                              child: Text('see all'),
                               style: TextButton.styleFrom(
                                   foregroundColor: Colors.white,
-                                  textStyle: TextStyle(
+                                  textStyle: const TextStyle(
                                       fontWeight: FontWeight.w400,
                                       fontSize: 14)),
+                              child: const Text('see all'),
                             ),
                           ],
                         ),
                       ),
                       Container(
-                        margin: EdgeInsets.only(top: 4),
+                        margin: const EdgeInsets.only(top: 4),
                         height: 220,
                         child: ListView.separated(
                           itemCount: featuredRecipe.length,
-                          padding: EdgeInsets.symmetric(horizontal: 16),
-                          physics: BouncingScrollPhysics(),
+                          padding: const EdgeInsets.symmetric(horizontal: 16),
+                          physics: const BouncingScrollPhysics(),
                           shrinkWrap: true,
                           scrollDirection: Axis.horizontal,
                           separatorBuilder: (context, index) =>
-                              SizedBox(width: 16),
+                              const SizedBox(width: 16),
                           itemBuilder: (context, index) =>
                               FeaturedRecipeCard(data: featuredRecipe[index]),
                         ),
                       ),
                       // Recommendation Recipe
                       Container(
-                        margin: EdgeInsets.only(top: 16),
+                        margin: const EdgeInsets.only(top: 16),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Container(
-                              margin: EdgeInsets.only(bottom: 16),
-                              padding: EdgeInsets.symmetric(horizontal: 16),
-                              child: Text(
+                              margin: const EdgeInsets.only(bottom: 16),
+                              padding: const EdgeInsets.symmetric(horizontal: 16),
+                              child: const Text(
                                 'Today recommendation based on your taste...',
                                 style: TextStyle(color: Colors.grey),
                               ),
                             ),
-                            Container(
+                            SizedBox(
                               height: 174,
                               child: ListView.separated(
                                 shrinkWrap: true,
-                                physics: BouncingScrollPhysics(),
+                                physics: const BouncingScrollPhysics(),
                                 scrollDirection: Axis.horizontal,
                                 itemCount: recommendationRecipe.length,
-                                padding: EdgeInsets.symmetric(horizontal: 16),
+                                padding: const EdgeInsets.symmetric(horizontal: 16),
                                 separatorBuilder: (context, index) =>
-                                    SizedBox(width: 16),
+                                    const SizedBox(width: 16),
                                 itemBuilder: (context, index) =>
                                     RecommendationRecipeCard(
                                   data: recommendationRecipe[index],
@@ -210,15 +212,15 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       // Newly Posted
                       Container(
-                        margin: EdgeInsets.only(top: 14),
-                        padding: EdgeInsets.symmetric(horizontal: 16),
+                        margin: const EdgeInsets.only(top: 14),
+                        padding: const EdgeInsets.symmetric(horizontal: 16),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Text(
+                                const Text(
                                   'Newly Posted',
                                   style: TextStyle(
                                       fontSize: 16,
@@ -230,23 +232,23 @@ class _HomeScreenState extends State<HomeScreen> {
                                     Navigator.of(context).push(
                                         MaterialPageRoute(
                                             builder: (context) =>
-                                                NewlyPostedScreen()));
+                                                const NewlyPostedScreen()));
                                   },
-                                  child: Text('see all'),
                                   style: TextButton.styleFrom(
                                       foregroundColor: Colors.black,
-                                      textStyle: TextStyle(
+                                      textStyle: const TextStyle(
                                           fontWeight: FontWeight.w400,
                                           fontSize: 14)),
+                                  child: const Text('see all'),
                                 ),
                               ],
                             ),
                             ListView.separated(
                               shrinkWrap: true,
                               itemCount: 3,
-                              physics: NeverScrollableScrollPhysics(),
+                              physics: const NeverScrollableScrollPhysics(),
                               separatorBuilder: (context, index) =>
-                                  SizedBox(height: 16),
+                                  const SizedBox(height: 16),
                               itemBuilder: (context, index) =>
                                   RecipeTile(data: newlyPostedRecipe[index]),
                             ),

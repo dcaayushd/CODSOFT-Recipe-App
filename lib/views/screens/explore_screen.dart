@@ -16,7 +16,7 @@ class ExploreScreen extends StatelessWidget {
   final List<Recipe> sweetFoodRecommendationRecipe =
       RecipeHelper.sweetFoodRecommendationRecipe;
 
- ExploreScreen({super.key});
+  ExploreScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -90,7 +90,8 @@ class ExploreScreen extends StatelessWidget {
                     title: 'Spicy',
                     image: const AssetImage('assets/images/spicy.jpg')),
                 CategoryCard(
-                    title: 'Meat', image: const AssetImage('assets/images/meat.jpg')),
+                    title: 'Meat',
+                    image: const AssetImage('assets/images/meat.jpg')),
               ],
             ),
           ),
