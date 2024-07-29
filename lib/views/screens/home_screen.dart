@@ -77,7 +77,7 @@ class _HomeScreenState extends State<HomeScreen> {
     return Scaffold(
       appBar: CustomAppBar(
         title: Text(
-          'recipo',
+          'Recipo',
           style: TextStyle(fontFamily: 'inter', fontWeight: FontWeight.w700),
         ),
         showProfilePhoto: true,
@@ -90,7 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Stack(
         children: [
           Container(
-            height: 245,
+            height: 270,
             decoration: BoxDecoration(
               color: AppColor.primary,
               borderRadius: BorderRadius.only(

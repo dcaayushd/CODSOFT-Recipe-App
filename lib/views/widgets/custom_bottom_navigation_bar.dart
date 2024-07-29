@@ -50,8 +50,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
               onPressed: () => _handleTap(0),
               icon: SvgPicture.asset(
                 'assets/icons/discover.svg',
-                color:
-                    _selectedIndex == 0 ? Colors.white : Colors.grey[500],
+                color: _selectedIndex == 0 ? Colors.white : Colors.grey[500],
                 height: 30,
                 width: 30,
               ),
@@ -60,8 +59,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
               onPressed: () => _handleTap(1),
               icon: SvgPicture.asset(
                 'assets/icons/home.svg',
-                color:
-                    _selectedIndex == 1 ? Colors.white : Colors.grey[500],
+                color: _selectedIndex == 1 ? Colors.white : Colors.grey[500],
                 height: 30,
                 width: 30,
               ),
@@ -70,8 +68,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
               onPressed: () => _handleTap(2),
               icon: SvgPicture.asset(
                 'assets/icons/bookmark.svg',
-                color:
-                    _selectedIndex == 2 ? Colors.white : Colors.grey[500],
+                color: _selectedIndex == 2 ? Colors.white : Colors.grey[500],
                 height: 30,
                 width: 30,
               ),
