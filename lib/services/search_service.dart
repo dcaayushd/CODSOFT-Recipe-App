@@ -4,31 +4,60 @@ import '../models/helper/recipe_helper.dart';
 class SearchService {
   static List<String> popularRecipeKeyword = [
     'Breakfast',
-    'Lunch',
-    'Dinner',
-    'Healthy',
-    'Quick',
-    'Vegetarian',
+    'Pizza',
+    'Chicken',
     'Dessert',
+    'Eggs',
+    'Vegetarian',
+    'Healthy',
+    'Dinner',
+    'Lunch',
   ];
 
+  static List<Recipe> getAllUniqueRecipes() {
+    Set<String> uniqueTitles = {};
+    List<Recipe> allUniqueRecipes = [];
+
+    void addUniqueRecipes(List<Recipe> recipeList) {
+      for (var recipe in recipeList) {
+        if (!uniqueTitles.contains(recipe.title)) {
+          uniqueTitles.add(recipe.title);
+          allUniqueRecipes.add(recipe);
+        }
+      }
+    }
+
+    addUniqueRecipes(RecipeHelper.featuredRecipe);
+    addUniqueRecipes(RecipeHelper.recommendationRecipe);
+    addUniqueRecipes(RecipeHelper.newlyPostedRecipe);
+    addUniqueRecipes(RecipeHelper.sweetFoodRecommendationRecipe);
+    addUniqueRecipes(RecipeHelper.popularRecipes);
+    addUniqueRecipes(RecipeHelper.searchResultRecipe);
+    addUniqueRecipes(RecipeHelper.bookmarkedRecipe);
+
+    return allUniqueRecipes;
+  }
+
   static List<Recipe> searchRecipes(
-      String query, String sortBy, bool isBookmarksScreen) {
-    List<Recipe> allRecipes = isBookmarksScreen
-        ? RecipeHelper.bookmarkedRecipe
-        : RecipeHelper.searchResultRecipe;
-    return _filterAndSortRecipes(allRecipes, query, sortBy);
+      String query, String sortBy, String? selectedCategory) {
+    List<Recipe> allRecipes = getAllUniqueRecipes();
+    return _filterAndSortRecipes(allRecipes, query, sortBy, selectedCategory);
   }
 
-  static List<Recipe> searchBookmarkedRecipes(
-      String query, String sortBy, List<Recipe> bookmarkedRecipes) {
-    return _filterAndSortRecipes(bookmarkedRecipes, query, sortBy);
-  }
-
-  static List<Recipe> _filterAndSortRecipes(
-      List<Recipe> recipes, String query, String sortBy) {
+  static List<Recipe> _filterAndSortRecipes(List<Recipe> recipes, String query,
+      String sortBy, String? selectedCategory) {
     List<Recipe> filteredRecipes = recipes.where((recipe) {
-      return recipe.title.toLowerCase().contains(query.toLowerCase());
+      bool matchesQuery = query.isEmpty ||
+          recipe.title.toLowerCase().contains(query.toLowerCase()) ||
+          recipe.ingredients.any((ingredient) =>
+              ingredient.name.toLowerCase().contains(query.toLowerCase())) ||
+          recipe.description.toLowerCase().contains(query.toLowerCase());
+
+      bool matchesCategory = selectedCategory == null ||
+          recipe.categories.any((category) =>
+              category.toLowerCase() == selectedCategory.toLowerCase());
+
+      return matchesQuery && matchesCategory;
     }).toList();
 
     switch (sortBy) {
@@ -40,7 +69,7 @@ class SearchService {
         break;
       case 'Popular':
         filteredRecipes
-            .sort((a, b) => b.reviews.length.compareTo(a.reviews.length));
+            .sort((b, a) => a.reviews.length.compareTo(b.reviews.length));
         break;
       default:
         // 'All' or any other case, no sorting needed
