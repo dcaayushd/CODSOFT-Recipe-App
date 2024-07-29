@@ -6,11 +6,13 @@ import 'package:recipo/views/utils/AppColor.dart';
 import 'package:recipo/views/widgets/recipe_tile.dart';
 
 class NewlyPostedScreen extends StatefulWidget {
+  const NewlyPostedScreen({super.key});
+
   @override
-  _NewlyPostedScreenState createState() => _NewlyPostedScreenState();
+  NewlyPostedScreenState createState() => NewlyPostedScreenState();
 }
 
-class _NewlyPostedScreenState extends State<NewlyPostedScreen> {
+class NewlyPostedScreenState extends State<NewlyPostedScreen> {
   final TextEditingController searchInputController = TextEditingController();
   final ScrollController _scrollController = ScrollController();
   List<Recipe> newlyPostedRecipe = [];
@@ -36,7 +38,7 @@ class _NewlyPostedScreenState extends State<NewlyPostedScreen> {
     });
 
     // Simulate a network request
-    await Future.delayed(Duration(seconds: 1));
+    await Future.delayed(const Duration(seconds: 1));
     newlyPostedRecipe = RecipeHelper.newlyPostedRecipe;
 
     setState(() {
@@ -51,7 +53,7 @@ class _NewlyPostedScreenState extends State<NewlyPostedScreen> {
     });
 
     // Simulate a network request
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
     newlyPostedRecipe = RecipeHelper.newlyPostedRecipe;
 
     setState(() {
@@ -67,19 +69,22 @@ class _NewlyPostedScreenState extends State<NewlyPostedScreen> {
         foregroundColor: Colors.white,
         centerTitle: true,
         elevation: 0,
-        title: Text('Newly Posted',
-            style: TextStyle(
-                fontFamily: 'inter',
-                fontWeight: FontWeight.w400,
-                fontSize: 16)),
+        title: const Text(
+          'Newly Posted',
+          style: TextStyle(
+            fontFamily: 'inter',
+            fontWeight: FontWeight.w400,
+            fontSize: 16,
+          ),
+        ),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+          icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
           onPressed: () {
             Navigator.of(context).pop();
           },
         ),
         systemOverlayStyle: SystemUiOverlayStyle.light,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
             bottomLeft: Radius.circular(20),
             bottomRight: Radius.circular(20),
@@ -90,11 +95,11 @@ class _NewlyPostedScreenState extends State<NewlyPostedScreen> {
         children: [
           ListView.separated(
             controller: _scrollController,
-            padding: EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             itemCount: newlyPostedRecipe.length,
-            physics: BouncingScrollPhysics(),
+            physics: const BouncingScrollPhysics(),
             separatorBuilder: (context, index) {
-              return SizedBox(height: 16);
+              return const SizedBox(height: 16);
             },
             itemBuilder: (context, index) {
               return RecipeTile(

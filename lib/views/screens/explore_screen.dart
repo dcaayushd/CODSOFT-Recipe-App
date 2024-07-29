@@ -11,21 +11,22 @@ import 'package:recipo/views/widgets/popular_recipe_card.dart';
 import 'package:recipo/views/widgets/recommendation_recipe_card.dart';
 
 class ExploreScreen extends StatelessWidget {
-  // final Recipe popularRecipe = RecipeHelper.popularRecipes;
   final List<Recipe> popularRecipes = RecipeHelper.popularRecipes;
 
   final List<Recipe> sweetFoodRecommendationRecipe =
       RecipeHelper.sweetFoodRecommendationRecipe;
 
+ ExploreScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
-    final ScrollController _scrollController = ScrollController();
+    final ScrollController scrollController = ScrollController();
 
-    _scrollController.addListener(() {
-      if (_scrollController.position.pixels <= 0 &&
-          _scrollController.position.userScrollDirection ==
+    scrollController.addListener(() {
+      if (scrollController.position.pixels <= 0 &&
+          scrollController.position.userScrollDirection ==
               ScrollDirection.forward) {
-        _scrollController.position.jumpTo(0);
+        scrollController.position.jumpTo(0);
       }
     });
     return Scaffold(
@@ -34,7 +35,7 @@ class ExploreScreen extends StatelessWidget {
         foregroundColor: Colors.white,
         elevation: 0,
         centerTitle: true,
-        title: Text('Explore Recipe',
+        title: const Text('Explore Recipe',
             style: TextStyle(
                 fontFamily: 'inter',
                 fontWeight: FontWeight.w400,
@@ -53,18 +54,18 @@ class ExploreScreen extends StatelessWidget {
         systemOverlayStyle: SystemUiOverlayStyle.light,
       ),
       body: ListView(
-        controller: _scrollController,
+        controller: scrollController,
         shrinkWrap: true,
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         children: [
           // Section 1 - Category
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
             width: MediaQuery.of(context).size.width,
             height: 245,
             decoration: BoxDecoration(
               color: AppColor.primary,
-              borderRadius: BorderRadius.only(
+              borderRadius: const BorderRadius.only(
                 bottomLeft: Radius.circular(30),
                 bottomRight: Radius.circular(30),
               ),
@@ -75,65 +76,64 @@ class ExploreScreen extends StatelessWidget {
               children: [
                 CategoryCard(
                     title: 'Healthy',
-                    image: AssetImage('assets/images/healthy.jpg')),
+                    image: const AssetImage('assets/images/healthy.jpg')),
                 CategoryCard(
                     title: 'Drink',
-                    image: AssetImage('assets/images/drink.jpg')),
+                    image: const AssetImage('assets/images/drink.jpg')),
                 CategoryCard(
                     title: 'Seafood',
-                    image: AssetImage('assets/images/seafood.jpg')),
+                    image: const AssetImage('assets/images/seafood.jpg')),
                 CategoryCard(
                     title: 'Desert',
-                    image: AssetImage('assets/images/desert.jpg')),
+                    image: const AssetImage('assets/images/desert.jpg')),
                 CategoryCard(
                     title: 'Spicy',
-                    image: AssetImage('assets/images/spicy.jpg')),
+                    image: const AssetImage('assets/images/spicy.jpg')),
                 CategoryCard(
-                    title: 'Meat', image: AssetImage('assets/images/meat.jpg')),
+                    title: 'Meat', image: const AssetImage('assets/images/meat.jpg')),
               ],
             ),
           ),
           // Section 2 - Popular Card
           Container(
             width: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
             child: PopularRecipeCard(
               data: popularRecipes,
             ),
           ),
-          Container(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                // Header
-                Container(
-                  margin: EdgeInsets.only(bottom: 16),
-                  padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
-                    'Todays sweet food to make your day happy ......',
-                    style: TextStyle(color: Colors.grey),
-                  ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Header
+              Container(
+                margin: const EdgeInsets.only(bottom: 16),
+                padding: const EdgeInsets.symmetric(horizontal: 16),
+                child: const Text(
+                  'Delightful treats to brighten your day!',
+                  style: TextStyle(color: Colors.grey),
                 ),
-                // Content
-                Container(
-                  height: 174,
-                  child: ListView.separated(
-                    shrinkWrap: true,
-                    physics: BouncingScrollPhysics(),
-                    scrollDirection: Axis.horizontal,
-                    itemCount: sweetFoodRecommendationRecipe.length,
-                    padding: EdgeInsets.symmetric(horizontal: 16),
-                    separatorBuilder: (context, index) {
-                      return SizedBox(width: 16);
-                    },
-                    itemBuilder: (context, index) {
-                      return RecommendationRecipeCard(
-                          data: sweetFoodRecommendationRecipe[index]);
-                    },
-                  ),
-                )
-              ],
-            ),
+              ),
+              // Content
+              SizedBox(
+                height: 174,
+                child: ListView.separated(
+                  shrinkWrap: true,
+                  physics: const BouncingScrollPhysics(),
+                  scrollDirection: Axis.horizontal,
+                  itemCount: sweetFoodRecommendationRecipe.length,
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  separatorBuilder: (context, index) {
+                    return const SizedBox(width: 16);
+                  },
+                  itemBuilder: (context, index) {
+                    return RecommendationRecipeCard(
+                      data: sweetFoodRecommendationRecipe[index],
+                    );
+                  },
+                ),
+              )
+            ],
           ),
         ],
       ),
