@@ -34,8 +34,8 @@ class _DeliciousTodayScreenState extends State<DeliciousTodayScreen> {
     });
     // Simulate a network request
     await Future.delayed(Duration(seconds: 2));
-    popularRecipes = RecipeHelper.popularRecipes; // Simulated update
-    featuredRecipe = RecipeHelper.featuredRecipe; // Simulated update
+    popularRecipes = RecipeHelper.popularRecipes;
+    featuredRecipe = RecipeHelper.featuredRecipe;
     setState(() {
       isRefreshing = false;
     });

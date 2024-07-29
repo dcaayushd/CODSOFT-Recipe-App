@@ -3,10 +3,11 @@ import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:recipo/models/core/recipe.dart';
-import 'package:recipo/models/helper/recipe_helper.dart';
 import 'package:recipo/views/utils/AppColor.dart';
 import 'package:recipo/views/widgets/modals/search_filter_modal.dart';
 import 'package:recipo/views/widgets/recipe_tile.dart';
+
+import '../../services/search_service.dart';
 
 class SearchScreen extends StatefulWidget {
   final bool openFilterModal;
@@ -20,7 +21,10 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> {
   TextEditingController searchInputController = TextEditingController();
   FocusNode searchFocusNode = FocusNode();
-  final List<Recipe> searchResult = RecipeHelper.searchResultRecipe;
+  // final List<Recipe> searchResult = RecipeHelper.searchResultRecipe;
+  List<Recipe> searchResult = [];
+  String selectedSortBy = 'All';
+  int selectedKeywordIndex = -1;
 
   @override
   void initState() {
@@ -30,6 +34,7 @@ class _SearchScreenState extends State<SearchScreen> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       FocusScope.of(context).requestFocus(searchFocusNode);
     });
+    searchResult = SearchService.searchRecipes('', selectedSortBy, false);
 
     // Open the filter modal if specified
     if (widget.openFilterModal) {
@@ -37,6 +42,7 @@ class _SearchScreenState extends State<SearchScreen> {
         _openFilterModal();
       });
     }
+    searchInputController.addListener(_onSearchChanged);
   }
 
   @override
@@ -44,6 +50,13 @@ class _SearchScreenState extends State<SearchScreen> {
     searchInputController.dispose();
     searchFocusNode.dispose();
     super.dispose();
+  }
+
+  void _onSearchChanged() {
+    setState(() {
+      searchResult = SearchService.searchRecipes(
+          searchInputController.text, selectedSortBy, false);
+    });
   }
 
   void _openFilterModal() {
@@ -56,7 +69,16 @@ class _SearchScreenState extends State<SearchScreen> {
           topRight: Radius.circular(20),
         ),
       ),
-      builder: (context) => SearchFilterModal(),
+      builder: (context) => SearchFilterModal(
+        initialSortBy: selectedSortBy,
+        onSortByChanged: (newSortBy) {
+          setState(() {
+            selectedSortBy = newSortBy;
+            searchResult = SearchService.searchRecipes(
+                searchInputController.text, selectedSortBy, false);
+          });
+        },
+      ),
     );
   }
 
@@ -149,19 +171,18 @@ class _SearchScreenState extends State<SearchScreen> {
                               prefixIconConstraints:
                                   BoxConstraints(maxHeight: 20),
                               contentPadding: EdgeInsets.symmetric(
-                                  horizontal: 17, vertical: 15),
+                                horizontal: 17,
+                                vertical: 15,
+                              ),
                               focusedBorder: InputBorder.none,
                               border: InputBorder.none,
-                              prefixIcon: Visibility(
-                                // visible: searchInputController.text.isEmpty,
-                                child: Container(
-                                  margin: EdgeInsets.only(left: 10, right: 12),
-                                  child: SvgPicture.asset(
-                                    'assets/icons/search.svg',
-                                    width: 20,
-                                    height: 20,
-                                    color: Colors.white,
-                                  ),
+                              prefixIcon: Container(
+                                margin: EdgeInsets.only(left: 10, right: 12),
+                                child: SvgPicture.asset(
+                                  'assets/icons/search.svg',
+                                  width: 20,
+                                  height: 20,
+                                  color: Colors.white,
                                 ),
                               ),
                             ),
@@ -181,7 +202,10 @@ class _SearchScreenState extends State<SearchScreen> {
                             borderRadius: BorderRadius.circular(10),
                             color: AppColor.secondary,
                           ),
-                          child: SvgPicture.asset('assets/icons/filter.svg'),
+                          child: SvgPicture.asset(
+                            'assets/icons/filter.svg',
+                            color: AppColor.primary,
+                          ),
                         ),
                       )
                     ],
@@ -196,7 +220,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     scrollDirection: Axis.horizontal,
                     physics: BouncingScrollPhysics(),
                     padding: EdgeInsets.symmetric(horizontal: 16),
-                    itemCount: popularRecipeKeyword.length,
+                    itemCount: SearchService.popularRecipeKeyword.length,
                     separatorBuilder: (context, index) {
                       return SizedBox(width: 8);
                     },
@@ -205,18 +229,29 @@ class _SearchScreenState extends State<SearchScreen> {
                         alignment: Alignment.topCenter,
                         child: TextButton(
                           onPressed: () {
-                            searchInputController.text =
-                                popularRecipeKeyword[index];
-                            // Optional: Trigger search or update state here
+                            setState(() {
+                              selectedKeywordIndex = index;
+                              searchInputController.text =
+                                  SearchService.popularRecipeKeyword[index];
+                              searchResult = SearchService.searchRecipes(
+                                  searchInputController.text,
+                                  selectedSortBy,
+                                  false);
+                            });
                           },
                           child: Text(
-                            popularRecipeKeyword[index],
+                            SearchService.popularRecipeKeyword[index],
                             style: TextStyle(
-                              color: Colors.white.withOpacity(0.7),
+                              color: selectedKeywordIndex == index
+                                  ? AppColor.primary
+                                  : Colors.white.withOpacity(0.7),
                               fontWeight: FontWeight.w400,
                             ),
                           ),
                           style: OutlinedButton.styleFrom(
+                            backgroundColor: selectedKeywordIndex == index
+                                ? AppColor.secondary
+                                : Colors.transparent,
                             side: BorderSide(
                               color: Colors.white.withOpacity(0.15),
                               width: 1,
@@ -226,7 +261,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       );
                     },
                   ),
-                )
+                ),
               ],
             ),
           ),
