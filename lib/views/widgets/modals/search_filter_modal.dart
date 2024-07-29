@@ -1,7 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:recipo/views/utils/AppColor.dart';
 
-class SearchFilterModal extends StatelessWidget {
+class SearchFilterModal extends StatefulWidget {
+  final String initialSortBy;
+  final Function(String) onSortByChanged;
+
+  SearchFilterModal(
+      {required this.initialSortBy, required this.onSortByChanged});
+
+  @override
+  _SearchFilterModalState createState() => _SearchFilterModalState();
+}
+
+class _SearchFilterModalState extends State<SearchFilterModal> {
+  late String selectedSortBy;
+
+  @override
+  void initState() {
+    super.initState();
+    selectedSortBy = widget.initialSortBy;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Wrap(
@@ -13,13 +32,18 @@ class SearchFilterModal extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.only(
                 topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-            color: AppColor.primaryExtraSoft,
+            // color: AppColor.whiteSoft,
+            color: AppColor.secondary.withOpacity(.9),
           ),
           child: Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               GestureDetector(
                 onTap: () {
+                  setState(() {
+                    selectedSortBy = 'All';
+                  });
+                  widget.onSortByChanged(selectedSortBy);
                   Navigator.of(context).pop();
                 },
                 child: Container(
@@ -27,15 +51,22 @@ class SearchFilterModal extends StatelessWidget {
                   color: Colors.transparent,
                   alignment: Alignment.center,
                   padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: Text('Reset', style: TextStyle(color: Colors.grey)),
+                  child: Text(
+                    'Reset',
+                    style: TextStyle(
+                      color: Colors.grey,
+                    ),
+                  ),
                 ),
               ),
               Text(
-                'Sort by',
+                'Sort By',
                 style: TextStyle(
-                    fontSize: 14,
-                    fontWeight: FontWeight.w600,
-                    fontFamily: 'inter'),
+                  fontSize: 14,
+                  fontWeight: FontWeight.w600,
+                  fontFamily: 'inter',
+                  color: AppColor.primary,
+                ),
               ),
               GestureDetector(
                 onTap: () {
@@ -46,61 +77,62 @@ class SearchFilterModal extends StatelessWidget {
                   color: Colors.transparent,
                   alignment: Alignment.center,
                   padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: Text('Cancel', style: TextStyle(color: Colors.grey)),
+                  child: Text(
+                    'Cancel',
+                    style: TextStyle(
+                      // color: Colors.red,
+                      color: Colors.red,
+                    ),
+                  ),
                 ),
               ),
             ],
           ),
         ),
-        // Sort By Option
-        Container(
-          decoration: BoxDecoration(
-              border: Border(
-                  bottom: BorderSide(color: Colors.grey[300] ?? Colors.grey))),
-          child: ListTileTheme(
-            selectedColor: AppColor.primary,
-            textColor: Colors.grey,
-            child: ListTile(
-              selected: true,
-              title:
-                  Text('Newest', style: TextStyle(fontWeight: FontWeight.w600)),
-              contentPadding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-            ),
-          ),
-        ),
-        // Sort By Option
-        Container(
-          decoration: BoxDecoration(
-              border: Border(
-                  bottom: BorderSide(color: Colors.grey[300] ?? Colors.grey))),
-          child: ListTileTheme(
-            selectedColor: AppColor.primary,
-            textColor: Colors.grey,
-            child: ListTile(
-              selected: false,
-              title:
-                  Text('Oldest', style: TextStyle(fontWeight: FontWeight.w600)),
-              contentPadding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-            ),
-          ),
-        ),
-        // Sort By Option
-        Container(
-          decoration: BoxDecoration(
-              border: Border(
-                  bottom: BorderSide(color: Colors.grey[300] ?? Colors.grey))),
-          child: ListTileTheme(
-            selectedColor: AppColor.primary,
-            textColor: Colors.grey,
-            child: ListTile(
-              selected: false,
-              title: Text('Popular',
-                  style: TextStyle(fontWeight: FontWeight.w600)),
-              contentPadding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
-            ),
-          ),
-        ),
+        // Sort By Options
+        buildSortOption('Newest'),
+        buildSortOption('Oldest'),
+        buildSortOption('Popular'),
       ],
+    );
+  }
+
+  Widget buildSortOption(String sortBy) {
+    return Container(
+      decoration: BoxDecoration(
+        // color: AppColor.secondary.withOpacity(.9),
+        color: AppColor.whiteSoft,
+        border: Border(
+          bottom: BorderSide(
+            // color: AppColor.primaryExtraSoft,
+            color: AppColor.primary.withOpacity(.1),
+          ),
+        ),
+      ),
+      child: ListTileTheme(
+        selectedColor: AppColor.primary,
+        textColor: Colors.grey,
+        child: ListTile(
+          selected: selectedSortBy == sortBy,
+          onTap: () {
+            setState(() {
+              selectedSortBy = sortBy;
+            });
+            widget.onSortByChanged(selectedSortBy);
+          },
+          title: Center(
+            child: Text(
+              sortBy,
+              style: TextStyle(
+                fontWeight: FontWeight.w600,
+                color:
+                    selectedSortBy == sortBy ? AppColor.primary : Colors.grey,
+              ),
+            ),
+          ),
+          contentPadding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+        ),
+      ),
     );
   }
 }

@@ -1,164 +1,12 @@
-// import 'package:flutter/material.dart';
-// import 'package:flutter/services.dart';
-// import 'package:flutter_svg/flutter_svg.dart';
-// import 'package:recipo/models/core/recipe.dart';
-// import 'package:recipo/models/helper/recipe_helper.dart';
-// import 'package:recipo/views/utils/AppColor.dart';
-// import 'package:recipo/views/widgets/modals/search_filter_modal.dart';
-// import 'package:recipo/views/widgets/recipe_tile.dart';
-
-// class BookmarksScreen extends StatefulWidget {
-//   @override
-//   _BookmarksScreenState createState() => _BookmarksScreenState();
-// }
-
-// class _BookmarksScreenState extends State<BookmarksScreen> {
-//   TextEditingController searchInputController = TextEditingController();
-//   List<Recipe> bookmarkedRecipe = RecipeHelper.bookmarkedRecipe;
-
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       appBar: AppBar(
-//         backgroundColor: AppColor.primary,
-//         foregroundColor: Colors.white,
-//         centerTitle: true,
-//         elevation: 0,
-//         title: Text('Bookmarks',
-//             style: TextStyle(
-//                 fontFamily: 'inter',
-//                 fontWeight: FontWeight.w400,
-//                 fontSize: 16)),
-//         systemOverlayStyle: SystemUiOverlayStyle.light,
-//       ),
-//       body: ListView(
-//         shrinkWrap: true,
-//         physics: BouncingScrollPhysics(),
-//         children: [
-//           // Section 1 - Search Bar
-//           Container(
-//             width: MediaQuery.of(context).size.width,
-//             height: 95,
-//             padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
-//             color: AppColor.primary,
-//             child: Column(
-//               mainAxisAlignment: MainAxisAlignment.start,
-//               crossAxisAlignment: CrossAxisAlignment.start,
-//               children: [
-//                 // Search Bar
-//                 Row(
-//                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
-//                   children: [
-//                     // Search TextField
-//                     Expanded(
-//                       child: Container(
-//                         height: 50,
-//                         margin: EdgeInsets.only(right: 15),
-//                         decoration: BoxDecoration(
-//                             borderRadius: BorderRadius.circular(10),
-//                             color: AppColor.primarySoft),
-//                         child: TextField(
-//                           controller: searchInputController,
-//                           onChanged: (value) {
-//                             print(searchInputController.text);
-//                             setState(() {});
-//                           },
-//                           style: TextStyle(
-//                               color: Colors.white,
-//                               fontSize: 16,
-//                               fontWeight: FontWeight.w400),
-//                           maxLines: 1,
-//                           textInputAction: TextInputAction.search,
-//                           decoration: InputDecoration(
-//                             hintText: 'What do you want to eat?',
-//                             hintStyle:
-//                                 TextStyle(color: Colors.white.withOpacity(0.2)),
-//                             prefixIconConstraints:
-//                                 BoxConstraints(maxHeight: 20),
-//                             contentPadding:
-//                                 EdgeInsets.symmetric(horizontal: 17),
-//                             focusedBorder: InputBorder.none,
-//                             border: InputBorder.none,
-//                             prefixIcon: Visibility(
-//                               visible: (searchInputController.text.isEmpty)
-//                                   ? true
-//                                   : false,
-//                               child: Container(
-//                                 margin: EdgeInsets.only(left: 10, right: 12),
-//                                 child: SvgPicture.asset(
-//                                   'assets/icons/search.svg',
-//                                   width: 20,
-//                                   height: 20,
-//                                   color: Colors.white,
-//                                 ),
-//                               ),
-//                             ),
-//                           ),
-//                         ),
-//                       ),
-//                     ),
-//                     // Filter Button
-//                     GestureDetector(
-//                       onTap: () {
-//                         showModalBottomSheet(
-//                             context: context,
-//                             backgroundColor: Colors.white,
-//                             shape: RoundedRectangleBorder(
-//                                 borderRadius: BorderRadius.only(
-//                                     topLeft: Radius.circular(20),
-//                                     topRight: Radius.circular(20))),
-//                             builder: (context) {
-//                               return SearchFilterModal();
-//                             });
-//                       },
-//                       child: Container(
-//                         width: 50,
-//                         height: 50,
-//                         alignment: Alignment.center,
-//                         decoration: BoxDecoration(
-//                           borderRadius: BorderRadius.circular(10),
-//                           color: AppColor.secondary,
-//                         ),
-//                         child: SvgPicture.asset('assets/icons/filter.svg'),
-//                       ),
-//                     )
-//                   ],
-//                 ),
-//               ],
-//             ),
-//           ),
-//           // Section 2 - Bookmarked Recipe
-//           Container(
-//             padding: EdgeInsets.all(16),
-//             width: MediaQuery.of(context).size.width,
-//             child: ListView.separated(
-//               shrinkWrap: true,
-//               itemCount: bookmarkedRecipe.length,
-//               physics: NeverScrollableScrollPhysics(),
-//               separatorBuilder: (context, index) {
-//                 return SizedBox(height: 16);
-//               },
-//               itemBuilder: (context, index) {
-//                 return RecipeTile(
-//                   data: bookmarkedRecipe[index],
-//                 );
-//               },
-//             ),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:recipo/models/core/recipe.dart';
-import 'package:recipo/models/helper/recipe_helper.dart';
+import 'package:recipo/services/bookmark_service.dart';
 import 'package:recipo/views/utils/AppColor.dart';
-import 'package:recipo/views/widgets/modals/search_filter_modal.dart';
 import 'package:recipo/views/widgets/recipe_tile.dart';
+
+import '../widgets/modals/search_filter_modal.dart';
 
 class BookmarksScreen extends StatefulWidget {
   @override
@@ -168,32 +16,52 @@ class BookmarksScreen extends StatefulWidget {
 class _BookmarksScreenState extends State<BookmarksScreen> {
   final TextEditingController searchInputController = TextEditingController();
   final ScrollController _scrollController = ScrollController();
-  List<Recipe> bookmarkedRecipe = RecipeHelper.bookmarkedRecipe;
   bool isRefreshing = false;
+  String selectedSortBy = 'All';
 
   @override
   void initState() {
     super.initState();
-
-    _scrollController.addListener(() {
-      if (_scrollController.position.pixels < -50 && !isRefreshing) {
-        refreshRecipes();
-      }
-    });
+    _scrollController.addListener(_scrollListener);
+    BookmarkService.getBookmarkedRecipes();
   }
 
-  Future<void> refreshRecipes() async {
-    setState(() {
-      isRefreshing = true;
-    });
+  void _scrollListener() {
+    if (_scrollController.position.pixels < -50 && !isRefreshing) {
+      setState(() {
+        isRefreshing = true;
+      });
+      refreshBookmarks();
+    }
+  }
 
-    // Simulate a network request
-    await Future.delayed(Duration(seconds: 2));
-    bookmarkedRecipe = RecipeHelper.bookmarkedRecipe;
-
+  Future<void> refreshBookmarks() async {
+    await BookmarkService.getBookmarkedRecipes();
     setState(() {
       isRefreshing = false;
     });
+  }
+
+  void _openFilterModal() {
+    showModalBottomSheet(
+      context: context,
+      backgroundColor: Colors.white,
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
+        ),
+      ),
+      builder: (context) => SearchFilterModal(
+        initialSortBy: selectedSortBy,
+        onSortByChanged: (newSortBy) {
+          setState(() {
+            selectedSortBy = newSortBy;
+            // Add logic here to update the bookmarks based on the selectedSortBy
+          });
+        },
+      ),
+    );
   }
 
   @override
@@ -215,50 +83,109 @@ class _BookmarksScreenState extends State<BookmarksScreen> {
         children: [
           CustomScrollView(
             controller: _scrollController,
+            physics: AlwaysScrollableScrollPhysics(),
             slivers: [
               SliverPersistentHeader(
                 pinned: true,
                 delegate: SearchBarDelegate(
                   searchInputController: searchInputController,
+                  openFilterModal: _openFilterModal,
                 ),
               ),
-              SliverPadding(
-                padding: EdgeInsets.all(16),
-                sliver: SliverList(
-                  delegate: SliverChildBuilderDelegate(
-                    (context, index) {
-                      return Column(
-                        children: [
-                          RecipeTile(
-                            data: bookmarkedRecipe[index],
-                          ),
-                          if (index < bookmarkedRecipe.length - 1)
-                            SizedBox(height: 16),
-                        ],
-                      );
-                    },
-                    childCount: bookmarkedRecipe.length,
-                  ),
-                ),
+              StreamBuilder<List<Recipe>>(
+                stream: BookmarkService.bookmarksStream,
+                builder: (context, snapshot) {
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return SliverFillRemaining(
+                      child: Center(
+                        child:
+                            CircularProgressIndicator(color: AppColor.primary),
+                      ),
+                    );
+                  }
+                  if (!snapshot.hasData || snapshot.data!.isEmpty) {
+                    return SliverFillRemaining(
+                      child: Center(child: Text('No bookmarks yet')),
+                    );
+                  }
+                  return SliverPadding(
+                    padding: EdgeInsets.all(16),
+                    sliver: SliverList(
+                      delegate: SliverChildBuilderDelegate(
+                        (context, index) {
+                          final recipe = snapshot.data![index];
+                          bool isLastItem = index == snapshot.data!.length - 1;
+                          return Dismissible(
+                            key: Key(recipe.title),
+                            direction: DismissDirection.endToStart,
+                            background: Container(
+                              margin: EdgeInsets.only(
+                                bottom: isLastItem ? 0 : 15,
+                              ),
+                              decoration: BoxDecoration(
+                                color: Colors.red,
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              alignment: Alignment.centerRight,
+                              padding: EdgeInsets.symmetric(horizontal: 20),
+                              child: SvgPicture.asset(
+                                'assets/icons/delete.svg',
+                                width: 30,
+                              ),
+                            ),
+                            onDismissed: (direction) {
+                              BookmarkService.toggleBookmark(recipe);
+                            },
+                            child: Column(
+                              children: [
+                                RecipeTile(
+                                  data: recipe,
+                                ),
+                                if (!isLastItem) SizedBox(height: 16),
+                              ],
+                            ),
+                          );
+                        },
+                        childCount: snapshot.data!.length,
+                      ),
+                    ),
+                  );
+                },
               ),
             ],
           ),
           if (isRefreshing)
-            Center(
-              child: CircularProgressIndicator(
-                color: AppColor.primary,
+            Positioned(
+              top: 0,
+              left: 0,
+              right: 0,
+              child: Center(
+                child: CircularProgressIndicator(
+                  color: AppColor.primary,
+                ),
               ),
             ),
         ],
       ),
     );
   }
+
+  @override
+  void dispose() {
+    _scrollController.removeListener(_scrollListener);
+    _scrollController.dispose();
+    super.dispose();
+  }
 }
 
 class SearchBarDelegate extends SliverPersistentHeaderDelegate {
   final TextEditingController searchInputController;
+  final VoidCallback openFilterModal;
 
-  SearchBarDelegate({required this.searchInputController});
+  SearchBarDelegate({
+    required this.searchInputController,
+    required this.openFilterModal,
+  });
 
   @override
   Widget build(
@@ -293,7 +220,7 @@ class SearchBarDelegate extends SliverPersistentHeaderDelegate {
                   child: TextField(
                     controller: searchInputController,
                     onChanged: (value) {
-                      print(searchInputController.text);
+                      // Implement search functionality here
                     },
                     style: TextStyle(
                         color: Colors.white,
@@ -328,18 +255,7 @@ class SearchBarDelegate extends SliverPersistentHeaderDelegate {
               ),
               // Filter Button
               GestureDetector(
-                onTap: () {
-                  showModalBottomSheet(
-                      context: context,
-                      backgroundColor: Colors.white,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.only(
-                              topLeft: Radius.circular(20),
-                              topRight: Radius.circular(20))),
-                      builder: (context) {
-                        return SearchFilterModal();
-                      });
-                },
+                onTap: openFilterModal,
                 child: Container(
                   width: 50,
                   height: 50,

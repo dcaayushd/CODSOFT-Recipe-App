@@ -8,6 +8,8 @@ import 'package:recipo/views/widgets/ingredient_tile.dart';
 import 'package:recipo/views/widgets/review_tile.dart';
 import 'package:recipo/views/widgets/step_tile.dart';
 
+import '../../services/bookmark_service.dart';
+
 class RecipeDetailScreen extends StatefulWidget {
   final Recipe data;
   RecipeDetailScreen({required this.data});
@@ -20,6 +22,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen>
     with TickerProviderStateMixin {
   late TabController _tabController;
   late ScrollController _scrollController;
+  bool isBookmarked = false;
   @override
   void initState() {
     super.initState();
@@ -28,6 +31,14 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen>
     _scrollController.addListener(() {
       changeAppBarColor(_scrollController);
       preventScrollUpwards(_scrollController);
+    });
+    _loadBookmarkStatus();
+  }
+
+  Future<void> _loadBookmarkStatus() async {
+    bool bookmarked = await BookmarkService.isBookmarked(widget.data.title);
+    setState(() {
+      isBookmarked = bookmarked;
     });
   }
 
@@ -97,9 +108,20 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen>
             ),
             actions: [
               IconButton(
-                  onPressed: () {},
-                  icon: SvgPicture.asset('assets/icons/bookmark.svg',
-                      color: Colors.white)),
+                onPressed: () async {
+                  await BookmarkService.toggleBookmark(widget.data);
+                  setState(() {
+                    isBookmarked = !isBookmarked;
+                  });
+                },
+                icon: SvgPicture.asset(
+                  isBookmarked
+                      ? 'assets/icons/bookmark-filled.svg'
+                      : 'assets/icons/bookmark.svg',
+                  // color: Colors.white,
+                  color: isBookmarked ? AppColor.secondary : Colors.white,
+                ),
+              ),
             ],
             systemOverlayStyle: SystemUiOverlayStyle.light,
           ),
