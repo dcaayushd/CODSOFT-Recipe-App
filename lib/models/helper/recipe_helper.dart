@@ -8,13 +8,6 @@ class RecipeHelper {
             calories: data['calories'] as String? ?? '',
             time: data['time'] as String? ?? '',
             description: data['description'] as String? ?? '',
-            //           reviews: Review.toList(
-            //               data['reviews'] as List<Map<String, Object?>>? ?? []),
-            //           tutorial: TutorialStep.toList(
-            //               data['tutorial'] as List<Map<String, Object?>>? ?? []),
-            //           ingredients: Ingredient.toList(
-            //               data['ingredients'] as List<Map<String, Object?>>? ?? []),
-            //  createdAt: DateTime.parse(data['createdAt'] as String? ?? DateTime.now().toIso8601String()),
             reviews: Review.toList(data['reviews'] as List<dynamic>? ?? []),
             tutorial:
                 TutorialStep.toList(data['tutorial'] as List<dynamic>? ?? []),
@@ -22,6 +15,8 @@ class RecipeHelper {
                 Ingredient.toList(data['ingredients'] as List<dynamic>? ?? []),
             createdAt: DateTime.parse(data['createdAt'] as String? ??
                 DateTime.now().toIso8601String()),
+            categories:
+                (data['categories'] as List<dynamic>?)?.cast<String>() ?? [],
           ))
       .toList();
 
@@ -39,6 +34,8 @@ class RecipeHelper {
                 Ingredient.toList(data['ingredients'] as List<dynamic>? ?? []),
             createdAt: DateTime.parse(data['createdAt'] as String? ??
                 DateTime.now().toIso8601String()),
+            categories:
+                (data['categories'] as List<dynamic>?)?.cast<String>() ?? [],
           ))
       .toList();
 
@@ -56,6 +53,8 @@ class RecipeHelper {
                 Ingredient.toList(data['ingredients'] as List<dynamic>? ?? []),
             createdAt: DateTime.parse(data['createdAt'] as String? ??
                 DateTime.now().toIso8601String()),
+            categories:
+                (data['categories'] as List<dynamic>?)?.cast<String>() ?? [],
           ))
       .toList();
 
@@ -74,6 +73,9 @@ class RecipeHelper {
                     data['ingredients'] as List<dynamic>? ?? []),
                 createdAt: DateTime.parse(data['createdAt'] as String? ??
                     DateTime.now().toIso8601String()),
+                categories:
+                    (data['categories'] as List<dynamic>?)?.cast<String>() ??
+                        [],
               ))
           .toList();
 
@@ -91,6 +93,8 @@ class RecipeHelper {
                 Ingredient.toList(data['ingredients'] as List<dynamic>? ?? []),
             createdAt: DateTime.parse(data['createdAt'] as String? ??
                 DateTime.now().toIso8601String()),
+            categories:
+                (data['categories'] as List<dynamic>?)?.cast<String>() ?? [],
           ))
       .toList();
 
@@ -108,6 +112,8 @@ class RecipeHelper {
                 Ingredient.toList(data['ingredients'] as List<dynamic>? ?? []),
             createdAt: DateTime.parse(data['createdAt'] as String? ??
                 DateTime.now().toIso8601String()),
+            categories:
+                (data['categories'] as List<dynamic>?)?.cast<String>() ?? [],
           ))
       .toList();
 
@@ -125,6 +131,8 @@ class RecipeHelper {
                 Ingredient.toList(data['ingredients'] as List<dynamic>? ?? []),
             createdAt: DateTime.parse(data['createdAt'] as String? ??
                 DateTime.now().toIso8601String()),
+            categories:
+                (data['categories'] as List<dynamic>?)?.cast<String>() ?? [],
           ))
       .toList();
 }
@@ -136,6 +144,7 @@ var popularRecipeRawData = [
     'calories': '1500 Cal',
     'time': '25 min',
     'createdAt': '2023-07-28T12:00:00Z',
+    'categories': ['Pizza', 'Healthy', 'Lunch'],
     'description':
         'A delicious and nutritious twist on classic pizza. This green pizza features a whole wheat crust topped with pesto, lean ground turkey, and an array of colorful vegetables for a balanced and satisfying meal.',
     'ingredients': [
@@ -208,6 +217,11 @@ var popularRecipeRawData = [
         'review':
             'Awesome post-workout meal. High in protein and complex carbs. Will definitely make again!',
       },
+      {
+        'username': '@felis32',
+        'review':
+            'Awesome meal. High in protein and complex carbs. Definitely try guys!',
+      },
     ],
   },
   {
@@ -215,6 +229,7 @@ var popularRecipeRawData = [
     'photo': 'assets/images/sweetfood2.jpg',
     'calories': '870 Cal',
     'time': '32 min',
+    'categories': ['Desert', 'Eggs'],
     'description':
         'Decadent chocolate pancakes that are a chocolate lover\'s dream breakfast. These rich, fluffy pancakes are infused with cocoa for a luxurious twist on the classic pancake, perfect for special occasions or when you need a chocolatey treat.',
     'ingredients': [
@@ -287,6 +302,10 @@ var popularRecipeRawData = [
         'review':
             'These were the star of our brunch party. Everyone was impressed and asked for the recipe!',
       },
+      {
+        'username': '@cels32',
+        'review': 'Awesome !! Definitely try guys!',
+      },
     ]
   },
   {
@@ -294,6 +313,7 @@ var popularRecipeRawData = [
     'photo': 'assets/images/recom2.jpg',
     'calories': '1500 Cal',
     'time': '25 min',
+    'categories': ['Chicken', 'Dinner'],
     'description':
         'A hearty and nutritious Asian-inspired bowl featuring brown rice, a medley of stir-fried vegetables, and your choice of protein. This balanced meal is perfect for a satisfying lunch or dinner.',
     'ingredients': [
@@ -366,6 +386,14 @@ var popularRecipeRawData = [
         'review':
             'I used extra-firm tofu and it was perfect. The sesame oil really adds a nice flavor to the dish.',
       },
+      {
+        'username': '@felas32',
+        'review': 'Awesome meal!',
+      },
+      {
+        'username': '@geulads2345',
+        'review': 'Awesome Salad! Must Try...',
+      },
     ]
   },
 ];
@@ -376,6 +404,7 @@ var featuredRecipeRawData = [
     'photo': 'assets/images/featured2.jpg',
     'calories': '1500 Cal',
     'time': '25 min',
+    'categories': ['Vegetarian', 'Breakfast', 'Healthy'],
     'description':
         'A vibrant and nutritious dish packed with leafy greens. This recipe combines spinach, kale, and Swiss chard with a light lemon dressing for a refreshing and healthy meal.',
     'ingredients': [
@@ -455,6 +484,7 @@ var featuredRecipeRawData = [
     'photo': 'assets/images/featured1.jpg',
     'calories': '870 Cal',
     'time': '32 min',
+    'categories': ['Vegetarian', 'Breakfast', 'Dinner'],
     'description':
         'A comforting bowl of whole grain noodles tossed with a colorful medley of stir-fried vegetables. This dish is both satisfying and nutritious, perfect for a quick weeknight dinner.',
     'ingredients': [
@@ -534,6 +564,7 @@ var featuredRecipeRawData = [
     'photo': 'assets/images/list1.jpg',
     'calories': '1500 Cal',
     'time': '25 min',
+    'categories': ['Healthy', 'Lunch', 'Dinner', 'Eggs'],
     'description':
         'A nutritious twist on the classic green eggs and ham. This dish features a vibrant spinach and herb omelette, packed with vegetables and topped with avocado for a healthy and satisfying breakfast or brunch option.',
     'ingredients': [
@@ -613,6 +644,7 @@ var featuredRecipeRawData = [
     'photo': 'assets/images/list2.jpg',
     'calories': '870 Cal',
     'time': '32 min',
+    'categories': ['Vegetarian', 'Breakfast'],
     'description':
         'A gourmet salad that\'s both nutritious and satisfying. This colorful dish combines fresh greens, roasted vegetables, nuts, and a tangy vinaigrette for a perfect balance of flavors and textures.',
     'ingredients': [
@@ -685,6 +717,10 @@ var featuredRecipeRawData = [
         'review':
             'The balance of flavors in this salad is perfect. I added some grilled chicken to make it a full meal.',
       },
+      {
+        'username': '@geulads2345',
+        'review': 'Awesome Salad! Must Try...',
+      },
     ]
   },
   {
@@ -692,6 +728,7 @@ var featuredRecipeRawData = [
     'photo': 'assets/images/list3.jpg',
     'calories': '870 Cal',
     'time': '32 min',
+    'categories': ['Breakfast', 'Eggs', 'Healthy'],
     'description':
         'A delightful and nutritious breakfast spread that caters to all tastes. This delimenu features a variety of options including whole grain toast, fresh fruits, yogurt, and a protein-packed egg white scramble.',
     'ingredients': [
@@ -771,6 +808,7 @@ var featuredRecipeRawData = [
     'photo': 'assets/images/sweetfood2.jpg',
     'calories': '870 Cal',
     'time': '32 min',
+    'categories': ['Desert', 'Eggs'],
     'description':
         'Decadent chocolate pancakes that are a chocolate lover\'s dream breakfast. These rich, fluffy pancakes are infused with cocoa for a luxurious twist on the classic pancake, perfect for special occasions or when you need a chocolatey treat.',
     'ingredients': [
@@ -852,6 +890,7 @@ var recommendationRecipeRawData = [
     'title': 'Brown Chopstick Bowl',
     'photo': 'assets/images/recom2.jpg',
     'calories': '1500 Cal',
+    'categories': ['Chicken', 'Dinner'],
     'time': '25 min',
     'description':
         'A hearty and nutritious Asian-inspired bowl featuring brown rice, a medley of stir-fried vegetables, and your choice of protein. This balanced meal is perfect for a satisfying lunch or dinner.',
@@ -932,6 +971,7 @@ var recommendationRecipeRawData = [
     'photo': 'assets/images/recom1.jpg',
     'calories': '870 Cal',
     'time': '32 min',
+    'categories': ['Eggs', 'Breakfast'],
     'description':
         'A vibrant and protein-packed salad featuring crisp mixed greens, colorful vegetables, and topped with a perfectly cooked egg. This salad is a delightful combination of flavors and textures, making it a satisfying meal any time of day.',
     'ingredients': [
@@ -1014,6 +1054,7 @@ var newlyPostedRecipeRawData = [
     'photo': 'assets/images/list1.jpg',
     'calories': '1500 Cal',
     'time': '25 min',
+    'categories': ['Eggs', 'Breakfast', 'Healthy'],
     'description':
         'A nutritious twist on the classic green eggs and ham. This dish features a vibrant spinach and herb omelette, packed with vegetables and topped with avocado for a healthy and satisfying breakfast or brunch option.',
     'ingredients': [
@@ -1172,6 +1213,7 @@ var newlyPostedRecipeRawData = [
     'photo': 'assets/images/list3.jpg',
     'calories': '870 Cal',
     'time': '32 min',
+    'categories': ['Breakfast', 'Eggs'],
     'description':
         'A delightful and nutritious breakfast spread that caters to all tastes. This delimenu features a variety of options including whole grain toast, fresh fruits, yogurt, and a protein-packed egg white scramble.',
     'ingredients': [
@@ -1330,6 +1372,7 @@ var newlyPostedRecipeRawData = [
     'photo': 'assets/images/list5.jpg',
     'calories': '1100 Cal',
     'time': '30 min',
+    'categories': ['Healthy', 'Eggs'],
     'description':
         'A protein-packed dish featuring lean beef and perfectly cooked eggs. This balanced meal combines savory flavors with nutritious ingredients for a satisfying and healthy option any time of day.',
     'ingredients': [
@@ -1409,6 +1452,7 @@ var newlyPostedRecipeRawData = [
     'photo': 'assets/images/list6.jpg',
     'calories': '1450 Cal',
     'time': '120 min',
+    'categories': ['Chicken', 'Dinner'],
     'description':
         'A hearty and nutritious bowl featuring a variety of meats and colorful vegetables. This well-balanced meal is perfect for meal prep or a satisfying dinner option that\'s both delicious and wholesome.',
     'ingredients': [
@@ -1487,6 +1531,7 @@ var newlyPostedRecipeRawData = [
     'title': 'Pancake with Honey.',
     'photo': 'assets/images/sweetfood1.jpg',
     'calories': '1500 Cal',
+    'categories': ['Eggs', 'Dessert'],
     'time': '25 min',
     'description':
         'Fluffy, golden pancakes drizzled with sweet, golden honey. This classic breakfast dish is a perfect balance of comforting carbs and natural sweetness, ideal for a leisurely weekend brunch or a special breakfast treat.',
@@ -1567,6 +1612,7 @@ var newlyPostedRecipeRawData = [
     'photo': 'assets/images/sweetfood2.jpg',
     'calories': '870 Cal',
     'time': '32 min',
+    'categories': ['Desert', 'Eggs'],
     'description':
         'Decadent chocolate pancakes that are a chocolate lover\'s dream breakfast. These rich, fluffy pancakes are infused with cocoa for a luxurious twist on the classic pancake, perfect for special occasions or when you need a chocolatey treat.',
     'ingredients': [
@@ -1648,6 +1694,7 @@ var sweetFoodRecommendationRecipeRawData = [
     'photo': 'assets/images/sweetfood1.jpg',
     'calories': '1500 Cal',
     'time': '25 min',
+    'category': 'Dessert',
     'description':
         'Fluffy, golden pancakes drizzled with sweet, golden honey. This classic breakfast dish is a perfect balance of comforting carbs and natural sweetness, ideal for a leisurely weekend brunch or a special breakfast treat.',
     'ingredients': [
@@ -1727,6 +1774,7 @@ var sweetFoodRecommendationRecipeRawData = [
     'photo': 'assets/images/sweetfood2.jpg',
     'calories': '870 Cal',
     'time': '32 min',
+    'categories': ['Dessert', 'Eggs'],
     'description':
         'Decadent chocolate pancakes that are a chocolate lover\'s dream breakfast. These rich, fluffy pancakes are infused with cocoa for a luxurious twist on the classic pancake, perfect for special occasions or when you need a chocolatey treat.',
     'ingredients': [
@@ -1803,18 +1851,18 @@ var sweetFoodRecommendationRecipeRawData = [
   },
 ];
 
-var popularRecipeKeyword = [
-  'Noodles',
-  'Ice Cream',
-  'Chicken',
-  'Spaghetti',
-  'Pizza',
-  'Nugget',
-  'Kwetiaw',
-  'Nasi Goreng',
-  'Rujak',
-  'Bakmi'
-];
+// var popularRecipeKeyword = [
+//   'Noodles',
+//   'Ice Cream',
+//   'Chicken',
+//   'Spaghetti',
+//   'Pizza',
+//   'Nugget',
+//   'Kwetiaw',
+//   'Nasi Goreng',
+//   'Rujak',
+//   'Bakmi'
+// ];
 
 var recipeSearchResultRawData = [
   {
@@ -1901,6 +1949,7 @@ var recipeSearchResultRawData = [
     'photo': 'assets/images/list2.jpg',
     'calories': '870 Cal',
     'time': '32 min',
+    'Categories': ['Vegetarian'],
     'description':
         'A gourmet salad that\'s both nutritious and satisfying. This colorful dish combines fresh greens, roasted vegetables, nuts, and a tangy vinaigrette for a perfect balance of flavors and textures.',
     'ingredients': [
@@ -2615,6 +2664,7 @@ var bookmarkedRecipeRawData = [
     'photo': 'assets/images/list6.jpg',
     'calories': '1450 Cal',
     'time': '120 min',
+    'categories': ['Chicken', 'Dinner'],
     'description':
         'A hearty and nutritious bowl featuring a variety of meats and colorful vegetables. This well-balanced meal is perfect for meal prep or a satisfying dinner option that\'s both delicious and wholesome.',
     'ingredients': [

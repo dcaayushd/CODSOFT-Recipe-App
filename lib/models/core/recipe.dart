@@ -8,6 +8,7 @@ class Recipe {
   List<TutorialStep> tutorial;
   List<Review> reviews;
   final DateTime createdAt;
+  List<String> categories;
 
   Recipe({
     required this.title,
@@ -19,6 +20,7 @@ class Recipe {
     required this.tutorial,
     required this.reviews,
     required this.createdAt,
+    required this.categories,
   });
 
   factory Recipe.fromJson(Map<String, dynamic> json) {
@@ -29,15 +31,23 @@ class Recipe {
       time: json['time'] as String? ?? '',
       description: json['description'] as String? ?? '',
       ingredients: (json['ingredients'] as List<dynamic>?)
-          ?.map((e) => Ingredient.fromJson(e as Map<String, dynamic>))
-          .toList() ?? [],
+              ?.map((e) => Ingredient.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
       tutorial: (json['tutorial'] as List<dynamic>?)
-          ?.map((e) => TutorialStep.fromJson(e as Map<String, dynamic>))
-          .toList() ?? [],
+              ?.map((e) => TutorialStep.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
       reviews: (json['reviews'] as List<dynamic>?)
-          ?.map((e) => Review.fromJson(e as Map<String, dynamic>))
-          .toList() ?? [],
-      createdAt: DateTime.parse(json['createdAt'] as String? ?? DateTime.now().toIso8601String()),
+              ?.map((e) => Review.fromJson(e as Map<String, dynamic>))
+              .toList() ??
+          [],
+      createdAt: DateTime.parse(
+          json['createdAt'] as String? ?? DateTime.now().toIso8601String()),
+      categories: (json['categories'] as List<dynamic>?)
+              ?.map((e) => e as String)
+              .toList() ??
+          [],
     );
   }
 
@@ -52,9 +62,11 @@ class Recipe {
       'tutorial': tutorial.map((t) => t.toMap()).toList(),
       'reviews': reviews.map((r) => r.toMap()).toList(),
       'createdAt': createdAt.toIso8601String(),
+      'categories': categories,
     };
   }
 }
+
 class Review {
   String username;
   String review;
@@ -101,7 +113,9 @@ class TutorialStep {
   }
 
   static List<TutorialStep> toList(List<dynamic> json) {
-    return json.map((e) => TutorialStep.fromJson(e as Map<String, dynamic>)).toList();
+    return json
+        .map((e) => TutorialStep.fromJson(e as Map<String, dynamic>))
+        .toList();
   }
 }
 
@@ -126,6 +140,8 @@ class Ingredient {
   }
 
   static List<Ingredient> toList(List<dynamic> json) {
-    return json.map((e) => Ingredient.fromJson(e as Map<String, dynamic>)).toList();
+    return json
+        .map((e) => Ingredient.fromJson(e as Map<String, dynamic>))
+        .toList();
   }
 }
