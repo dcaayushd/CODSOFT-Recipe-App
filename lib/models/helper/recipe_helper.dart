@@ -8,12 +8,20 @@ class RecipeHelper {
             calories: data['calories'] as String? ?? '',
             time: data['time'] as String? ?? '',
             description: data['description'] as String? ?? '',
-            reviews: Review.toList(
-                data['reviews'] as List<Map<String, Object?>>? ?? []),
-            tutorial: TutorialStep.toList(
-                data['tutorial'] as List<Map<String, Object?>>? ?? []),
-            ingredients: Ingredient.toList(
-                data['ingredients'] as List<Map<String, Object?>>? ?? []),
+            //           reviews: Review.toList(
+            //               data['reviews'] as List<Map<String, Object?>>? ?? []),
+            //           tutorial: TutorialStep.toList(
+            //               data['tutorial'] as List<Map<String, Object?>>? ?? []),
+            //           ingredients: Ingredient.toList(
+            //               data['ingredients'] as List<Map<String, Object?>>? ?? []),
+            //  createdAt: DateTime.parse(data['createdAt'] as String? ?? DateTime.now().toIso8601String()),
+            reviews: Review.toList(data['reviews'] as List<dynamic>? ?? []),
+            tutorial:
+                TutorialStep.toList(data['tutorial'] as List<dynamic>? ?? []),
+            ingredients:
+                Ingredient.toList(data['ingredients'] as List<dynamic>? ?? []),
+            createdAt: DateTime.parse(data['createdAt'] as String? ??
+                DateTime.now().toIso8601String()),
           ))
       .toList();
 
@@ -24,12 +32,13 @@ class RecipeHelper {
             calories: data['calories'] as String? ?? '',
             time: data['time'] as String? ?? '',
             description: data['description'] as String? ?? '',
-            reviews: Review.toList(
-                data['reviews'] as List<Map<String, Object?>>? ?? []),
-            tutorial: TutorialStep.toList(
-                data['tutorial'] as List<Map<String, Object?>>? ?? []),
-            ingredients: Ingredient.toList(
-                data['ingredients'] as List<Map<String, Object?>>? ?? []),
+            reviews: Review.toList(data['reviews'] as List<dynamic>? ?? []),
+            tutorial:
+                TutorialStep.toList(data['tutorial'] as List<dynamic>? ?? []),
+            ingredients:
+                Ingredient.toList(data['ingredients'] as List<dynamic>? ?? []),
+            createdAt: DateTime.parse(data['createdAt'] as String? ??
+                DateTime.now().toIso8601String()),
           ))
       .toList();
 
@@ -40,12 +49,13 @@ class RecipeHelper {
             calories: data['calories'] as String? ?? '',
             time: data['time'] as String? ?? '',
             description: data['description'] as String? ?? '',
-            reviews: Review.toList(
-                data['reviews'] as List<Map<String, Object?>>? ?? []),
-            tutorial: TutorialStep.toList(
-                data['tutorial'] as List<Map<String, Object?>>? ?? []),
-            ingredients: Ingredient.toList(
-                data['ingredients'] as List<Map<String, Object?>>? ?? []),
+            reviews: Review.toList(data['reviews'] as List<dynamic>? ?? []),
+            tutorial:
+                TutorialStep.toList(data['tutorial'] as List<dynamic>? ?? []),
+            ingredients:
+                Ingredient.toList(data['ingredients'] as List<dynamic>? ?? []),
+            createdAt: DateTime.parse(data['createdAt'] as String? ??
+                DateTime.now().toIso8601String()),
           ))
       .toList();
 
@@ -57,29 +67,15 @@ class RecipeHelper {
                 calories: data['calories'] as String? ?? '',
                 time: data['time'] as String? ?? '',
                 description: data['description'] as String? ?? '',
-                reviews: Review.toList(
-                    data['reviews'] as List<Map<String, Object?>>? ?? []),
+                reviews: Review.toList(data['reviews'] as List<dynamic>? ?? []),
                 tutorial: TutorialStep.toList(
-                    data['tutorial'] as List<Map<String, Object?>>? ?? []),
+                    data['tutorial'] as List<dynamic>? ?? []),
                 ingredients: Ingredient.toList(
-                    data['ingredients'] as List<Map<String, Object?>>? ?? []),
+                    data['ingredients'] as List<dynamic>? ?? []),
+                createdAt: DateTime.parse(data['createdAt'] as String? ??
+                    DateTime.now().toIso8601String()),
               ))
           .toList();
-
-  // static Recipe popularRecipe = Recipe(
-  //   title: popularRecipeRawData['title'] as String? ?? '',
-  //   photo: popularRecipeRawData['photo'] as String? ?? '',
-  //   calories: popularRecipeRawData['calories'] as String? ?? '',
-  //   time: popularRecipeRawData['time'] as String? ?? '',
-  //   description: popularRecipeRawData['description'] as String? ?? '',
-  //   reviews: Review.toList(
-  //       popularRecipeRawData['reviews'] as List<Map<String, Object?>>? ?? []),
-  //   tutorial: TutorialStep.toList(
-  //       popularRecipeRawData['tutorial'] as List<Map<String, Object?>>? ?? []),
-  //   ingredients: Ingredient.toList(
-  //       popularRecipeRawData['ingredients'] as List<Map<String, Object?>>? ??
-  //           []),
-  // );
 
   static List<Recipe> popularRecipes = popularRecipeRawData
       .map((data) => Recipe(
@@ -88,12 +84,13 @@ class RecipeHelper {
             calories: data['calories'] as String? ?? '',
             time: data['time'] as String? ?? '',
             description: data['description'] as String? ?? '',
-            reviews: Review.toList(
-                data['reviews'] as List<Map<String, Object?>>? ?? []),
-            tutorial: TutorialStep.toList(
-                data['tutorial'] as List<Map<String, Object?>>? ?? []),
-            ingredients: Ingredient.toList(
-                data['ingredients'] as List<Map<String, Object?>>? ?? []),
+            reviews: Review.toList(data['reviews'] as List<dynamic>? ?? []),
+            tutorial:
+                TutorialStep.toList(data['tutorial'] as List<dynamic>? ?? []),
+            ingredients:
+                Ingredient.toList(data['ingredients'] as List<dynamic>? ?? []),
+            createdAt: DateTime.parse(data['createdAt'] as String? ??
+                DateTime.now().toIso8601String()),
           ))
       .toList();
 
@@ -104,12 +101,13 @@ class RecipeHelper {
             calories: data['calories'] as String? ?? '',
             time: data['time'] as String? ?? '',
             description: data['description'] as String? ?? '',
-            reviews: Review.toList(
-                data['reviews'] as List<Map<String, Object?>>? ?? []),
-            tutorial: TutorialStep.toList(
-                data['tutorial'] as List<Map<String, Object?>>? ?? []),
-            ingredients: Ingredient.toList(
-                data['ingredients'] as List<Map<String, Object?>>? ?? []),
+            reviews: Review.toList(data['reviews'] as List<dynamic>? ?? []),
+            tutorial:
+                TutorialStep.toList(data['tutorial'] as List<dynamic>? ?? []),
+            ingredients:
+                Ingredient.toList(data['ingredients'] as List<dynamic>? ?? []),
+            createdAt: DateTime.parse(data['createdAt'] as String? ??
+                DateTime.now().toIso8601String()),
           ))
       .toList();
 
@@ -120,12 +118,13 @@ class RecipeHelper {
             calories: data['calories'] as String? ?? '',
             time: data['time'] as String? ?? '',
             description: data['description'] as String? ?? '',
-            reviews: Review.toList(
-                data['reviews'] as List<Map<String, Object?>>? ?? []),
-            tutorial: TutorialStep.toList(
-                data['tutorial'] as List<Map<String, Object?>>? ?? []),
-            ingredients: Ingredient.toList(
-                data['ingredients'] as List<Map<String, Object?>>? ?? []),
+            reviews: Review.toList(data['reviews'] as List<dynamic>? ?? []),
+            tutorial:
+                TutorialStep.toList(data['tutorial'] as List<dynamic>? ?? []),
+            ingredients:
+                Ingredient.toList(data['ingredients'] as List<dynamic>? ?? []),
+            createdAt: DateTime.parse(data['createdAt'] as String? ??
+                DateTime.now().toIso8601String()),
           ))
       .toList();
 }
@@ -136,6 +135,7 @@ var popularRecipeRawData = [
     'photo': 'assets/images/popularnowpizza.jpg',
     'calories': '1500 Cal',
     'time': '25 min',
+    'createdAt': '2023-07-28T12:00:00Z',
     'description':
         'A delicious and nutritious twist on classic pizza. This green pizza features a whole wheat crust topped with pesto, lean ground turkey, and an array of colorful vegetables for a balanced and satisfying meal.',
     'ingredients': [
