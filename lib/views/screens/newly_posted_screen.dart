@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:recipo/models/core/recipe.dart';
-import 'package:recipo/models/helper/recipe_helper.dart';
-import 'package:recipo/views/utils/AppColor.dart';
-import 'package:recipo/views/widgets/recipe_tile.dart';
+import '../../models/core/recipe.dart';
+import '../../models/helper/recipe_helper.dart';
+import '../../views/utils/app_colors.dart';
+import '../../views/widgets/recipe_tile.dart';
 
 class NewlyPostedScreen extends StatefulWidget {
   const NewlyPostedScreen({super.key});

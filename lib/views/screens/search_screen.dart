@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:recipo/models/core/recipe.dart';
-import 'package:recipo/views/utils/AppColor.dart';
-import 'package:recipo/views/widgets/modals/search_filter_modal.dart';
-import 'package:recipo/views/widgets/recipe_tile.dart';
-import '../../services/search_service.dart';
+import '../../models/core/recipe.dart';
+import '../../views/utils/app_colors.dart';
+import '../../views/widgets/modals/search_filter_modal.dart';
+import '../../views/widgets/recipe_tile.dart';
+import '../../../../services/search_service.dart';
 
 class SearchScreen extends StatefulWidget {
   final bool openFilterModal;
@@ -137,7 +137,8 @@ class SearchScreenState extends State<SearchScreen> {
               children: [
                 // Search Bar
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -177,7 +178,8 @@ class SearchScreenState extends State<SearchScreen> {
                               focusedBorder: InputBorder.none,
                               border: InputBorder.none,
                               prefixIcon: Container(
-                                margin: const EdgeInsets.only(left: 10, right: 12),
+                                margin:
+                                    const EdgeInsets.only(left: 10, right: 12),
                                 child: SvgPicture.asset(
                                   'assets/icons/search.svg',
                                   width: 20,

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:recipo/views/utils/AppColor.dart';
+import '../../views/utils/app_colors.dart';
 
 class CustomTextField extends StatelessWidget {
   final String title;
@@ -9,7 +9,8 @@ class CustomTextField extends StatelessWidget {
   final EdgeInsetsGeometry? padding;
   final EdgeInsetsGeometry? margin;
 
-  CustomTextField({
+  const CustomTextField({
+    super.key,
     required this.title,
     required this.hint,
     this.controller,
@@ -28,14 +29,14 @@ class CustomTextField extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Padding(
-            padding: EdgeInsets.only(left: 8),
+            padding: const EdgeInsets.only(left: 8),
             child: Text(
-              '$title',
-              style: TextStyle(color: Colors.grey, fontSize: 14),
+              title,
+              style: const TextStyle(color: Colors.grey, fontSize: 14),
             ),
           ),
           Container(
-            margin: EdgeInsets.only(top: 8),
+            margin: const EdgeInsets.only(top: 8),
             width: MediaQuery.of(context).size.width,
             height: 50,
             decoration: BoxDecoration(
@@ -43,13 +44,13 @@ class CustomTextField extends StatelessWidget {
                 borderRadius: BorderRadius.circular(10)),
             child: TextField(
               controller: controller,
-              style: TextStyle(fontSize: 14),
+              style: const TextStyle(fontSize: 14),
               cursorColor: AppColor.primary,
               obscureText: obsecureText,
               decoration: InputDecoration(
-                hintText: '$hint',
+                hintText: hint,
                 hintStyle: TextStyle(fontSize: 14, color: Colors.grey[400]),
-                contentPadding: EdgeInsets.only(left: 16),
+                contentPadding: const EdgeInsets.only(left: 16),
                 border: InputBorder.none,
               ),
             ),

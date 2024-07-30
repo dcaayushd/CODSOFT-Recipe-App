@@ -1,24 +1,24 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:recipo/models/core/recipe.dart';
-import 'package:recipo/views/screens/full_screen_image.dart';
-import 'package:recipo/views/utils/AppColor.dart';
-import 'package:recipo/views/widgets/ingredient_tile.dart';
-import 'package:recipo/views/widgets/review_tile.dart';
-import 'package:recipo/views/widgets/step_tile.dart';
+import '../../models/core/recipe.dart';
+import '../../views/screens/full_screen_image.dart';
+import '../../views/utils/app_colors.dart';
+import '../../views/widgets/ingredient_tile.dart';
+import '../../views/widgets/review_tile.dart';
+import '../../views/widgets/step_tile.dart';
 
-import '../../services/bookmark_service.dart';
+import '../../../../services/bookmark_service.dart';
 
 class RecipeDetailScreen extends StatefulWidget {
   final Recipe data;
-  RecipeDetailScreen({required this.data});
+  const RecipeDetailScreen({super.key, required this.data});
 
   @override
-  _RecipeDetailScreenState createState() => _RecipeDetailScreenState();
+  RecipeDetailScreenState createState() => RecipeDetailScreenState();
 }
 
-class _RecipeDetailScreenState extends State<RecipeDetailScreen>
+class RecipeDetailScreenState extends State<RecipeDetailScreen>
     with TickerProviderStateMixin {
   late TabController _tabController;
   late ScrollController _scrollController;
@@ -86,22 +86,22 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen>
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: PreferredSize(
-        preferredSize: Size.fromHeight(60),
+        preferredSize: const Size.fromHeight(60),
         child: AnimatedContainer(
           color: appBarColor,
-          duration: Duration(milliseconds: 200),
+          duration: const Duration(milliseconds: 200),
           child: AppBar(
             foregroundColor: Colors.white,
             backgroundColor: Colors.transparent,
             elevation: 0,
             centerTitle: true,
             title: Text(appBarTitle,
-                style: TextStyle(
+                style: const TextStyle(
                     fontFamily: 'inter',
                     fontWeight: FontWeight.w400,
                     fontSize: 16)),
             leading: IconButton(
-              icon: Icon(Icons.arrow_back_ios, color: Colors.white),
+              icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
               onPressed: () {
                 Navigator.of(context).pop();
               },
@@ -137,15 +137,15 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen>
               isScrollControlled: true,
               builder: (BuildContext context) {
                 return Container(
-                  padding: EdgeInsets.all(20),
+                  padding: const EdgeInsets.all(20),
                   color: Colors.white,
                   child: Wrap(
                     children: [
-                      Container(
+                      SizedBox(
                         width: MediaQuery.of(context).size.width,
                         child: Column(
                           children: [
-                            TextField(
+                            const TextField(
                               keyboardType: TextInputType.multiline,
                               minLines: 6,
                               maxLines: null,
@@ -156,7 +156,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen>
                             ),
                             // SizedBox(height: 20),
                             Padding(
-                              padding: EdgeInsets.only(bottom: 20),
+                              padding: const EdgeInsets.only(bottom: 20),
                               child: Row(
                                 children: [
                                   Expanded(
@@ -164,24 +164,24 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen>
                                       onPressed: () {
                                         Navigator.of(context).pop();
                                       },
-                                      child: Text('Cancel'),
                                       style: TextButton.styleFrom(
                                         foregroundColor: Colors.white,
                                         backgroundColor: Colors.red[700],
                                       ),
+                                      child: const Text('Cancel'),
                                     ),
                                   ),
-                                  SizedBox(width: 10),
+                                  const SizedBox(width: 10),
                                   Expanded(
                                     child: ElevatedButton(
                                       onPressed: () {
                                         // Handle the post review action here
                                       },
-                                      child: Text('Post Review'),
                                       style: ElevatedButton.styleFrom(
                                         foregroundColor: Colors.white,
                                         backgroundColor: AppColor.primary,
                                       ),
+                                      child: const Text('Post Review'),
                                     ),
                                   ),
                                 ],
@@ -196,11 +196,11 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen>
               },
             );
           },
-          child: Icon(
+          backgroundColor: AppColor.primary,
+          child: const Icon(
             Icons.edit,
             color: Colors.white,
           ),
-          backgroundColor: AppColor.primary,
         ),
       ),
 
@@ -208,22 +208,31 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen>
         controller: _scrollController,
         shrinkWrap: true,
         padding: EdgeInsets.zero,
-        physics: BouncingScrollPhysics(),
+        physics: const BouncingScrollPhysics(),
         children: [
           // Section 1 - Recipe Image
           GestureDetector(
             onTap: () {
-              Navigator.of(context).push(MaterialPageRoute(
+              Navigator.of(context).push(
+                MaterialPageRoute(
                   builder: (context) => FullScreenImage(
-                      image:
-                          Image.asset(widget.data.photo, fit: BoxFit.cover))));
+                    image: Image.asset(
+                      widget.data.photo,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
+                ),
+              );
             },
             child: Container(
               height: 280,
               width: MediaQuery.of(context).size.width,
               decoration: BoxDecoration(
-                  image: DecorationImage(
-                      image: AssetImage(widget.data.photo), fit: BoxFit.cover)),
+                image: DecorationImage(
+                  image: AssetImage(widget.data.photo),
+                  fit: BoxFit.cover,
+                ),
+              ),
               child: Container(
                 decoration: BoxDecoration(gradient: AppColor.linearBlackTop),
                 height: 280,
@@ -234,7 +243,8 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen>
           // Section 2 - Recipe Info
           Container(
             width: MediaQuery.of(context).size.width,
-            padding: EdgeInsets.only(top: 20, bottom: 30, left: 16, right: 16),
+            padding:
+                const EdgeInsets.only(top: 20, bottom: 30, left: 16, right: 16),
             color: AppColor.primary,
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
@@ -250,29 +260,35 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen>
                       height: 16,
                     ),
                     Container(
-                      margin: EdgeInsets.only(left: 5),
+                      margin: const EdgeInsets.only(left: 5),
                       child: Text(
                         widget.data.calories,
-                        style: TextStyle(color: Colors.white, fontSize: 12),
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 12,
+                        ),
                       ),
                     ),
-                    SizedBox(width: 10),
-                    Icon(Icons.alarm, size: 16, color: Colors.white),
+                    const SizedBox(width: 10),
+                    const Icon(Icons.alarm, size: 16, color: Colors.white),
                     Container(
-                      margin: EdgeInsets.only(left: 5),
+                      margin: const EdgeInsets.only(left: 5),
                       child: Text(
                         widget.data.time,
-                        style: TextStyle(color: Colors.white, fontSize: 12),
+                        style: const TextStyle(
+                          color: Colors.white,
+                          fontSize: 12,
+                        ),
                       ),
                     ),
                   ],
                 ),
                 // Recipe Title
                 Container(
-                  margin: EdgeInsets.only(bottom: 12, top: 16),
+                  margin: const EdgeInsets.only(bottom: 12, top: 16),
                   child: Text(
                     widget.data.title,
-                    style: TextStyle(
+                    style: const TextStyle(
                         color: Colors.white,
                         fontSize: 18,
                         fontWeight: FontWeight.w600,
@@ -307,11 +323,11 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen>
               labelColor: AppColor.primary,
 
               unselectedLabelColor: Colors.black.withOpacity(0.6),
-              labelStyle:
-                  TextStyle(fontFamily: 'inter', fontWeight: FontWeight.w500),
+              labelStyle: const TextStyle(
+                  fontFamily: 'inter', fontWeight: FontWeight.w500),
               // indicatorColor: Colors.black,
               indicatorColor: AppColor.primary,
-              tabs: [
+              tabs: const [
                 Tab(
                   text: 'Ingredients',
                 ),
@@ -333,7 +349,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen>
                 shrinkWrap: true,
                 padding: EdgeInsets.zero,
                 itemCount: widget.data.ingredients.length,
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
                   return IngredientTile(
                     data: widget.data.ingredients[index],
@@ -345,7 +361,7 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen>
                 shrinkWrap: true,
                 padding: EdgeInsets.zero,
                 itemCount: widget.data.tutorial.length,
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
                   return StepTile(
                     data: widget.data.tutorial[index],
@@ -357,9 +373,11 @@ class _RecipeDetailScreenState extends State<RecipeDetailScreen>
                 shrinkWrap: true,
                 padding: EdgeInsets.zero,
                 itemCount: widget.data.reviews.length,
-                physics: NeverScrollableScrollPhysics(),
+                physics: const NeverScrollableScrollPhysics(),
                 itemBuilder: (context, index) {
-                  return ReviewTile(data: widget.data.reviews[index]);
+                  return ReviewTile(
+                    data: widget.data.reviews[index],
+                  );
                 },
               )
             ],

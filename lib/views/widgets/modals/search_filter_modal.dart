@@ -1,12 +1,12 @@
-
 import 'package:flutter/material.dart';
-import 'package:recipo/views/utils/AppColor.dart';
+import '../../../views/utils/app_colors.dart';
 
 class SearchFilterModal extends StatefulWidget {
   final String initialSortBy;
   final Function(String) onSortByChanged;
 
-  const SearchFilterModal({super.key, required this.initialSortBy, required this.onSortByChanged});
+  const SearchFilterModal(
+      {super.key, required this.initialSortBy, required this.onSortByChanged});
 
   @override
   SearchFilterModalState createState() => SearchFilterModalState();
@@ -123,11 +123,13 @@ class SearchFilterModalState extends State<SearchFilterModal> {
               sortBy,
               style: TextStyle(
                 fontWeight: FontWeight.w600,
-                color: selectedSortBy == sortBy ? AppColor.primary : Colors.grey,
+                color:
+                    selectedSortBy == sortBy ? AppColor.primary : Colors.grey,
               ),
             ),
           ),
-          contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+          contentPadding:
+              const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         ),
       ),
     );

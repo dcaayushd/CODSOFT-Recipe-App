@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:recipo/models/core/recipe.dart';
-import 'package:recipo/services/bookmark_service.dart';
-import 'package:recipo/views/utils/AppColor.dart';
-import 'package:recipo/views/widgets/recipe_tile.dart';
+import '../../models/core/recipe.dart';
+import '../../services/bookmark_service.dart';
+import '../../views/utils/app_colors.dart';
+import '../../views/widgets/recipe_tile.dart';
 
 import '../widgets/modals/search_filter_modal.dart';
 

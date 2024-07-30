@@ -1,20 +1,20 @@
 import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:recipo/models/core/recipe.dart';
-import 'package:recipo/views/utils/AppColor.dart';
+import '../../models/core/recipe.dart';
+import '../../views/utils/app_colors.dart';
 import '../screens/recipe_detail_screen.dart';
 
 class PopularRecipeCard extends StatefulWidget {
   final List<Recipe> data;
 
-  PopularRecipeCard({required this.data});
+  const PopularRecipeCard({super.key, required this.data});
 
   @override
-  _PopularRecipeCardState createState() => _PopularRecipeCardState();
+  PopularRecipeCardState createState() => PopularRecipeCardState();
 }
 
-class _PopularRecipeCardState extends State<PopularRecipeCard> {
+class PopularRecipeCardState extends State<PopularRecipeCard> {
   late PageController _pageController;
   int _currentPage = 0;
 
@@ -32,7 +32,7 @@ class _PopularRecipeCardState extends State<PopularRecipeCard> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: MediaQuery.of(context).size.width,
       height: 200,
       child: Stack(
@@ -68,7 +68,7 @@ class _PopularRecipeCardState extends State<PopularRecipeCard> {
 
   Widget buildDot(int index) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 4),
+      margin: const EdgeInsets.symmetric(horizontal: 4),
       width: 8,
       height: 8,
       decoration: BoxDecoration(
@@ -88,7 +88,7 @@ class _PopularRecipeCardState extends State<PopularRecipeCard> {
         width: MediaQuery.of(context).size.width,
         height: 160,
         alignment: Alignment.bottomRight,
-        padding: EdgeInsets.all(15),
+        padding: const EdgeInsets.all(15),
         decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(10),
             image: DecorationImage(
@@ -98,14 +98,14 @@ class _PopularRecipeCardState extends State<PopularRecipeCard> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-              margin: EdgeInsets.only(bottom: 8),
+              margin: const EdgeInsets.only(bottom: 8),
               width: 95,
               alignment: Alignment.center,
-              padding: EdgeInsets.symmetric(vertical: 5, horizontal: 10),
+              padding: const EdgeInsets.symmetric(vertical: 5, horizontal: 10),
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(5),
                   color: AppColor.primary),
-              child: Text(
+              child: const Text(
                 'Popular Now !!',
                 style: TextStyle(
                     color: Colors.white,
@@ -122,7 +122,7 @@ class _PopularRecipeCardState extends State<PopularRecipeCard> {
                   child: Container(
                     height: 80,
                     width: 165,
-                    padding: EdgeInsets.all(8),
+                    padding: const EdgeInsets.all(8),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: Colors.black.withOpacity(0.26),
@@ -134,7 +134,7 @@ class _PopularRecipeCardState extends State<PopularRecipeCard> {
                           recipe.title,
                           maxLines: 2,
                           overflow: TextOverflow.ellipsis,
-                          style: TextStyle(
+                          style: const TextStyle(
                               color: Colors.white,
                               fontSize: 14,
                               height: 150 / 100,
@@ -142,7 +142,7 @@ class _PopularRecipeCardState extends State<PopularRecipeCard> {
                               fontFamily: 'inter'),
                         ),
                         Container(
-                          margin: EdgeInsets.only(top: 8),
+                          margin: const EdgeInsets.only(top: 8),
                           child: Row(
                             children: [
                               SvgPicture.asset(
@@ -152,20 +152,21 @@ class _PopularRecipeCardState extends State<PopularRecipeCard> {
                                 height: 12,
                               ),
                               Container(
-                                margin: EdgeInsets.only(left: 5),
+                                margin: const EdgeInsets.only(left: 5),
                                 child: Text(
                                   recipe.calories,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       color: Colors.white, fontSize: 10),
                                 ),
                               ),
-                              SizedBox(width: 10),
-                              Icon(Icons.alarm, size: 12, color: Colors.white),
+                              const SizedBox(width: 10),
+                              const Icon(Icons.alarm,
+                                  size: 12, color: Colors.white),
                               Container(
-                                margin: EdgeInsets.only(left: 5),
+                                margin: const EdgeInsets.only(left: 5),
                                 child: Text(
                                   recipe.time,
-                                  style: TextStyle(
+                                  style: const TextStyle(
                                       color: Colors.white, fontSize: 10),
                                 ),
                               ),

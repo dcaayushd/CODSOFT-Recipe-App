@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:recipo/views/utils/AppColor.dart';
+import '../../views/utils/app_colors.dart';
 
 class DummySearchBar extends StatelessWidget {
   final VoidCallback routeTo;
   final VoidCallback openFilter;
 
-  const DummySearchBar({super.key, required this.routeTo, required this.openFilter});
+  const DummySearchBar(
+      {super.key, required this.routeTo, required this.openFilter});
 
   @override
   Widget build(BuildContext context) {

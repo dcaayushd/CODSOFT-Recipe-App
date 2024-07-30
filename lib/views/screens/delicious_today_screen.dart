@@ -1,16 +1,18 @@
 import 'package:flutter/material.dart';
-import 'package:recipo/models/core/recipe.dart';
-import 'package:recipo/models/helper/recipe_helper.dart';
-import 'package:recipo/views/utils/AppColor.dart';
-import 'package:recipo/views/widgets/popular_recipe_card.dart';
-import 'package:recipo/views/widgets/recipe_tile.dart';
+import '../../models/core/recipe.dart';
+import '../../models/helper/recipe_helper.dart';
+import '../../views/utils/app_colors.dart';
+import '../../views/widgets/popular_recipe_card.dart';
+import '../../views/widgets/recipe_tile.dart';
 
 class DeliciousTodayScreen extends StatefulWidget {
+  const DeliciousTodayScreen({super.key});
+
   @override
-  _DeliciousTodayScreenState createState() => _DeliciousTodayScreenState();
+  DeliciousTodayScreenState createState() => DeliciousTodayScreenState();
 }
 
-class _DeliciousTodayScreenState extends State<DeliciousTodayScreen> {
+class DeliciousTodayScreenState extends State<DeliciousTodayScreen> {
   final ScrollController _scrollController = ScrollController();
   List<Recipe> popularRecipes = RecipeHelper.popularRecipes;
   List<Recipe> featuredRecipe = RecipeHelper.featuredRecipe;
@@ -33,7 +35,7 @@ class _DeliciousTodayScreenState extends State<DeliciousTodayScreen> {
       isRefreshing = true;
     });
     // Simulate a network request
-    await Future.delayed(Duration(seconds: 2));
+    await Future.delayed(const Duration(seconds: 2));
     popularRecipes = RecipeHelper.popularRecipes;
     featuredRecipe = RecipeHelper.featuredRecipe;
     setState(() {
@@ -49,13 +51,13 @@ class _DeliciousTodayScreenState extends State<DeliciousTodayScreen> {
         foregroundColor: Colors.white,
         elevation: 0,
         centerTitle: true,
-        title: Text('Delicious Today',
+        title: const Text('Delicious Today',
             style: TextStyle(
                 fontFamily: 'inter',
                 fontWeight: FontWeight.w400,
                 fontSize: 16)),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back_ios),
+          icon: const Icon(Icons.arrow_back_ios),
           onPressed: () {
             Navigator.of(context).pop();
           },
@@ -68,12 +70,12 @@ class _DeliciousTodayScreenState extends State<DeliciousTodayScreen> {
               Container(
                 decoration: BoxDecoration(
                     color: AppColor.primary,
-                    borderRadius: BorderRadius.only(
+                    borderRadius: const BorderRadius.only(
                       bottomLeft: Radius.circular(30),
                       bottomRight: Radius.circular(30),
                     )),
                 height: 210,
-                padding: EdgeInsets.only(
+                padding: const EdgeInsets.only(
                   bottom: 30,
                   left: 20,
                   right: 20,
@@ -86,7 +88,7 @@ class _DeliciousTodayScreenState extends State<DeliciousTodayScreen> {
                   controller: _scrollController,
                   slivers: [
                     SliverPadding(
-                      padding: EdgeInsets.all(16),
+                      padding: const EdgeInsets.all(16),
                       sliver: SliverList(
                         delegate: SliverChildBuilderDelegate(
                           (context, index) {
@@ -96,7 +98,7 @@ class _DeliciousTodayScreenState extends State<DeliciousTodayScreen> {
                                   data: featuredRecipe[index],
                                 ),
                                 if (index < featuredRecipe.length - 1)
-                                  SizedBox(height: 16),
+                                  const SizedBox(height: 16),
                               ],
                             );
                           },

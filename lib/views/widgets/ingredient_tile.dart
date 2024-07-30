@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:recipo/models/core/recipe.dart';
+import '../../models/core/recipe.dart';
 
 class IngredientTile extends StatelessWidget {
   final Ingredient data;
-  IngredientTile({required this.data});
+  const IngredientTile({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 24),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
       decoration: BoxDecoration(
           border: Border(
               bottom: BorderSide(
@@ -21,7 +21,7 @@ class IngredientTile extends StatelessWidget {
             flex: 9,
             child: Text(
               data.name,
-              style: TextStyle(
+              style: const TextStyle(
                   fontSize: 14, fontWeight: FontWeight.w600, height: 150 / 100),
             ),
           ),

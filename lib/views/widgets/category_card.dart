@@ -4,7 +4,7 @@ class CategoryCard extends StatelessWidget {
   final String title;
   final ImageProvider image;
 
-  CategoryCard({required this.title, required this.image});
+  const CategoryCard({super.key, required this.title, required this.image});
 
   @override
   Widget build(BuildContext context) {
@@ -21,11 +21,11 @@ class CategoryCard extends StatelessWidget {
         height: 60,
         alignment: Alignment.center,
         decoration: BoxDecoration(
-          color: Color(0xFF062D2B).withOpacity(0.40),
+          color: const Color(0xFF062D2B).withOpacity(0.40),
         ),
         child: Text(
           title,
-          style: TextStyle(
+          style: const TextStyle(
               color: Colors.white,
               fontSize: 16,
               fontWeight: FontWeight.w700,

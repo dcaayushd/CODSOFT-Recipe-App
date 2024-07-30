@@ -1,13 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:recipo/models/core/recipe.dart';
+import '../../models/core/recipe.dart';
 import '../screens/recipe_detail_screen.dart';
 
 class RecommendationRecipeCard extends StatelessWidget {
   final Recipe data;
   final bool useWhiteText;
 
-  RecommendationRecipeCard({required this.data, this.useWhiteText = false});
+  const RecommendationRecipeCard({super.key, required this.data, this.useWhiteText = false});
 
   @override
   Widget build(BuildContext context) {
@@ -16,7 +16,7 @@ class RecommendationRecipeCard extends StatelessWidget {
         Navigator.of(context).push(MaterialPageRoute(
             builder: (context) => RecipeDetailScreen(data: data)));
       },
-      child: Container(
+      child: SizedBox(
         width: 180,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -36,8 +36,8 @@ class RecommendationRecipeCard extends StatelessWidget {
             ),
             // Recipe title
             Container(
-              margin: EdgeInsets.only(top: 10, bottom: 8),
-              padding: EdgeInsets.only(left: 4),
+              margin: const EdgeInsets.only(top: 10, bottom: 8),
+              padding: const EdgeInsets.only(left: 4),
               child: Text(
                 data.title,
                 style: TextStyle(
@@ -51,45 +51,43 @@ class RecommendationRecipeCard extends StatelessWidget {
               ),
             ),
             // Recipe calories and time
-            Container(
-              child: Row(
-                children: [
-                  SvgPicture.asset(
-                    'assets/icons/fire-filled.svg',
-                    color: useWhiteText ? Colors.white : Colors.black,
-                    width: 12,
-                    height: 12,
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(left: 5),
-                    child: Text(
-                      data.calories,
-                      style: TextStyle(
-                        fontSize: 10,
-                        color: useWhiteText ? Colors.white : Colors.black,
-                      ),
+            Row(
+              children: [
+                SvgPicture.asset(
+                  'assets/icons/fire-filled.svg',
+                  color: useWhiteText ? Colors.white : Colors.black,
+                  width: 12,
+                  height: 12,
+                ),
+                Container(
+                  margin: const EdgeInsets.only(left: 5),
+                  child: Text(
+                    data.calories,
+                    style: TextStyle(
+                      fontSize: 10,
+                      color: useWhiteText ? Colors.white : Colors.black,
                     ),
                   ),
-                  SizedBox(
-                    width: 10,
-                  ),
-                  Icon(
-                    Icons.alarm,
-                    size: 12,
-                    color: useWhiteText ? Colors.white : Colors.black,
-                  ),
-                  Container(
-                    margin: EdgeInsets.only(left: 5),
-                    child: Text(
-                      data.time,
-                      style: TextStyle(
-                        fontSize: 10,
-                        color: useWhiteText ? Colors.white : Colors.black,
-                      ),
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Icon(
+                  Icons.alarm,
+                  size: 12,
+                  color: useWhiteText ? Colors.white : Colors.black,
+                ),
+                Container(
+                  margin: const EdgeInsets.only(left: 5),
+                  child: Text(
+                    data.time,
+                    style: TextStyle(
+                      fontSize: 10,
+                      color: useWhiteText ? Colors.white : Colors.black,
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             )
           ],
         ),

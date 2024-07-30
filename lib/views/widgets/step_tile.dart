@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
-import 'package:recipo/models/core/recipe.dart';
+import '../../models/core/recipe.dart';
 
 class StepTile extends StatelessWidget {
   final TutorialStep data;
 
-  StepTile({required this.data});
+  const StepTile({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
       decoration: BoxDecoration(
           border: Border(
               bottom: BorderSide(
@@ -21,7 +21,7 @@ class StepTile extends StatelessWidget {
         children: [
           Text(
             data.step,
-            style: TextStyle(
+            style: const TextStyle(
                 color: Colors.black,
                 fontFamily: 'inter',
                 fontSize: 16,
@@ -29,7 +29,7 @@ class StepTile extends StatelessWidget {
           ),
           (data.description != null)
               ? Container(
-                  margin: EdgeInsets.only(top: 10),
+                  margin: const EdgeInsets.only(top: 10),
                   child: Text(
                     data.description,
                     style: TextStyle(
@@ -38,7 +38,7 @@ class StepTile extends StatelessWidget {
                         height: 150 / 100),
                   ),
                 )
-              : SizedBox(),
+              : const SizedBox(),
         ],
       ),
     );

@@ -101,6 +101,7 @@ class HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: CustomAppBar(
+        
         title: const Text(
           'Recipo',
           style: TextStyle(fontFamily: 'inter', fontWeight: FontWeight.w700),

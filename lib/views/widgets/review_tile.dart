@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:recipo/models/core/recipe.dart';
+import '../../models/core/recipe.dart';
 
 class ReviewTile extends StatelessWidget {
   final Review data;
-  ReviewTile({required this.data});
+  const ReviewTile({super.key, required this.data});
 
   @override
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width,
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 20),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
       decoration: BoxDecoration(
           border: Border(
               bottom: BorderSide(
@@ -21,7 +21,7 @@ class ReviewTile extends StatelessWidget {
           // Review username
           Text(
             data.username,
-            style: TextStyle(
+            style: const TextStyle(
                 color: Colors.black,
                 fontFamily: 'inter',
                 fontSize: 16,
@@ -29,7 +29,7 @@ class ReviewTile extends StatelessWidget {
           ),
           // user review
           Container(
-            margin: EdgeInsets.only(top: 10),
+            margin: const EdgeInsets.only(top: 10),
             child: Text(
               data.review,
               style: TextStyle(

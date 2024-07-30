@@ -1,23 +1,23 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:recipo/views/utils/AppColor.dart';
+import '../../views/utils/app_colors.dart';
 
 class CustomBottomNavigationBar extends StatefulWidget {
   final int selectedIndex;
   final ValueChanged<int> onItemTapped;
 
-  CustomBottomNavigationBar({
-    Key? key,
+  const CustomBottomNavigationBar({
+    super.key,
     required this.selectedIndex,
     required this.onItemTapped,
-  }) : super(key: key);
+  });
 
   @override
-  _CustomBottomNavigationBarState createState() =>
-      _CustomBottomNavigationBarState();
+  CustomBottomNavigationBarState createState() =>
+      CustomBottomNavigationBarState();
 }
 
-class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
+class CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
   late int _selectedIndex;
 
   @override
@@ -38,7 +38,7 @@ class _CustomBottomNavigationBarState extends State<CustomBottomNavigationBar> {
     return SafeArea(
       child: Container(
         height: 70,
-        margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
+        margin: const EdgeInsets.fromLTRB(20, 0, 20, 0),
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(30),
           color: AppColor.primary,

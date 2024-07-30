@@ -2,13 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:recipo/models/core/recipe.dart';
-import 'package:recipo/models/helper/recipe_helper.dart';
-import 'package:recipo/views/screens/search_screen.dart';
-import 'package:recipo/views/utils/AppColor.dart';
-import 'package:recipo/views/widgets/category_card.dart';
-import 'package:recipo/views/widgets/popular_recipe_card.dart';
-import 'package:recipo/views/widgets/recommendation_recipe_card.dart';
+import '../../models/core/recipe.dart';
+import '../../models/helper/recipe_helper.dart';
+import '../../views/screens/search_screen.dart';
+import '../../views/utils/app_colors.dart';
+import '../../views/widgets/category_card.dart';
+import '../../views/widgets/popular_recipe_card.dart';
+import '../../views/widgets/recommendation_recipe_card.dart';
 
 class ExploreScreen extends StatelessWidget {
   final List<Recipe> popularRecipes = RecipeHelper.popularRecipes;
@@ -45,7 +45,7 @@ class ExploreScreen extends StatelessWidget {
           IconButton(
             onPressed: () {
               Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => SearchScreen()));
+                  MaterialPageRoute(builder: (context) => const SearchScreen()));
             },
             icon: SvgPicture.asset('assets/icons/search.svg',
                 color: Colors.white),
@@ -70,28 +70,28 @@ class ExploreScreen extends StatelessWidget {
                 bottomRight: Radius.circular(30),
               ),
             ),
-            child: Wrap(
+            child: const Wrap(
               spacing: 16,
               runSpacing: 16,
               children: [
                 CategoryCard(
                     title: 'Healthy',
-                    image: const AssetImage('assets/images/healthy.jpg')),
+                    image: AssetImage('assets/images/healthy.jpg')),
                 CategoryCard(
                     title: 'Drink',
-                    image: const AssetImage('assets/images/drink.jpg')),
+                    image: AssetImage('assets/images/drink.jpg')),
                 CategoryCard(
                     title: 'Seafood',
-                    image: const AssetImage('assets/images/seafood.jpg')),
+                    image: AssetImage('assets/images/seafood.jpg')),
                 CategoryCard(
                     title: 'Desert',
-                    image: const AssetImage('assets/images/desert.jpg')),
+                    image: AssetImage('assets/images/desert.jpg')),
                 CategoryCard(
                     title: 'Spicy',
-                    image: const AssetImage('assets/images/spicy.jpg')),
+                    image: AssetImage('assets/images/spicy.jpg')),
                 CategoryCard(
                     title: 'Meat',
-                    image: const AssetImage('assets/images/meat.jpg')),
+                    image: AssetImage('assets/images/meat.jpg')),
               ],
             ),
           ),

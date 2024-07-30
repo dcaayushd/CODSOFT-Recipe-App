@@ -3,7 +3,7 @@ import 'package:flutter/services.dart';
 
 class FullScreenImage extends StatelessWidget {
   final Widget image;
-  FullScreenImage({required this.image});
+  const FullScreenImage({super.key, required this.image});
 
   @override
   Widget build(BuildContext context) {
@@ -14,7 +14,7 @@ class FullScreenImage extends StatelessWidget {
         foregroundColor: Colors.white,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.close, color: Colors.white),
+          icon: const Icon(Icons.close, color: Colors.white),
           onPressed: () {
             Navigator.of(context).pop();
           },
@@ -26,7 +26,7 @@ class FullScreenImage extends StatelessWidget {
         height: MediaQuery.of(context).size.height,
         alignment: Alignment.center,
         // Image Wrapper
-        child: Container(
+        child: SizedBox(
           width: MediaQuery.of(context).size.width,
           // Image Widget
           child: image,

@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:recipo/views/utils/AppColor.dart';
-import 'package:recipo/views/widgets/modals/login_modal.dart';
-import 'package:recipo/views/widgets/modals/register_modal.dart';
+import '../../../views/utils/app_colors.dart';
+import '../../../views/widgets/modals/login_modal.dart';
+import '../../../views/widgets/modals/register_modal.dart';
 
 class WelcomeScreen extends StatelessWidget {
+  const WelcomeScreen({super.key});
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -13,7 +15,7 @@ class WelcomeScreen extends StatelessWidget {
           Container(
             width: MediaQuery.of(context).size.width,
             height: MediaQuery.of(context).size.height,
-            decoration: BoxDecoration(
+            decoration: const BoxDecoration(
                 image: DecorationImage(
                     image: AssetImage('assets/images/bg.jpg'),
                     fit: BoxFit.cover)),
@@ -21,14 +23,14 @@ class WelcomeScreen extends StatelessWidget {
           Positioned(
             bottom: 0,
             child: Container(
-              padding: EdgeInsets.only(left: 16, right: 16, bottom: 32),
+              padding: const EdgeInsets.only(left: 16, right: 16, bottom: 32),
               width: MediaQuery.of(context).size.width,
               height: MediaQuery.of(context).size.height * 60 / 100,
               decoration: BoxDecoration(gradient: AppColor.linearBlackBottom),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Column(
+                  const Column(
                     mainAxisAlignment: MainAxisAlignment.start,
                     crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
@@ -54,23 +56,17 @@ class WelcomeScreen extends StatelessWidget {
                         width: MediaQuery.of(context).size.width,
                         height: 60,
                         child: ElevatedButton(
-                          child: Text('Get Started',
-                              style: TextStyle(
-                                  color: AppColor.secondary,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: 'inter')),
                           onPressed: () {
                             showModalBottomSheet(
                               context: context,
                               backgroundColor: Colors.white,
-                              shape: RoundedRectangleBorder(
+                              shape: const RoundedRectangleBorder(
                                   borderRadius: BorderRadius.only(
                                       topLeft: Radius.circular(20),
                                       topRight: Radius.circular(20))),
                               isScrollControlled: true,
                               builder: (context) {
-                                return RegisterModal();
+                                return const RegisterModal();
                               },
                             );
                           },
@@ -79,31 +75,31 @@ class WelcomeScreen extends StatelessWidget {
                                 borderRadius: BorderRadius.circular(10)),
                             backgroundColor: AppColor.primarySoft,
                           ),
-                        ),
-                      ),
-                      SizedBox(height: 16),
-                      // Log in Button
-                      SizedBox(
-                        width: MediaQuery.of(context).size.width,
-                        height: 60,
-                        child: OutlinedButton(
-                          child: Text('Log in',
+                          child: Text('Get Started',
                               style: TextStyle(
                                   color: AppColor.secondary,
                                   fontSize: 16,
                                   fontWeight: FontWeight.w600,
                                   fontFamily: 'inter')),
+                        ),
+                      ),
+                      const SizedBox(height: 16),
+                      // Log in Button
+                      SizedBox(
+                        width: MediaQuery.of(context).size.width,
+                        height: 60,
+                        child: OutlinedButton(
                           onPressed: () {
                             showModalBottomSheet(
                               context: context,
                               backgroundColor: Colors.white,
-                              shape: RoundedRectangleBorder(
+                              shape: const RoundedRectangleBorder(
                                   borderRadius: BorderRadius.only(
                                       topLeft: Radius.circular(20),
                                       topRight: Radius.circular(20))),
                               isScrollControlled: true,
                               builder: (context) {
-                                return LoginModal();
+                                return const LoginModal();
                               },
                             );
                           },
@@ -115,11 +111,17 @@ class WelcomeScreen extends StatelessWidget {
                                 color: AppColor.secondary.withOpacity(0.5),
                                 width: 1),
                           ),
+                          child: Text('Log in',
+                              style: TextStyle(
+                                  color: AppColor.secondary,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w600,
+                                  fontFamily: 'inter')),
                         ),
                       ),
                       Container(
-                        padding: EdgeInsets.symmetric(horizontal: 8),
-                        margin: EdgeInsets.only(top: 32),
+                        padding: const EdgeInsets.symmetric(horizontal: 8),
+                        margin: const EdgeInsets.only(top: 32),
                         child: RichText(
                           textAlign: TextAlign.center,
                           text: TextSpan(

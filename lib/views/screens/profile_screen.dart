@@ -166,7 +166,7 @@ class ProfileScreenState extends State<ProfileScreen> {
                       image: DecorationImage(
                         image: _imagePath.isNotEmpty
                             ? FileImage(File(_imagePath))
-                            : const AssetImage('assets/images/profile.jpg')
+                            : const AssetImage('assets/images/user.png')
                                 as ImageProvider,
                         fit: BoxFit.cover,
                       ),

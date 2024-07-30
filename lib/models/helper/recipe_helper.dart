@@ -1,4 +1,4 @@
-import 'package:recipo/models/core/recipe.dart';
+import '../../models/core/recipe.dart';
 
 class RecipeHelper {
   static List<Recipe> featuredRecipe = (featuredRecipeRawData)
