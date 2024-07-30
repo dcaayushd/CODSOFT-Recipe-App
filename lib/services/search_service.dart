@@ -51,6 +51,8 @@ class SearchService {
           recipe.title.toLowerCase().contains(query.toLowerCase()) ||
           recipe.ingredients.any((ingredient) =>
               ingredient.name.toLowerCase().contains(query.toLowerCase())) ||
+          recipe.categories.any((category) =>
+              category.toLowerCase().contains(query.toLowerCase())) ||
           recipe.description.toLowerCase().contains(query.toLowerCase());
 
       bool matchesCategory = selectedCategory == null ||
