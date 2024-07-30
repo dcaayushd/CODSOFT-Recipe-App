@@ -21,13 +21,24 @@ class BookmarksScreenState extends State<BookmarksScreen> {
   bool isRefreshing = false;
   String selectedSortBy = 'All';
   List<Recipe> filteredBookmarks = [];
+  bool isLoading = true;
 
   @override
   void initState() {
     super.initState();
     _scrollController.addListener(_scrollListener);
-    BookmarkService.getBookmarkedRecipes(sortBy: selectedSortBy);
     searchInputController.addListener(_onSearchChanged);
+    _loadBookmarks();
+  }
+
+  Future<void> _loadBookmarks() async {
+    setState(() {
+      isLoading = true;
+    });
+    await BookmarkService.getBookmarkedRecipes(sortBy: selectedSortBy);
+    setState(() {
+      isLoading = false;
+    });
   }
 
   void _onSearchChanged() {
@@ -62,7 +73,7 @@ class BookmarksScreenState extends State<BookmarksScreen> {
         onSortByChanged: (newSortBy) {
           setState(() {
             selectedSortBy = newSortBy;
-            BookmarkService.getBookmarkedRecipes(sortBy: selectedSortBy);
+            _loadBookmarks();
           });
         },
       ),
@@ -79,7 +90,7 @@ class BookmarksScreenState extends State<BookmarksScreen> {
   }
 
   Future<void> refreshBookmarks() async {
-    await BookmarkService.getBookmarkedRecipes();
+    await _loadBookmarks();
     setState(() {
       isRefreshing = false;
     });
@@ -116,7 +127,7 @@ class BookmarksScreenState extends State<BookmarksScreen> {
               StreamBuilder<List<Recipe>>(
                 stream: BookmarkService.bookmarksStream,
                 builder: (context, snapshot) {
-                  if (snapshot.connectionState == ConnectionState.waiting) {
+                  if (isLoading) {
                     return SliverFillRemaining(
                       child: Center(
                         child:
