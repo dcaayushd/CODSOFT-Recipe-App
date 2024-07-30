@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 import 'package:recipo/views/utils/AppColor.dart';
 
@@ -5,14 +6,13 @@ class SearchFilterModal extends StatefulWidget {
   final String initialSortBy;
   final Function(String) onSortByChanged;
 
-  SearchFilterModal(
-      {required this.initialSortBy, required this.onSortByChanged});
+  const SearchFilterModal({super.key, required this.initialSortBy, required this.onSortByChanged});
 
   @override
-  _SearchFilterModalState createState() => _SearchFilterModalState();
+  SearchFilterModalState createState() => SearchFilterModalState();
 }
 
-class _SearchFilterModalState extends State<SearchFilterModal> {
+class SearchFilterModalState extends State<SearchFilterModal> {
   late String selectedSortBy;
 
   @override
@@ -30,9 +30,8 @@ class _SearchFilterModalState extends State<SearchFilterModal> {
           width: MediaQuery.of(context).size.width,
           height: 60,
           decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(
+            borderRadius: const BorderRadius.only(
                 topLeft: Radius.circular(20), topRight: Radius.circular(20)),
-            // color: AppColor.whiteSoft,
             color: AppColor.secondary.withOpacity(.9),
           ),
           child: Row(
@@ -50,8 +49,8 @@ class _SearchFilterModalState extends State<SearchFilterModal> {
                   height: 60,
                   color: Colors.transparent,
                   alignment: Alignment.center,
-                  padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: const Text(
                     'Reset',
                     style: TextStyle(
                       color: Colors.grey,
@@ -76,11 +75,10 @@ class _SearchFilterModalState extends State<SearchFilterModal> {
                   height: 60,
                   color: Colors.transparent,
                   alignment: Alignment.center,
-                  padding: EdgeInsets.symmetric(horizontal: 16),
-                  child: Text(
+                  padding: const EdgeInsets.symmetric(horizontal: 16),
+                  child: const Text(
                     'Cancel',
                     style: TextStyle(
-                      // color: Colors.red,
                       color: Colors.red,
                     ),
                   ),
@@ -90,6 +88,7 @@ class _SearchFilterModalState extends State<SearchFilterModal> {
           ),
         ),
         // Sort By Options
+        buildSortOption('All'),
         buildSortOption('Newest'),
         buildSortOption('Oldest'),
         buildSortOption('Popular'),
@@ -100,11 +99,9 @@ class _SearchFilterModalState extends State<SearchFilterModal> {
   Widget buildSortOption(String sortBy) {
     return Container(
       decoration: BoxDecoration(
-        // color: AppColor.secondary.withOpacity(.9),
         color: AppColor.whiteSoft,
         border: Border(
           bottom: BorderSide(
-            // color: AppColor.primaryExtraSoft,
             color: AppColor.primary.withOpacity(.1),
           ),
         ),
@@ -119,18 +116,18 @@ class _SearchFilterModalState extends State<SearchFilterModal> {
               selectedSortBy = sortBy;
             });
             widget.onSortByChanged(selectedSortBy);
+            Navigator.of(context).pop();
           },
           title: Center(
             child: Text(
               sortBy,
               style: TextStyle(
                 fontWeight: FontWeight.w600,
-                color:
-                    selectedSortBy == sortBy ? AppColor.primary : Colors.grey,
+                color: selectedSortBy == sortBy ? AppColor.primary : Colors.grey,
               ),
             ),
           ),
-          contentPadding: EdgeInsets.symmetric(vertical: 8, horizontal: 16),
+          contentPadding: const EdgeInsets.symmetric(vertical: 8, horizontal: 16),
         ),
       ),
     );

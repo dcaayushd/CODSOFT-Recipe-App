@@ -9,6 +9,7 @@ class Recipe {
   List<Review> reviews;
   final DateTime createdAt;
   List<String> categories;
+  DateTime? bookmarkedDate;
 
   Recipe({
     required this.title,
@@ -21,6 +22,7 @@ class Recipe {
     required this.reviews,
     required this.createdAt,
     required this.categories,
+    this.bookmarkedDate,
   });
 
   factory Recipe.fromJson(Map<String, dynamic> json) {
@@ -48,6 +50,9 @@ class Recipe {
               ?.map((e) => e as String)
               .toList() ??
           [],
+      bookmarkedDate: json['bookmarkedDate'] != null
+          ? DateTime.parse(json['bookmarkedDate'] as String)
+          : null,
     );
   }
 
@@ -63,6 +68,7 @@ class Recipe {
       'reviews': reviews.map((r) => r.toMap()).toList(),
       'createdAt': createdAt.toIso8601String(),
       'categories': categories,
+      'bookmarkedDate': bookmarkedDate?.toIso8601String(),
     };
   }
 }

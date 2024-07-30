@@ -26,7 +26,7 @@ class BookmarksScreenState extends State<BookmarksScreen> {
   void initState() {
     super.initState();
     _scrollController.addListener(_scrollListener);
-    BookmarkService.getBookmarkedRecipes();
+    BookmarkService.getBookmarkedRecipes(sortBy: selectedSortBy);
     searchInputController.addListener(_onSearchChanged);
   }
 
@@ -37,29 +37,14 @@ class BookmarksScreenState extends State<BookmarksScreen> {
         filteredBookmarks = [];
       });
     } else {
-      BookmarkService.getBookmarkedRecipes().then((bookmarks) {
+      BookmarkService.getBookmarkedRecipes(sortBy: selectedSortBy)
+          .then((bookmarks) {
         setState(() {
           filteredBookmarks =
               BookmarkService.searchBookmarkedRecipes(bookmarks, query);
         });
       });
     }
-  }
-
-  void _scrollListener() {
-    if (_scrollController.position.pixels < -50 && !isRefreshing) {
-      setState(() {
-        isRefreshing = true;
-      });
-      refreshBookmarks();
-    }
-  }
-
-  Future<void> refreshBookmarks() async {
-    await BookmarkService.getBookmarkedRecipes();
-    setState(() {
-      isRefreshing = false;
-    });
   }
 
   void _openFilterModal() {
@@ -77,11 +62,27 @@ class BookmarksScreenState extends State<BookmarksScreen> {
         onSortByChanged: (newSortBy) {
           setState(() {
             selectedSortBy = newSortBy;
-            // Add logic here to update the bookmarks based on the selectedSortBy
+            BookmarkService.getBookmarkedRecipes(sortBy: selectedSortBy);
           });
         },
       ),
     );
+  }
+
+  void _scrollListener() {
+    if (_scrollController.position.pixels < -50 && !isRefreshing) {
+      setState(() {
+        isRefreshing = true;
+      });
+      refreshBookmarks();
+    }
+  }
+
+  Future<void> refreshBookmarks() async {
+    await BookmarkService.getBookmarkedRecipes();
+    setState(() {
+      isRefreshing = false;
+    });
   }
 
   @override
@@ -154,7 +155,8 @@ class BookmarksScreenState extends State<BookmarksScreen> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               alignment: Alignment.centerRight,
-                              padding: const EdgeInsets.symmetric(horizontal: 20),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 20),
                               child: SvgPicture.asset(
                                 'assets/icons/delete.svg',
                                 width: 30,
@@ -261,8 +263,10 @@ class SearchBarDelegate extends SliverPersistentHeaderDelegate {
                       hintText: 'Search Your Bookmarks',
                       hintStyle:
                           TextStyle(color: Colors.white.withOpacity(0.2)),
-                      prefixIconConstraints: const BoxConstraints(maxHeight: 20),
-                      contentPadding: const EdgeInsets.symmetric(horizontal: 17),
+                      prefixIconConstraints:
+                          const BoxConstraints(maxHeight: 20),
+                      contentPadding:
+                          const EdgeInsets.symmetric(horizontal: 17),
                       focusedBorder: InputBorder.none,
                       border: InputBorder.none,
                       prefixIcon: Container(
