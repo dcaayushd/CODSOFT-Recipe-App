@@ -1,16 +1,19 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
-import 'package:recipo/models/core/recipe.dart';
-import 'package:recipo/models/helper/recipe_helper.dart';
-import 'package:recipo/views/screens/delicious_today_screen.dart';
-import 'package:recipo/views/screens/newly_posted_screen.dart';
-import 'package:recipo/views/screens/profile_screen.dart';
-import 'package:recipo/views/screens/search_screen.dart';
-import 'package:recipo/views/utils/AppColor.dart';
-import 'package:recipo/views/widgets/custom_app_bar.dart';
-import 'package:recipo/views/widgets/dummy_search_bar.dart';
-import 'package:recipo/views/widgets/featured_recipe_card.dart';
-import 'package:recipo/views/widgets/recipe_tile.dart';
-import 'package:recipo/views/widgets/recommendation_recipe_card.dart';
+import '../../models/core/recipe.dart';
+import '../../models/helper/recipe_helper.dart';
+import '../../views/screens/delicious_today_screen.dart';
+import '../../views/screens/newly_posted_screen.dart';
+import '../../views/screens/profile_screen.dart';
+import '../../views/screens/search_screen.dart';
+import '../../views/utils/app_colors.dart';
+import '../../views/widgets/custom_app_bar.dart';
+import '../../views/widgets/dummy_search_bar.dart';
+import '../../views/widgets/featured_recipe_card.dart';
+import '../../views/widgets/recipe_tile.dart';
+import '../../views/widgets/recommendation_recipe_card.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
@@ -26,10 +29,12 @@ class HomeScreenState extends State<HomeScreen> {
   bool isRefreshing = false;
   ScrollController _scrollController = ScrollController();
   bool useWhiteText = false;
+  ImageProvider? _profileImage;
 
   @override
   void initState() {
     super.initState();
+    _loadProfileImage();
     _scrollController = ScrollController(initialScrollOffset: 0.0);
     _scrollController.addListener(_scrollListener);
   }
@@ -74,6 +79,24 @@ class HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  Future<void> _loadProfileImage() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      String? imagePath = prefs.getString('profileImagePath');
+      _profileImage = imagePath != null && imagePath.isNotEmpty
+          ? FileImage(File(imagePath))
+          : const AssetImage('assets/images/user.png') as ImageProvider;
+    });
+  }
+
+  void _updateProfileImage(String imagePath) {
+    setState(() {
+      _profileImage = imagePath.isNotEmpty
+          ? FileImage(File(imagePath))
+          : const AssetImage('assets/images/user.png') as ImageProvider;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -83,10 +106,16 @@ class HomeScreenState extends State<HomeScreen> {
           style: TextStyle(fontFamily: 'inter', fontWeight: FontWeight.w700),
         ),
         showProfilePhoto: true,
-        profilePhoto: const AssetImage('assets/images/pp.png'),
-        profilePhotoOnPressed: () {
-          Navigator.of(context)
-              .push(MaterialPageRoute(builder: (context) => ProfileScreen()));
+        profilePhoto:
+            _profileImage ?? const AssetImage('assets/images/user.png'),
+        profilePhotoOnPressed: () async {
+          Navigator.of(context).push(
+            MaterialPageRoute(
+              builder: (context) => ProfileScreen(
+                onProfileImageUpdate: _updateProfileImage,
+              ),
+            ),
+          );
         },
       ),
       body: Stack(
@@ -111,12 +140,12 @@ class HomeScreenState extends State<HomeScreen> {
                     DummySearchBar(
                       routeTo: () {
                         Navigator.of(context).push(MaterialPageRoute(
-                            builder: (context) => SearchScreen()));
+                            builder: (context) => const SearchScreen()));
                       },
                       openFilter: () {
                         Navigator.of(context).push(MaterialPageRoute(
                             builder: (context) =>
-                                SearchScreen(openFilterModal: true)));
+                                const SearchScreen(openFilterModal: true)));
                       },
                     ),
                   ],
@@ -140,16 +169,20 @@ class HomeScreenState extends State<HomeScreen> {
                             const Text(
                               'Delicious Today',
                               style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w600,
-                                  fontFamily: 'inter'),
+                                color: Colors.white,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w600,
+                                fontFamily: 'inter',
+                              ),
                             ),
                             TextButton(
                               onPressed: () {
-                                Navigator.of(context).push(MaterialPageRoute(
+                                Navigator.of(context).push(
+                                  MaterialPageRoute(
                                     builder: (context) =>
-                                        DeliciousTodayScreen()));
+                                        const DeliciousTodayScreen(),
+                                  ),
+                                );
                               },
                               style: TextButton.styleFrom(
                                   foregroundColor: Colors.white,
@@ -184,7 +217,8 @@ class HomeScreenState extends State<HomeScreen> {
                           children: [
                             Container(
                               margin: const EdgeInsets.only(bottom: 16),
-                              padding: const EdgeInsets.symmetric(horizontal: 16),
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 16),
                               child: const Text(
                                 'Today recommendation based on your taste...',
                                 style: TextStyle(color: Colors.grey),
@@ -197,7 +231,8 @@ class HomeScreenState extends State<HomeScreen> {
                                 physics: const BouncingScrollPhysics(),
                                 scrollDirection: Axis.horizontal,
                                 itemCount: recommendationRecipe.length,
-                                padding: const EdgeInsets.symmetric(horizontal: 16),
+                                padding:
+                                    const EdgeInsets.symmetric(horizontal: 16),
                                 separatorBuilder: (context, index) =>
                                     const SizedBox(width: 16),
                                 itemBuilder: (context, index) =>
@@ -230,9 +265,11 @@ class HomeScreenState extends State<HomeScreen> {
                                 TextButton(
                                   onPressed: () {
                                     Navigator.of(context).push(
-                                        MaterialPageRoute(
-                                            builder: (context) =>
-                                                const NewlyPostedScreen()));
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const NewlyPostedScreen(),
+                                      ),
+                                    );
                                   },
                                   style: TextButton.styleFrom(
                                       foregroundColor: Colors.black,
@@ -249,8 +286,9 @@ class HomeScreenState extends State<HomeScreen> {
                               physics: const NeverScrollableScrollPhysics(),
                               separatorBuilder: (context, index) =>
                                   const SizedBox(height: 16),
-                              itemBuilder: (context, index) =>
-                                  RecipeTile(data: newlyPostedRecipe[index]),
+                              itemBuilder: (context, index) => RecipeTile(
+                                data: newlyPostedRecipe[index],
+                              ),
                             ),
                           ],
                         ),

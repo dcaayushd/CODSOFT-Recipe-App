@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:recipo/views/utils/AppColor.dart';
+import '../../views/utils/app_colors.dart';
 
 class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final Widget title;
@@ -8,7 +8,8 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   final ImageProvider? profilePhoto;
   final VoidCallback? profilePhotoOnPressed;
 
-  CustomAppBar({
+  const CustomAppBar({
+    super.key,
     required this.title,
     required this.showProfilePhoto,
     this.profilePhoto,
@@ -16,7 +17,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
   });
 
   @override
-  Size get preferredSize => Size.fromHeight(60);
+  Size get preferredSize => const Size.fromHeight(60);
 
   @override
   Widget build(BuildContext context) {
@@ -29,7 +30,7 @@ class CustomAppBar extends StatelessWidget implements PreferredSizeWidget {
       actions: [
         if (showProfilePhoto && profilePhoto != null)
           Container(
-            margin: EdgeInsets.only(right: 16),
+            margin: const EdgeInsets.only(right: 16),
             alignment: Alignment.center,
             child: IconButton(
               onPressed: profilePhotoOnPressed,
