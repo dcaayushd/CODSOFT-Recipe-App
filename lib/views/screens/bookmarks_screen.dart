@@ -9,21 +9,41 @@ import 'package:recipo/views/widgets/recipe_tile.dart';
 import '../widgets/modals/search_filter_modal.dart';
 
 class BookmarksScreen extends StatefulWidget {
+  const BookmarksScreen({super.key});
+
   @override
-  _BookmarksScreenState createState() => _BookmarksScreenState();
+  BookmarksScreenState createState() => BookmarksScreenState();
 }
 
-class _BookmarksScreenState extends State<BookmarksScreen> {
+class BookmarksScreenState extends State<BookmarksScreen> {
   final TextEditingController searchInputController = TextEditingController();
   final ScrollController _scrollController = ScrollController();
   bool isRefreshing = false;
   String selectedSortBy = 'All';
+  List<Recipe> filteredBookmarks = [];
 
   @override
   void initState() {
     super.initState();
     _scrollController.addListener(_scrollListener);
     BookmarkService.getBookmarkedRecipes();
+    searchInputController.addListener(_onSearchChanged);
+  }
+
+  void _onSearchChanged() {
+    String query = searchInputController.text;
+    if (query.isEmpty) {
+      setState(() {
+        filteredBookmarks = [];
+      });
+    } else {
+      BookmarkService.getBookmarkedRecipes().then((bookmarks) {
+        setState(() {
+          filteredBookmarks =
+              BookmarkService.searchBookmarkedRecipes(bookmarks, query);
+        });
+      });
+    }
   }
 
   void _scrollListener() {
@@ -46,7 +66,7 @@ class _BookmarksScreenState extends State<BookmarksScreen> {
     showModalBottomSheet(
       context: context,
       backgroundColor: Colors.white,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
         borderRadius: BorderRadius.only(
           topLeft: Radius.circular(20),
           topRight: Radius.circular(20),
@@ -72,7 +92,7 @@ class _BookmarksScreenState extends State<BookmarksScreen> {
         foregroundColor: Colors.white,
         centerTitle: true,
         elevation: 0,
-        title: Text('Bookmarks',
+        title: const Text('Bookmarks',
             style: TextStyle(
                 fontFamily: 'inter',
                 fontWeight: FontWeight.w400,
@@ -83,7 +103,7 @@ class _BookmarksScreenState extends State<BookmarksScreen> {
         children: [
           CustomScrollView(
             controller: _scrollController,
-            physics: AlwaysScrollableScrollPhysics(),
+            physics: const AlwaysScrollableScrollPhysics(),
             slivers: [
               SliverPersistentHeader(
                 pinned: true,
@@ -104,17 +124,24 @@ class _BookmarksScreenState extends State<BookmarksScreen> {
                     );
                   }
                   if (!snapshot.hasData || snapshot.data!.isEmpty) {
-                    return SliverFillRemaining(
+                    return const SliverFillRemaining(
                       child: Center(child: Text('No bookmarks yet')),
                     );
                   }
+
+                  List<Recipe> displayedRecipes =
+                      searchInputController.text.isEmpty
+                          ? snapshot.data!
+                          : filteredBookmarks;
+
                   return SliverPadding(
-                    padding: EdgeInsets.all(16),
+                    padding: const EdgeInsets.all(16),
                     sliver: SliverList(
                       delegate: SliverChildBuilderDelegate(
                         (context, index) {
-                          final recipe = snapshot.data![index];
-                          bool isLastItem = index == snapshot.data!.length - 1;
+                          final recipe = displayedRecipes[index];
+                          bool isLastItem =
+                              index == displayedRecipes.length - 1;
                           return Dismissible(
                             key: Key(recipe.title),
                             direction: DismissDirection.endToStart,
@@ -127,7 +154,7 @@ class _BookmarksScreenState extends State<BookmarksScreen> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                               alignment: Alignment.centerRight,
-                              padding: EdgeInsets.symmetric(horizontal: 20),
+                              padding: const EdgeInsets.symmetric(horizontal: 20),
                               child: SvgPicture.asset(
                                 'assets/icons/delete.svg',
                                 width: 30,
@@ -141,12 +168,12 @@ class _BookmarksScreenState extends State<BookmarksScreen> {
                                 RecipeTile(
                                   data: recipe,
                                 ),
-                                if (!isLastItem) SizedBox(height: 16),
+                                if (!isLastItem) const SizedBox(height: 16),
                               ],
                             ),
                           );
                         },
-                        childCount: snapshot.data!.length,
+                        childCount: displayedRecipes.length,
                       ),
                     ),
                   );
@@ -172,8 +199,10 @@ class _BookmarksScreenState extends State<BookmarksScreen> {
 
   @override
   void dispose() {
+    searchInputController.removeListener(_onSearchChanged);
     _scrollController.removeListener(_scrollListener);
     _scrollController.dispose();
+    searchInputController.dispose();
     super.dispose();
   }
 }
@@ -193,10 +222,10 @@ class SearchBarDelegate extends SliverPersistentHeaderDelegate {
     return Container(
       width: MediaQuery.of(context).size.width,
       height: 95,
-      padding: EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
       decoration: BoxDecoration(
         color: AppColor.primary,
-        borderRadius: BorderRadius.only(
+        borderRadius: const BorderRadius.only(
           bottomLeft: Radius.circular(30),
           bottomRight: Radius.circular(30),
         ),
@@ -213,7 +242,7 @@ class SearchBarDelegate extends SliverPersistentHeaderDelegate {
               Expanded(
                 child: Container(
                   height: 50,
-                  margin: EdgeInsets.only(right: 15),
+                  margin: const EdgeInsets.only(right: 15),
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(10),
                       color: AppColor.primarySoft),
@@ -222,7 +251,7 @@ class SearchBarDelegate extends SliverPersistentHeaderDelegate {
                     onChanged: (value) {
                       // Implement search functionality here
                     },
-                    style: TextStyle(
+                    style: const TextStyle(
                         color: Colors.white,
                         fontSize: 16,
                         fontWeight: FontWeight.w400),
@@ -232,21 +261,17 @@ class SearchBarDelegate extends SliverPersistentHeaderDelegate {
                       hintText: 'Search Your Bookmarks',
                       hintStyle:
                           TextStyle(color: Colors.white.withOpacity(0.2)),
-                      prefixIconConstraints: BoxConstraints(maxHeight: 20),
-                      contentPadding: EdgeInsets.symmetric(horizontal: 17),
+                      prefixIconConstraints: const BoxConstraints(maxHeight: 20),
+                      contentPadding: const EdgeInsets.symmetric(horizontal: 17),
                       focusedBorder: InputBorder.none,
                       border: InputBorder.none,
-                      prefixIcon: Visibility(
-                        visible:
-                            (searchInputController.text.isEmpty) ? true : false,
-                        child: Container(
-                          margin: EdgeInsets.only(left: 10, right: 12),
-                          child: SvgPicture.asset(
-                            'assets/icons/search.svg',
-                            width: 20,
-                            height: 20,
-                            color: Colors.white,
-                          ),
+                      prefixIcon: Container(
+                        margin: const EdgeInsets.only(left: 10, right: 12),
+                        child: SvgPicture.asset(
+                          'assets/icons/search.svg',
+                          width: 20,
+                          height: 20,
+                          color: Colors.white,
                         ),
                       ),
                     ),

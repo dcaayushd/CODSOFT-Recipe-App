@@ -17,7 +17,7 @@ class BookmarkService {
     List<dynamic> bookmarksList = json.decode(bookmarksJson);
     List<Recipe> recipes =
         bookmarksList.map((item) => Recipe.fromJson(item)).toList();
-    _bookmarksController.add(recipes); // Add this line to update the stream
+    _bookmarksController.add(recipes); 
     return recipes;
   }
 
@@ -39,6 +39,20 @@ class BookmarkService {
   static Future<bool> isBookmarked(String recipeId) async {
     List<Recipe> bookmarks = await getBookmarkedRecipes();
     return bookmarks.any((recipe) => recipe.title == recipeId);
+  }
+
+  static List<Recipe> searchBookmarkedRecipes(
+      List<Recipe> bookmarks, String query) {
+    query = query.toLowerCase();
+    return bookmarks
+        .where((recipe) =>
+            recipe.title.toLowerCase().contains(query) ||
+            recipe.ingredients.any((ingredient) =>
+                ingredient.name.toLowerCase().contains(query.toLowerCase())) ||
+            recipe.categories.any((category) =>
+                category.toLowerCase().contains(query.toLowerCase())) ||
+            recipe.description.toLowerCase().contains(query))
+        .toList();
   }
 
   static void dispose() {
