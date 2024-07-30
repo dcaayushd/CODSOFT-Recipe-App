@@ -1,5 +1,5 @@
-import '../models/core/recipe.dart';
-import '../models/helper/recipe_helper.dart';
+import '../../models/core/recipe.dart';
+import '../../models/helper/recipe_helper.dart';
 
 class SearchService {
   static List<String> popularRecipeKeyword = [
