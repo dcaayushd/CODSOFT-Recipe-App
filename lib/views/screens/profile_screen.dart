@@ -91,184 +91,192 @@ class ProfileScreenState extends State<ProfileScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: AppColor.primary,
-        foregroundColor: Colors.white,
-        elevation: 0,
-        centerTitle: true,
-        title: const Text('My Profile',
-            style: TextStyle(
-                fontFamily: 'inter',
-                fontWeight: FontWeight.w400,
-                fontSize: 16)),
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
-          onPressed: () {
-            Navigator.of(context).pop();
-          },
-        ),
-        actions: [
-          TextButton(
-            onPressed: () {
-              setState(() {
-                if (_isEditing) {
-                  _saveProfileData();
-                } else {
-                  _isEditing = true;
-                }
-              });
-            },
-            style: TextButton.styleFrom(
-              foregroundColor: Colors.white,
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(100),
-              ),
-            ),
-            child: Text(
-              _isEditing ? 'Save' : 'Edit',
-              style: const TextStyle(
-                  color: Colors.white,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w600),
-            ),
-          ),
-        ],
-        systemOverlayStyle: SystemUiOverlayStyle.light,
+    return TextSelectionTheme(
+      data: TextSelectionThemeData(
+        selectionColor: AppColor.primary.withOpacity(0.3),
+        cursorColor: AppColor.primary,
+        selectionHandleColor: AppColor.primary,
       ),
-      body: ListView(
-        shrinkWrap: true,
-        physics: const BouncingScrollPhysics(),
-        children: [
-          // Profile Picture Wrapper
-          Container(
-            decoration: BoxDecoration(
-              color: AppColor.primary,
-              borderRadius: const BorderRadius.only(
-                bottomLeft: Radius.circular(30),
-                bottomRight: Radius.circular(30),
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: AppColor.primary,
+          foregroundColor: Colors.white,
+          elevation: 0,
+          centerTitle: true,
+          title: const Text('My Profile',
+              style: TextStyle(
+                  fontFamily: 'inter',
+                  fontWeight: FontWeight.w400,
+                  fontSize: 16)),
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back_ios, color: Colors.white),
+            onPressed: () {
+              Navigator.of(context).pop();
+            },
+          ),
+          actions: [
+            TextButton(
+              onPressed: () {
+                setState(() {
+                  if (_isEditing) {
+                    _saveProfileData();
+                  } else {
+                    _isEditing = true;
+                  }
+                });
+              },
+              style: TextButton.styleFrom(
+                foregroundColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(100),
+                ),
+              ),
+              child: Text(
+                _isEditing ? 'Save' : 'Edit',
+                style: const TextStyle(
+                    color: Colors.white,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w600),
               ),
             ),
-            padding: const EdgeInsets.symmetric(vertical: 24),
-            child: GestureDetector(
-              onTap: _pickImage,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  Container(
-                    width: 130,
-                    height: 130,
-                    margin: const EdgeInsets.only(bottom: 15),
-                    decoration: BoxDecoration(
-                      color: Colors.grey,
-                      borderRadius: BorderRadius.circular(100),
-                      image: DecorationImage(
-                        image: _imagePath.isNotEmpty
-                            ? FileImage(File(_imagePath))
-                            : const AssetImage('assets/images/user.png')
-                                as ImageProvider,
-                        fit: BoxFit.cover,
+          ],
+          systemOverlayStyle: SystemUiOverlayStyle.light,
+        ),
+        body: ListView(
+          shrinkWrap: true,
+          physics: const BouncingScrollPhysics(),
+          children: [
+            // Profile Picture Wrapper
+            Container(
+              decoration: BoxDecoration(
+                color: AppColor.primary,
+                borderRadius: const BorderRadius.only(
+                  bottomLeft: Radius.circular(30),
+                  bottomRight: Radius.circular(30),
+                ),
+              ),
+              padding: const EdgeInsets.symmetric(vertical: 24),
+              child: GestureDetector(
+                onTap: _pickImage,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    Container(
+                      width: 130,
+                      height: 130,
+                      margin: const EdgeInsets.only(bottom: 15),
+                      decoration: BoxDecoration(
+                        color: Colors.grey,
+                        borderRadius: BorderRadius.circular(100),
+                        image: DecorationImage(
+                          image: _imagePath.isNotEmpty
+                              ? FileImage(File(_imagePath))
+                              : const AssetImage('assets/images/user.png')
+                                  as ImageProvider,
+                          fit: BoxFit.cover,
+                        ),
                       ),
                     ),
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      const Text(
-                        'Change Profile Picture',
-                        style: TextStyle(
-                            fontFamily: 'inter',
-                            fontWeight: FontWeight.w600,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        const Text(
+                          'Change Profile Picture',
+                          style: TextStyle(
+                              fontFamily: 'inter',
+                              fontWeight: FontWeight.w600,
+                              color: Colors.white),
+                        ),
+                        const SizedBox(width: 8),
+                        SvgPicture.asset('assets/icons/camera.svg',
                             color: Colors.white),
-                      ),
-                      const SizedBox(width: 8),
-                      SvgPicture.asset('assets/icons/camera.svg',
-                          color: Colors.white),
-                    ],
-                  )
-                ],
+                      ],
+                    )
+                  ],
+                ),
               ),
             ),
-          ),
-          // User Info Wrapper
-          Container(
-            margin: const EdgeInsets.only(top: 24),
-            width: MediaQuery.of(context).size.width,
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                _isEditing
-                    ? _buildEditableUserInfoTile(
-                        label: 'Email',
-                        controller: _emailController,
-                        hint: 'Enter your email address',
-                      )
-                    : GestureDetector(
-                        onTap: () => _showSnackBar(
-                            'Please tap "Edit" to change your email.'),
-                        child: UserInfoTile(
-                          margin: const EdgeInsets.only(bottom: 16),
+            // User Info Wrapper
+            Container(
+              margin: const EdgeInsets.only(top: 24),
+              width: MediaQuery.of(context).size.width,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  _isEditing
+                      ? _buildEditableUserInfoTile(
                           label: 'Email',
-                          value: _email.isEmpty
-                              ? 'Enter your email address'
-                              : _email,
-                          child: Text(
-                            _email.isEmpty
+                          controller: _emailController,
+                          hint: 'Enter your email address',
+                        )
+                      : GestureDetector(
+                          onTap: () => _showSnackBar(
+                              'Please tap "Edit" to change your email.'),
+                          child: UserInfoTile(
+                            margin: const EdgeInsets.only(bottom: 16),
+                            label: 'Email',
+                            value: _email.isEmpty
                                 ? 'Enter your email address'
                                 : _email,
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: 'inter',
-                              color:
-                                  _email.isEmpty ? Colors.grey : Colors.black,
+                            child: Text(
+                              _email.isEmpty
+                                  ? 'Enter your email address'
+                                  : _email,
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                fontFamily: 'inter',
+                                color:
+                                    _email.isEmpty ? Colors.grey : Colors.black,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                _isEditing
-                    ? _buildEditableUserInfoTile(
-                        label: 'Full Name',
-                        controller: _fullNameController,
-                        hint: 'Enter your name',
-                      )
-                    : GestureDetector(
-                        onTap: () => _showSnackBar(
-                            'Please tap "Edit" to change your name.'),
-                        child: UserInfoTile(
-                          margin: const EdgeInsets.only(bottom: 16),
+                  _isEditing
+                      ? _buildEditableUserInfoTile(
                           label: 'Full Name',
-                          value:
+                          controller: _fullNameController,
+                          hint: 'Enter your name',
+                        )
+                      : GestureDetector(
+                          onTap: () => _showSnackBar(
+                              'Please tap "Edit" to change your name.'),
+                          child: UserInfoTile(
+                            margin: const EdgeInsets.only(bottom: 16),
+                            label: 'Full Name',
+                            value: _fullName.isEmpty
+                                ? 'Enter your name'
+                                : _fullName,
+                            child: Text(
                               _fullName.isEmpty ? 'Enter your name' : _fullName,
-                          child: Text(
-                            _fullName.isEmpty ? 'Enter your name' : _fullName,
-                            style: TextStyle(
-                              fontSize: 16,
-                              fontWeight: FontWeight.w500,
-                              fontFamily: 'inter',
-                              color:
-                                  _email.isEmpty ? Colors.grey : Colors.black,
+                              style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
+                                fontFamily: 'inter',
+                                color:
+                                    _email.isEmpty ? Colors.grey : Colors.black,
+                              ),
                             ),
                           ),
                         ),
-                      ),
-                UserInfoTile(
-                  margin: const EdgeInsets.only(bottom: 16),
-                  label: 'Subscription Type',
-                  value: 'Premium Subscription',
-                  valueBackground: AppColor.secondary,
-                ),
-                const UserInfoTile(
-                  margin: EdgeInsets.only(bottom: 16),
-                  label: 'Subscription Time',
-                  value: 'Until 31 Dec 2025',
-                ),
-              ],
-            ),
-          )
-        ],
+                  UserInfoTile(
+                    margin: const EdgeInsets.only(bottom: 16),
+                    label: 'Subscription Type',
+                    value: 'Premium Subscription',
+                    valueBackground: AppColor.secondary,
+                  ),
+                  const UserInfoTile(
+                    margin: EdgeInsets.only(bottom: 16),
+                    label: 'Subscription Time',
+                    value: 'Until 31 Dec 2025',
+                  ),
+                ],
+              ),
+            )
+          ],
+        ),
       ),
     );
   }
@@ -283,10 +291,13 @@ class ProfileScreenState extends State<ProfileScreen> {
       label: label,
       value: '',
       child: TextField(
+        cursorColor: AppColor.primary,
         controller: controller,
         decoration: InputDecoration(
           hintText: hint,
           border: InputBorder.none,
+          enabledBorder: InputBorder.none,
+          focusedBorder: InputBorder.none,
           isDense: true,
           contentPadding: EdgeInsets.zero,
         ),
