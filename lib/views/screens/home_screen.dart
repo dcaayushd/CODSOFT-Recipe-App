@@ -44,7 +44,7 @@ class HomeScreenState extends State<HomeScreen> {
       _refreshData();
     }
 
-    double primaryContainerHeight = 295;
+    double primaryContainerHeight = 270;
     bool isWithinPrimaryContainer =
         _scrollController.position.pixels > primaryContainerHeight;
 
@@ -121,7 +121,7 @@ class HomeScreenState extends State<HomeScreen> {
       body: Stack(
         children: [
           Container(
-            height: 270,
+            height: 280,
             decoration: BoxDecoration(
               color: AppColor.primary,
               borderRadius: const BorderRadius.only(
