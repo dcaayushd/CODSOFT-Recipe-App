@@ -4,6 +4,8 @@ import 'package:flutter_svg/flutter_svg.dart';
 import '../../views/utils/app_colors.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:path/path.dart' as path;
 import 'dart:io';
 
 import '../widgets/user_info_tile.dart';
@@ -33,15 +35,31 @@ class ProfileScreenState extends State<ProfileScreen> {
     _loadProfileData();
   }
 
+
   _loadProfileData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
+    String storedImagePath = prefs.getString('profileImagePath') ?? '';
+
+    if (storedImagePath.isNotEmpty && !await File(storedImagePath).exists()) {
+      await prefs.remove('profileImagePath');
+      storedImagePath = '';
+    }
+
     setState(() {
-      _imagePath = prefs.getString('profileImagePath') ?? '';
+      _imagePath = storedImagePath;
       _email = prefs.getString('email') ?? '';
       _fullName = prefs.getString('fullName') ?? '';
       _emailController.text = _email;
       _fullNameController.text = _fullName;
     });
+  }
+
+  ImageProvider _getImageProvider() {
+    if (_imagePath.isNotEmpty && File(_imagePath).existsSync()) {
+      return FileImage(File(_imagePath));
+    } else {
+      return const AssetImage('assets/images/user.png');
+    }
   }
 
   _saveProfileData() async {
@@ -61,17 +79,37 @@ class ProfileScreenState extends State<ProfileScreen> {
     widget.onProfileImageUpdate(_imagePath);
   }
 
+
   Future<void> _pickImage() async {
     if (_isEditing) {
       final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
       if (image != null) {
+        final String permanentPath = await _savePermanentCopy(image);
         setState(() {
-          _imagePath = image.path;
+          _imagePath = permanentPath;
         });
+        await _saveProfileData(); 
+
+
+        setState(() {});
       }
     } else {
       _showSnackBar('Please tap "Edit" to change your profile picture.');
     }
+  }
+
+  Future<String> _savePermanentCopy(XFile image) async {
+    final directory = await getApplicationDocumentsDirectory();
+    const String fileName = 'profile_image.jpg';
+    final String savedPath = path.join(directory.path, fileName);
+
+    // Delete existing file if it exists
+    if (await File(savedPath).exists()) {
+      await File(savedPath).delete();
+    }
+
+    final File newImage = await File(image.path).copy(savedPath);
+    return newImage.path;
   }
 
   void _showSnackBar(String message) {
@@ -166,15 +204,19 @@ class ProfileScreenState extends State<ProfileScreen> {
                       width: 130,
                       height: 130,
                       margin: const EdgeInsets.only(bottom: 15),
+                     
                       decoration: BoxDecoration(
                         color: Colors.grey,
                         borderRadius: BorderRadius.circular(100),
                         image: DecorationImage(
-                          image: _imagePath.isNotEmpty
-                              ? FileImage(File(_imagePath))
-                              : const AssetImage('assets/images/user.png')
-                                  as ImageProvider,
+                          image: _getImageProvider(),
                           fit: BoxFit.cover,
+                          onError: (exception, stackTrace) {
+                            debugPrint('Error loading image: $exception');
+                            setState(() {
+                              _imagePath = '';
+                            });
+                          },
                         ),
                       ),
                     ),
@@ -287,9 +329,9 @@ class ProfileScreenState extends State<ProfileScreen> {
     required String hint,
   }) {
     return UserInfoTile(
-      margin: const EdgeInsets.only(bottom: 16),
       label: label,
       value: '',
+      margin: const EdgeInsets.only(bottom: 16),
       child: TextField(
         cursorColor: AppColor.primary,
         controller: controller,
@@ -308,5 +350,12 @@ class ProfileScreenState extends State<ProfileScreen> {
         ),
       ),
     );
+  }
+
+  @override
+  void dispose() {
+    ImageCache().clear();
+    ImageCache().clearLiveImages();
+    super.dispose();
   }
 }
