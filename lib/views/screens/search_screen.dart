@@ -27,14 +27,20 @@ class SearchScreenState extends State<SearchScreen> {
   List<Recipe> searchResult = [];
   String selectedSortBy = 'All';
   String? selectedCategory;
+  final ScrollController _scrollController = ScrollController();
+  final GlobalKey<AnimatedListState> _listKey = GlobalKey<AnimatedListState>();
+  late List<String> _keywords;
 
   @override
   void initState() {
     super.initState();
+    _keywords = List.from(SearchService.popularRecipeKeyword);
     selectedCategory = widget.initialCategory;
     WidgetsBinding.instance.addPostFrameCallback((_) {
       FocusScope.of(context).requestFocus(searchFocusNode);
-      _updateSearchResults();
+      if (selectedCategory != null) {
+        _moveKeywordToStart(selectedCategory!);
+      }
     });
 
     if (widget.openFilterModal) {
@@ -49,6 +55,7 @@ class SearchScreenState extends State<SearchScreen> {
   void dispose() {
     searchInputController.dispose();
     searchFocusNode.dispose();
+    _scrollController.dispose();
     super.dispose();
   }
 
@@ -82,6 +89,31 @@ class SearchScreenState extends State<SearchScreen> {
           });
         },
       ),
+    );
+  }
+
+  void _moveKeywordToStart(String keyword) {
+    if (_keywords.remove(keyword)) {
+      _listKey.currentState?.removeItem(
+        _keywords.length,
+        (context, animation) => _buildKeywordItem(keyword, animation),
+        duration: const Duration(milliseconds: 300),
+      );
+      _keywords.insert(0, keyword);
+      _listKey.currentState
+          ?.insertItem(0, duration: const Duration(milliseconds: 300));
+
+      WidgetsBinding.instance.addPostFrameCallback((_) {
+        _scrollToLeft();
+      });
+    }
+  }
+
+  void _scrollToLeft() {
+    _scrollController.animateTo(
+      0,
+      duration: const Duration(milliseconds: 300),
+      curve: Curves.easeOut,
     );
   }
 
@@ -158,6 +190,7 @@ class SearchScreenState extends State<SearchScreen> {
                           child: TextField(
                             controller: searchInputController,
                             focusNode: searchFocusNode,
+                            cursorColor: AppColor.secondary,
                             onChanged: (value) {
                               _updateSearchResults();
                             },
@@ -221,53 +254,16 @@ class SearchScreenState extends State<SearchScreen> {
                 Container(
                   height: 60,
                   margin: const EdgeInsets.only(top: 8),
-                  child: ListView.separated(
+                  child: AnimatedList(
+                    key: _listKey,
+                    controller: _scrollController,
                     shrinkWrap: true,
                     scrollDirection: Axis.horizontal,
                     physics: const BouncingScrollPhysics(),
                     padding: const EdgeInsets.symmetric(horizontal: 16),
-                    itemCount: SearchService.popularRecipeKeyword.length,
-                    separatorBuilder: (context, index) {
-                      return const SizedBox(width: 8);
-                    },
-                    itemBuilder: (context, index) {
-                      return Container(
-                        alignment: Alignment.topCenter,
-                        child: TextButton(
-                          onPressed: () {
-                            setState(() {
-                              if (selectedCategory ==
-                                  SearchService.popularRecipeKeyword[index]) {
-                                selectedCategory = null;
-                              } else {
-                                selectedCategory =
-                                    SearchService.popularRecipeKeyword[index];
-                              }
-                              _updateSearchResults();
-                            });
-                          },
-                          style: OutlinedButton.styleFrom(
-                            backgroundColor: selectedCategory ==
-                                    SearchService.popularRecipeKeyword[index]
-                                ? AppColor.secondary
-                                : Colors.transparent,
-                            side: BorderSide(
-                              color: Colors.white.withOpacity(0.15),
-                              width: 1,
-                            ),
-                          ),
-                          child: Text(
-                            SearchService.popularRecipeKeyword[index],
-                            style: TextStyle(
-                              color: selectedCategory ==
-                                      SearchService.popularRecipeKeyword[index]
-                                  ? AppColor.primary
-                                  : Colors.white.withOpacity(0.7),
-                              fontWeight: FontWeight.w400,
-                            ),
-                          ),
-                        ),
-                      );
+                    initialItemCount: _keywords.length,
+                    itemBuilder: (context, index, animation) {
+                      return _buildKeywordItem(_keywords[index], animation);
                     },
                   ),
                 ),
@@ -306,6 +302,46 @@ class SearchScreenState extends State<SearchScreen> {
             ),
           ),
         ],
+      ),
+    );
+  }
+
+  Widget _buildKeywordItem(String keyword, Animation<double> animation) {
+    return SizeTransition(
+      sizeFactor: animation,
+      child: Container(
+        margin: const EdgeInsets.only(right: 8),
+        child: TextButton(
+          onPressed: () {
+            setState(() {
+              if (selectedCategory == keyword) {
+                selectedCategory = null;
+              } else {
+                selectedCategory = keyword;
+                _moveKeywordToStart(keyword);
+              }
+              _updateSearchResults();
+            });
+          },
+          style: OutlinedButton.styleFrom(
+            backgroundColor: selectedCategory == keyword
+                ? AppColor.secondary
+                : Colors.transparent,
+            side: BorderSide(
+              color: Colors.white.withOpacity(0.15),
+              width: 1,
+            ),
+          ),
+          child: Text(
+            keyword,
+            style: TextStyle(
+              color: selectedCategory == keyword
+                  ? AppColor.primary
+                  : Colors.white.withOpacity(0.7),
+              fontWeight: FontWeight.w400,
+            ),
+          ),
+        ),
       ),
     );
   }
