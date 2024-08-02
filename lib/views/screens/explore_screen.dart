@@ -18,6 +18,17 @@ class ExploreScreen extends StatelessWidget {
 
   ExploreScreen({super.key});
 
+  void _navigateToSearchScreen(BuildContext context, String category) {
+    Navigator.of(context).push(
+      MaterialPageRoute(
+        builder: (context) => SearchScreen(
+          openFilterModal: false,
+          initialCategory: category,
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     final ScrollController scrollController = ScrollController();
@@ -44,8 +55,8 @@ class ExploreScreen extends StatelessWidget {
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.of(context).push(
-                  MaterialPageRoute(builder: (context) => const SearchScreen()));
+              Navigator.of(context).push(MaterialPageRoute(
+                  builder: (context) => const SearchScreen()));
             },
             icon: SvgPicture.asset('assets/icons/search.svg',
                 color: Colors.white),
@@ -70,28 +81,40 @@ class ExploreScreen extends StatelessWidget {
                 bottomRight: Radius.circular(30),
               ),
             ),
-            child: const Wrap(
+            child: Wrap(
               spacing: 16,
               runSpacing: 16,
               children: [
                 CategoryCard(
-                    title: 'Healthy',
-                    image: AssetImage('assets/images/healthy.jpg')),
+                  title: 'Healthy',
+                  image: const AssetImage('assets/images/healthy.jpg'),
+                  onTap: () => _navigateToSearchScreen(context, 'Healthy'),
+                ),
                 CategoryCard(
-                    title: 'Drink',
-                    image: AssetImage('assets/images/drink.jpg')),
+                  title: 'Drink',
+                  image: const AssetImage('assets/images/drink.jpg'),
+                  onTap: () => _navigateToSearchScreen(context, 'Drink'),
+                ),
                 CategoryCard(
-                    title: 'Seafood',
-                    image: AssetImage('assets/images/seafood.jpg')),
+                  title: 'Seafood',
+                  image: const AssetImage('assets/images/seafood.jpg'),
+                  onTap: () => _navigateToSearchScreen(context, 'Seafood'),
+                ),
                 CategoryCard(
-                    title: 'Desert',
-                    image: AssetImage('assets/images/desert.jpg')),
+                  title: 'Dessert',
+                  image: const AssetImage('assets/images/desert.jpg'),
+                  onTap: () => _navigateToSearchScreen(context, 'Dessert'),
+                ),
                 CategoryCard(
-                    title: 'Spicy',
-                    image: AssetImage('assets/images/spicy.jpg')),
+                  title: 'Spicy',
+                  image: const AssetImage('assets/images/spicy.jpg'),
+                  onTap: () => _navigateToSearchScreen(context, 'Spicy'),
+                ),
                 CategoryCard(
-                    title: 'Meat',
-                    image: AssetImage('assets/images/meat.jpg')),
+                  title: 'Meat',
+                  image: const AssetImage('assets/images/meat.jpg'),
+                  onTap: () => _navigateToSearchScreen(context, 'Meat'),
+                ),
               ],
             ),
           ),

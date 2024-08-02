@@ -229,7 +229,7 @@ var popularRecipeRawData = [
     'photo': 'assets/images/sweetfood2.jpg',
     'calories': '870 Cal',
     'time': '32 min',
-    'categories': ['Desert', 'Eggs'],
+    'categories': ['Dessert', 'Eggs'],
     'description':
         'Decadent chocolate pancakes that are a chocolate lover\'s dream breakfast. These rich, fluffy pancakes are infused with cocoa for a luxurious twist on the classic pancake, perfect for special occasions or when you need a chocolatey treat.',
     'ingredients': [
@@ -313,7 +313,7 @@ var popularRecipeRawData = [
     'photo': 'assets/images/recom2.jpg',
     'calories': '1500 Cal',
     'time': '25 min',
-    'categories': ['Chicken', 'Dinner'],
+    'categories': ['Meat', 'Dinner'],
     'description':
         'A hearty and nutritious Asian-inspired bowl featuring brown rice, a medley of stir-fried vegetables, and your choice of protein. This balanced meal is perfect for a satisfying lunch or dinner.',
     'ingredients': [
@@ -808,7 +808,7 @@ var featuredRecipeRawData = [
     'photo': 'assets/images/sweetfood2.jpg',
     'calories': '870 Cal',
     'time': '32 min',
-    'categories': ['Desert', 'Eggs'],
+    'categories': ['Dessert', 'Eggs'],
     'description':
         'Decadent chocolate pancakes that are a chocolate lover\'s dream breakfast. These rich, fluffy pancakes are infused with cocoa for a luxurious twist on the classic pancake, perfect for special occasions or when you need a chocolatey treat.',
     'ingredients': [
@@ -890,7 +890,7 @@ var recommendationRecipeRawData = [
     'title': 'Brown Chopstick Bowl',
     'photo': 'assets/images/recom2.jpg',
     'calories': '1500 Cal',
-    'categories': ['Chicken', 'Dinner'],
+    'categories': ['Meat', 'Dinner'],
     'time': '25 min',
     'description':
         'A hearty and nutritious Asian-inspired bowl featuring brown rice, a medley of stir-fried vegetables, and your choice of protein. This balanced meal is perfect for a satisfying lunch or dinner.',
@@ -1452,7 +1452,7 @@ var newlyPostedRecipeRawData = [
     'photo': 'assets/images/list6.jpg',
     'calories': '1450 Cal',
     'time': '120 min',
-    'categories': ['Chicken', 'Dinner'],
+    'categories': ['Meat', 'Dinner'],
     'description':
         'A hearty and nutritious bowl featuring a variety of meats and colorful vegetables. This well-balanced meal is perfect for meal prep or a satisfying dinner option that\'s both delicious and wholesome.',
     'ingredients': [
@@ -1612,7 +1612,7 @@ var newlyPostedRecipeRawData = [
     'photo': 'assets/images/sweetfood2.jpg',
     'calories': '870 Cal',
     'time': '32 min',
-    'categories': ['Desert', 'Eggs'],
+    'categories': ['Dessert', 'Eggs'],
     'description':
         'Decadent chocolate pancakes that are a chocolate lover\'s dream breakfast. These rich, fluffy pancakes are infused with cocoa for a luxurious twist on the classic pancake, perfect for special occasions or when you need a chocolatey treat.',
     'ingredients': [
@@ -1854,7 +1854,7 @@ var sweetFoodRecommendationRecipeRawData = [
 // var popularRecipeKeyword = [
 //   'Noodles',
 //   'Ice Cream',
-//   'Chicken',
+//   'Meat',
 //   'Spaghetti',
 //   'Pizza',
 //   'Nugget',
@@ -2664,7 +2664,7 @@ var bookmarkedRecipeRawData = [
     'photo': 'assets/images/list6.jpg',
     'calories': '1450 Cal',
     'time': '120 min',
-    'categories': ['Chicken', 'Dinner'],
+    'categories': ['Meat', 'Dinner'],
     'description':
         'A hearty and nutritious bowl featuring a variety of meats and colorful vegetables. This well-balanced meal is perfect for meal prep or a satisfying dinner option that\'s both delicious and wholesome.',
     'ingredients': [

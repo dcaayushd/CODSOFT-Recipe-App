@@ -5,7 +5,7 @@ class SearchService {
   static List<String> popularRecipeKeyword = [
     'Breakfast',
     'Pizza',
-    'Chicken',
+    'Meat',
     'Dessert',
     'Eggs',
     'Vegetarian',
@@ -77,7 +77,6 @@ class SearchService {
         // 'All' or any other case, no sorting needed
         break;
     }
-
     return filteredRecipes;
   }
 }

@@ -10,8 +10,12 @@ import '../../../../services/search_service.dart';
 
 class SearchScreen extends StatefulWidget {
   final bool openFilterModal;
-
-  const SearchScreen({super.key, this.openFilterModal = false});
+  final String? initialCategory;
+  const SearchScreen({
+    super.key,
+    this.openFilterModal = false,
+    this.initialCategory,
+  });
 
   @override
   SearchScreenState createState() => SearchScreenState();
@@ -27,11 +31,11 @@ class SearchScreenState extends State<SearchScreen> {
   @override
   void initState() {
     super.initState();
-
+    selectedCategory = widget.initialCategory;
     WidgetsBinding.instance.addPostFrameCallback((_) {
       FocusScope.of(context).requestFocus(searchFocusNode);
+      _updateSearchResults();
     });
-    _updateSearchResults();
 
     if (widget.openFilterModal) {
       WidgetsBinding.instance.addPostFrameCallback((_) {
