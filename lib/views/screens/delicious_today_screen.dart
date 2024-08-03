@@ -69,11 +69,12 @@ class DeliciousTodayScreenState extends State<DeliciousTodayScreen> {
             children: [
               Container(
                 decoration: BoxDecoration(
-                    color: AppColor.primary,
-                    borderRadius: const BorderRadius.only(
-                      bottomLeft: Radius.circular(30),
-                      bottomRight: Radius.circular(30),
-                    )),
+                  color: AppColor.primary,
+                  borderRadius: const BorderRadius.only(
+                    bottomLeft: Radius.circular(30),
+                    bottomRight: Radius.circular(30),
+                  ),
+                ),
                 height: 210,
                 padding: const EdgeInsets.only(
                   bottom: 30,
@@ -84,37 +85,48 @@ class DeliciousTodayScreenState extends State<DeliciousTodayScreen> {
                 child: PopularRecipeCard(data: popularRecipes),
               ),
               Expanded(
-                child: CustomScrollView(
-                  controller: _scrollController,
-                  slivers: [
-                    SliverPadding(
-                      padding: const EdgeInsets.all(16),
-                      sliver: SliverList(
-                        delegate: SliverChildBuilderDelegate(
-                          (context, index) {
-                            return Column(
-                              children: [
-                                RecipeTile(
-                                  data: featuredRecipe[index],
-                                ),
-                                if (index < featuredRecipe.length - 1)
-                                  const SizedBox(height: 16),
-                              ],
-                            );
-                          },
-                          childCount: featuredRecipe.length,
+                child: NotificationListener<ScrollNotification>(
+                  onNotification: (ScrollNotification scrollInfo) {
+                    if (scrollInfo.metrics.pixels < -50 && !isRefreshing) {
+                      refreshRecipes();
+                    }
+                    return true;
+                  },
+                  child: CustomScrollView(
+                    controller: _scrollController,
+                    slivers: [
+                      SliverPadding(
+                        padding: const EdgeInsets.all(16),
+                        sliver: SliverList(
+                          delegate: SliverChildBuilderDelegate(
+                            (context, index) {
+                              return Column(
+                                children: [
+                                  RecipeTile(
+                                    data: featuredRecipe[index],
+                                  ),
+                                  if (index < featuredRecipe.length - 1)
+                                    const SizedBox(height: 16),
+                                ],
+                              );
+                            },
+                            childCount: featuredRecipe.length,
+                          ),
                         ),
                       ),
-                    ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ],
           ),
           if (isRefreshing)
-            Center(
-              child: CircularProgressIndicator(
-                color: AppColor.primary,
+            Container(
+              color: Colors.black.withOpacity(0.3),
+              child: Center(
+                child: CircularProgressIndicator(
+                  color: AppColor.primary,
+                ),
               ),
             ),
         ],
