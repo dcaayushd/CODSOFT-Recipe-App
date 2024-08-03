@@ -30,6 +30,7 @@ class HomeScreenState extends State<HomeScreen> {
   ScrollController _scrollController = ScrollController();
   bool useWhiteText = false;
   ImageProvider? _profileImage;
+  OverlayEntry? _overlayEntry;
 
   @override
   void initState() {
@@ -57,7 +58,28 @@ class HomeScreenState extends State<HomeScreen> {
   void dispose() {
     _scrollController.removeListener(_scrollListener);
     _scrollController.dispose();
+    _removeOverlay();
     super.dispose();
+  }
+
+  void _showOverlay(BuildContext context) {
+    _overlayEntry = OverlayEntry(
+      builder: (context) => Container(
+        color: Colors.black.withOpacity(0.3),
+        child: Center(
+          child: CircularProgressIndicator(
+            valueColor: AlwaysStoppedAnimation<Color>(AppColor.primary),
+          ),
+        ),
+      ),
+    );
+
+    Overlay.of(context).insert(_overlayEntry!);
+  }
+
+  void _removeOverlay() {
+    _overlayEntry?.remove();
+    _overlayEntry = null;
   }
 
   Future<void> _refreshData() async {
@@ -67,16 +89,19 @@ class HomeScreenState extends State<HomeScreen> {
       isRefreshing = true;
     });
 
+    _showOverlay(context);
+
     // Simulate network request
     await Future.delayed(const Duration(seconds: 2));
 
-    // Update data
     setState(() {
       featuredRecipe = RecipeHelper.featuredRecipe;
       recommendationRecipe = RecipeHelper.recommendationRecipe;
       newlyPostedRecipe = RecipeHelper.newlyPostedRecipe;
       isRefreshing = false;
     });
+
+    _removeOverlay();
   }
 
   Future<void> _loadProfileImage() async {
@@ -299,12 +324,6 @@ class HomeScreenState extends State<HomeScreen> {
               ),
             ],
           ),
-          if (isRefreshing)
-            Center(
-              child: CircularProgressIndicator(
-                valueColor: AlwaysStoppedAnimation<Color>(AppColor.primary),
-              ),
-            ),
         ],
       ),
     );
