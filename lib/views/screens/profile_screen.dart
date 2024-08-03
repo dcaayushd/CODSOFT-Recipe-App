@@ -28,13 +28,24 @@ class ProfileScreenState extends State<ProfileScreen> {
 
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _fullNameController = TextEditingController();
+  final ScrollController _scrollController = ScrollController();
+  bool _isTextFieldFocused = false;
 
   @override
   void initState() {
     super.initState();
     _loadProfileData();
+
+    _emailController.addListener(_updateTextFieldFocus);
+    _fullNameController.addListener(_updateTextFieldFocus);
   }
 
+  void _updateTextFieldFocus() {
+    setState(() {
+      _isTextFieldFocused = _emailController.selection.isValid ||
+          _fullNameController.selection.isValid;
+    });
+  }
 
   _loadProfileData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -79,7 +90,6 @@ class ProfileScreenState extends State<ProfileScreen> {
     widget.onProfileImageUpdate(_imagePath);
   }
 
-
   Future<void> _pickImage() async {
     if (_isEditing) {
       final XFile? image = await _picker.pickImage(source: ImageSource.gallery);
@@ -88,8 +98,7 @@ class ProfileScreenState extends State<ProfileScreen> {
         setState(() {
           _imagePath = permanentPath;
         });
-        await _saveProfileData(); 
-
+        await _saveProfileData();
 
         setState(() {});
       }
@@ -103,7 +112,6 @@ class ProfileScreenState extends State<ProfileScreen> {
     const String fileName = 'profile_image.jpg';
     final String savedPath = path.join(directory.path, fileName);
 
-    // Delete existing file if it exists
     if (await File(savedPath).exists()) {
       await File(savedPath).delete();
     }
@@ -180,144 +188,161 @@ class ProfileScreenState extends State<ProfileScreen> {
           ],
           systemOverlayStyle: SystemUiOverlayStyle.light,
         ),
-        body: ListView(
-          shrinkWrap: true,
-          physics: const BouncingScrollPhysics(),
-          children: [
-            // Profile Picture Wrapper
-            Container(
-              decoration: BoxDecoration(
-                color: AppColor.primary,
-                borderRadius: const BorderRadius.only(
-                  bottomLeft: Radius.circular(30),
-                  bottomRight: Radius.circular(30),
+        body: NotificationListener<ScrollNotification>(
+          onNotification: (ScrollNotification notification) {
+            if (_isTextFieldFocused &&
+                notification is ScrollUpdateNotification) {
+              if (notification.scrollDelta! > 0 &&
+                  _scrollController.position.pixels ==
+                      _scrollController.position.minScrollExtent) {
+                return true;
+              }
+            }
+            return false;
+          },
+          child: ListView(
+            controller: _scrollController,
+            shrinkWrap: true,
+            physics: const BouncingScrollPhysics(),
+            children: [
+              // Profile Picture Wrapper
+              Container(
+                decoration: BoxDecoration(
+                  color: AppColor.primary,
+                  borderRadius: const BorderRadius.only(
+                    bottomLeft: Radius.circular(30),
+                    bottomRight: Radius.circular(30),
+                  ),
                 ),
-              ),
-              padding: const EdgeInsets.symmetric(vertical: 24),
-              child: GestureDetector(
-                onTap: _pickImage,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    Container(
-                      width: 130,
-                      height: 130,
-                      margin: const EdgeInsets.only(bottom: 15),
-                     
-                      decoration: BoxDecoration(
-                        color: Colors.grey,
-                        borderRadius: BorderRadius.circular(100),
-                        image: DecorationImage(
-                          image: _getImageProvider(),
-                          fit: BoxFit.cover,
-                          onError: (exception, stackTrace) {
-                            debugPrint('Error loading image: $exception');
-                            setState(() {
-                              _imagePath = '';
-                            });
-                          },
+                padding: const EdgeInsets.symmetric(vertical: 24),
+                child: GestureDetector(
+                  onTap: _pickImage,
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 130,
+                        height: 130,
+                        margin: const EdgeInsets.only(bottom: 15),
+                        decoration: BoxDecoration(
+                          color: Colors.grey,
+                          borderRadius: BorderRadius.circular(100),
+                          image: DecorationImage(
+                            image: _getImageProvider(),
+                            fit: BoxFit.cover,
+                            onError: (exception, stackTrace) {
+                              debugPrint('Error loading image: $exception');
+                              setState(() {
+                                _imagePath = '';
+                              });
+                            },
+                          ),
                         ),
                       ),
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Text(
-                          'Change Profile Picture',
-                          style: TextStyle(
-                              fontFamily: 'inter',
-                              fontWeight: FontWeight.w600,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          const Text(
+                            'Change Profile Picture',
+                            style: TextStyle(
+                                fontFamily: 'inter',
+                                fontWeight: FontWeight.w600,
+                                color: Colors.white),
+                          ),
+                          const SizedBox(width: 8),
+                          SvgPicture.asset('assets/icons/camera.svg',
                               color: Colors.white),
-                        ),
-                        const SizedBox(width: 8),
-                        SvgPicture.asset('assets/icons/camera.svg',
-                            color: Colors.white),
-                      ],
-                    )
-                  ],
+                        ],
+                      )
+                    ],
+                  ),
                 ),
               ),
-            ),
-            // User Info Wrapper
-            Container(
-              margin: const EdgeInsets.only(top: 24),
-              width: MediaQuery.of(context).size.width,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  _isEditing
-                      ? _buildEditableUserInfoTile(
-                          label: 'Email',
-                          controller: _emailController,
-                          hint: 'Enter your email address',
-                        )
-                      : GestureDetector(
-                          onTap: () => _showSnackBar(
-                              'Please tap "Edit" to change your email.'),
-                          child: UserInfoTile(
-                            margin: const EdgeInsets.only(bottom: 16),
+              // User Info Wrapper
+              Container(
+                margin: const EdgeInsets.only(top: 24),
+                width: MediaQuery.of(context).size.width,
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    _isEditing
+                        ? _buildEditableUserInfoTile(
                             label: 'Email',
-                            value: _email.isEmpty
-                                ? 'Enter your email address'
-                                : _email,
-                            child: Text(
-                              _email.isEmpty
+                            controller: _emailController,
+                            hint: 'Enter your email address',
+                          )
+                        : GestureDetector(
+                            onTap: () => _showSnackBar(
+                                'Please tap "Edit" to change your email.'),
+                            child: UserInfoTile(
+                              margin: const EdgeInsets.only(bottom: 16),
+                              label: 'Email',
+                              value: _email.isEmpty
                                   ? 'Enter your email address'
                                   : _email,
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
-                                fontFamily: 'inter',
-                                color:
-                                    _email.isEmpty ? Colors.grey : Colors.black,
+                              child: Text(
+                                _email.isEmpty
+                                    ? 'Enter your email address'
+                                    : _email,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                  fontFamily: 'inter',
+                                  color: _email.isEmpty
+                                      ? Colors.grey
+                                      : Colors.black,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                  _isEditing
-                      ? _buildEditableUserInfoTile(
-                          label: 'Full Name',
-                          controller: _fullNameController,
-                          hint: 'Enter your name',
-                        )
-                      : GestureDetector(
-                          onTap: () => _showSnackBar(
-                              'Please tap "Edit" to change your name.'),
-                          child: UserInfoTile(
-                            margin: const EdgeInsets.only(bottom: 16),
+                    _isEditing
+                        ? _buildEditableUserInfoTile(
                             label: 'Full Name',
-                            value: _fullName.isEmpty
-                                ? 'Enter your name'
-                                : _fullName,
-                            child: Text(
-                              _fullName.isEmpty ? 'Enter your name' : _fullName,
-                              style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w500,
-                                fontFamily: 'inter',
-                                color:
-                                    _email.isEmpty ? Colors.grey : Colors.black,
+                            controller: _fullNameController,
+                            hint: 'Enter your name',
+                          )
+                        : GestureDetector(
+                            onTap: () => _showSnackBar(
+                                'Please tap "Edit" to change your name.'),
+                            child: UserInfoTile(
+                              margin: const EdgeInsets.only(bottom: 16),
+                              label: 'Full Name',
+                              value: _fullName.isEmpty
+                                  ? 'Enter your name'
+                                  : _fullName,
+                              child: Text(
+                                _fullName.isEmpty
+                                    ? 'Enter your name'
+                                    : _fullName,
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                  fontFamily: 'inter',
+                                  color: _email.isEmpty
+                                      ? Colors.grey
+                                      : Colors.black,
+                                ),
                               ),
                             ),
                           ),
-                        ),
-                  UserInfoTile(
-                    margin: const EdgeInsets.only(bottom: 16),
-                    label: 'Subscription Type',
-                    value: 'Premium Subscription',
-                    valueBackground: AppColor.secondary,
-                  ),
-                  const UserInfoTile(
-                    margin: EdgeInsets.only(bottom: 16),
-                    label: 'Subscription Time',
-                    value: 'Until 31 Dec 2025',
-                  ),
-                ],
-              ),
-            )
-          ],
+                    UserInfoTile(
+                      margin: const EdgeInsets.only(bottom: 16),
+                      label: 'Subscription Type',
+                      value: 'Premium Subscription',
+                      valueBackground: AppColor.secondary,
+                    ),
+                    const UserInfoTile(
+                      margin: EdgeInsets.only(bottom: 16),
+                      label: 'Subscription Time',
+                      value: 'Until 31 Dec 2025',
+                    ),
+                  ],
+                ),
+              )
+            ],
+          ),
         ),
       ),
     );
@@ -348,12 +373,25 @@ class ProfileScreenState extends State<ProfileScreen> {
           fontWeight: FontWeight.w500,
           fontFamily: 'inter',
         ),
+        onTap: () {
+          setState(() {
+            _isTextFieldFocused = true;
+          });
+        },
+        onEditingComplete: () {
+          setState(() {
+            _isTextFieldFocused = false;
+          });
+        },
       ),
     );
   }
 
   @override
   void dispose() {
+    _scrollController.dispose();
+    _emailController.removeListener(_updateTextFieldFocus);
+    _fullNameController.removeListener(_updateTextFieldFocus);
     ImageCache().clear();
     ImageCache().clearLiveImages();
     super.dispose();

@@ -144,7 +144,7 @@ var popularRecipeRawData = [
     'calories': '1500 Cal',
     'time': '25 min',
     'createdAt': '2023-07-28T12:00:00Z',
-    'categories': ['Pizza', 'Healthy', 'Lunch'],
+    'categories': ['Pizza', 'Healthy', 'Lunch', 'Meat'],
     'description':
         'A delicious and nutritious twist on classic pizza. This green pizza features a whole wheat crust topped with pesto, lean ground turkey, and an array of colorful vegetables for a balanced and satisfying meal.',
     'ingredients': [
@@ -1372,7 +1372,7 @@ var newlyPostedRecipeRawData = [
     'photo': 'assets/images/list5.jpg',
     'calories': '1100 Cal',
     'time': '30 min',
-    'categories': ['Healthy', 'Eggs'],
+    'categories': ['Healthy', 'Eggs', 'Meat'],
     'description':
         'A protein-packed dish featuring lean beef and perfectly cooked eggs. This balanced meal combines savory flavors with nutritious ingredients for a satisfying and healthy option any time of day.',
     'ingredients': [
@@ -2108,6 +2108,7 @@ var recipeSearchResultRawData = [
     'photo': 'assets/images/list5.jpg',
     'calories': '1100 Cal',
     'time': '30 min',
+    'categories':['Meat', 'Dinner','Eggs'],
     'description':
         'A protein-packed dish featuring lean beef and perfectly cooked eggs. This balanced meal combines savory flavors with nutritious ingredients for a satisfying and healthy option any time of day.',
     'ingredients': [
@@ -2585,6 +2586,7 @@ var bookmarkedRecipeRawData = [
     'photo': 'assets/images/list5.jpg',
     'calories': '1100 Cal',
     'time': '30 min',
+    'categories':['Meat', 'Dinner'],
     'description':
         'A protein-packed dish featuring lean beef and perfectly cooked eggs. This balanced meal combines savory flavors with nutritious ingredients for a satisfying and healthy option any time of day.',
     'ingredients': [
