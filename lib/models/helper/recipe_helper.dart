@@ -942,6 +942,404 @@ var featuredRecipeRawData = [
 
 var recommendationRecipeRawData = [
   {
+    'title': 'Spicy Thai Basil Chicken',
+    'photo': 'assets/images/recom3.jpg',
+    'calories': '450 Cal',
+    'time': '30 min',
+    'categories': ['Asian', 'Spicy', 'Dinner'],
+    'description':
+        'A fiery and aromatic Thai dish featuring minced chicken stir-fried with garlic, chili, and plenty of fresh basil. Served over steamed rice, this meal packs a flavorful punch and is perfect for spice lovers.',
+    'ingredients': [
+      {
+        'name': 'Ground chicken',
+        'size': '500 g',
+      },
+      {
+        'name': 'Thai basil leaves',
+        'size': '2 cups',
+      },
+      {
+        'name': 'Garlic cloves',
+        'size': '4',
+      },
+      {
+        'name': 'Thai chili peppers',
+        'size': '3-5',
+      },
+      {
+        'name': 'Fish sauce',
+        'size': '2 tbsp',
+      }
+    ],
+    'tutorial': [
+      {
+        'step': '1. Prepare ingredients',
+        'description':
+            'Mince garlic and chili peppers. Wash and dry the basil leaves.',
+      },
+      {
+        'step': '2. Cook the chicken',
+        'description':
+            'Heat oil in a wok over high heat. Add chicken and stir-fry until it begins to brown.',
+      },
+      {
+        'step': '3. Add aromatics',
+        'description':
+            'Toss in garlic and chilies. Stir-fry for another minute until fragrant.',
+      },
+      {
+        'step': '4. Season',
+        'description':
+            'Add fish sauce, soy sauce, and a pinch of sugar. Stir to combine.',
+      },
+      {
+        'step': '5. Finish and serve',
+        'description':
+            'Turn off heat and toss in the basil leaves. Serve hot over steamed rice.',
+      },
+    ],
+    'reviews': [
+      {
+        'username': '@spicyfoodnerd',
+        'review':
+            'Absolutely love this dish! It\'s spicy, fragrant, and so satisfying.',
+      },
+      {
+        'username': '@thaifoodlover',
+        'review':
+            'Tastes just like what I had in Bangkok. The basil really makes the dish!',
+      },
+      {
+        'username': '@quickmealchef',
+        'review':
+            'So quick to make and packed with flavor. It\'s become a weeknight staple.',
+      },
+      {
+        'username': '@healthyeats',
+        'review':
+            'I used ground turkey instead of chicken and it was still delicious!',
+      },
+    ]
+  },
+  {
+    'title': 'Creamy Mushroom Risotto',
+    'photo': 'assets/images/recom4.jpg',
+    'calories': '580 Cal',
+    'time': '40 min',
+    'categories': ['Italian', 'Vegetarian', 'Dinner', 'Healthy'],
+    'description':
+        'A luxurious Italian rice dish cooked to creamy perfection with earthy mushrooms, rich Parmesan cheese, and a touch of white wine. This comforting risotto is sure to impress.',
+    'ingredients': [
+      {
+        'name': 'Arborio rice',
+        'size': '1.5 cups',
+      },
+      {
+        'name': 'Mixed mushrooms',
+        'size': '300 g',
+      },
+      {
+        'name': 'Vegetable broth',
+        'size': '5 cups',
+      },
+      {
+        'name': 'Parmesan cheese',
+        'size': '1/2 cup',
+      },
+      {
+        'name': 'White wine',
+        'size': '1/2 cup',
+      }
+    ],
+    'tutorial': [
+      {
+        'step': '1. Prepare ingredients',
+        'description':
+            'Slice mushrooms, grate Parmesan, and heat broth in a separate pot.',
+      },
+      {
+        'step': '2. Sauté mushrooms',
+        'description':
+            'In a large pan, sauté mushrooms in olive oil until golden. Remove and set aside.',
+      },
+      {
+        'step': '3. Toast rice',
+        'description':
+            'In the same pan, toast the rice for a minute. Add wine and stir until absorbed.',
+      },
+      {
+        'step': '4. Cook risotto',
+        'description':
+            'Gradually add hot broth, stirring constantly. Continue until rice is creamy and al dente.',
+      },
+      {
+        'step': '5. Finish and serve',
+        'description':
+            'Stir in mushrooms, Parmesan, and butter. Season and serve immediately.',
+      },
+    ],
+    'reviews': [
+      {
+        'username': '@italianfoodie',
+        'review':
+            'Absolutely delicious! Creamy and full of flavor. Restaurant quality at home.',
+      },
+      {
+        'username': '@mushroomlover',
+        'review':
+            'The mix of mushrooms gives such a great depth of flavor. I added some truffle oil at the end - heaven!',
+      },
+      {
+        'username': '@homechef',
+        'review':
+            'Takes some effort with all the stirring, but so worth it. A great dish to impress guests.',
+      },
+      {
+        'username': '@comfortfoodjunkie',
+        'review': 'Pure comfort in a bowl. I could eat this every day!',
+      },
+    ]
+  },
+  {
+    'title': 'Quinoa and Roasted Vegetable Bowl',
+    'photo': 'assets/images/recom5.jpg',
+    'calories': '420 Cal',
+    'time': '35 min',
+    'categories': ['Vegan', 'Healthy', 'Lunch'],
+    'description':
+        'A nourishing and colorful bowl packed with protein-rich quinoa and a medley of roasted vegetables. Drizzled with a zesty lemon tahini dressing, this dish is both healthy and satisfying.',
+    'ingredients': [
+      {
+        'name': 'Quinoa',
+        'size': '1 cup',
+      },
+      {
+        'name': 'Mixed vegetables (bell peppers, zucchini, carrots)',
+        'size': '3 cups',
+      },
+      {
+        'name': 'Chickpeas',
+        'size': '1 can',
+      },
+      {
+        'name': 'Tahini',
+        'size': '2 tbsp',
+      },
+      {
+        'name': 'Lemon juice',
+        'size': '2 tbsp',
+      }
+    ],
+    'tutorial': [
+      {
+        'step': '1. Prepare quinoa',
+        'description':
+            'Rinse quinoa and cook according to package instructions.',
+      },
+      {
+        'step': '2. Roast vegetables',
+        'description':
+            'Chop vegetables, toss with olive oil and seasonings, and roast at 400°F for 20-25 minutes.',
+      },
+      {
+        'step': '3. Prepare chickpeas',
+        'description':
+            'Drain and rinse chickpeas. Toss with spices and add to the roasting vegetables for the last 10 minutes.',
+      },
+      {
+        'step': '4. Make dressing',
+        'description':
+            'Whisk together tahini, lemon juice, garlic, water, and salt until smooth.',
+      },
+      {
+        'step': '5. Assemble and serve',
+        'description':
+            'Divide quinoa among bowls, top with roasted vegetables and chickpeas. Drizzle with tahini dressing.',
+      },
+    ],
+    'reviews': [
+      {
+        'username': '@plantbasedpro',
+        'review':
+            'Such a satisfying vegan meal! The roasted veggies have so much flavor.',
+      },
+      {
+        'username': '@healthylifestyle',
+        'review':
+            'Love how nutritious and colorful this bowl is. The tahini dressing is a game-changer!',
+      },
+      {
+        'username': '@mealprepper',
+        'review':
+            'Great for meal prep! I make a big batch on Sundays for lunches throughout the week.',
+      },
+      {
+        'username': '@glutenfreegourmet',
+        'review':
+            'Delicious gluten-free option. I added some pumpkin seeds for extra crunch.',
+      },
+    ]
+  },
+  {
+    'title': 'Classic Beef Burger',
+    'photo': 'assets/images/recom6.jpg',
+    'calories': '650 Cal',
+    'time': '25 min',
+    'categories': ['American', 'Beef', 'Dinner', 'Meat', 'Burger'],
+    'description':
+        'A juicy, perfectly grilled beef patty nestled in a soft bun with crisp lettuce, ripe tomato, and tangy pickles. This classic American burger is a timeless favorite for good reason.',
+    'ingredients': [
+      {
+        'name': 'Ground beef (80% lean)',
+        'size': '500 g',
+      },
+      {
+        'name': 'Burger buns',
+        'size': '4',
+      },
+      {
+        'name': 'Lettuce leaves',
+        'size': '4',
+      },
+      {
+        'name': 'Tomato slices',
+        'size': '4',
+      },
+      {
+        'name': 'Cheese slices',
+        'size': '4',
+      }
+    ],
+    'tutorial': [
+      {
+        'step': '1. Prepare patties',
+        'description':
+            'Divide beef into 4 portions and shape into patties. Season with salt and pepper.',
+      },
+      {
+        'step': '2. Preheat grill',
+        'description': 'Heat grill or skillet to medium-high heat.',
+      },
+      {
+        'step': '3. Cook burgers',
+        'description':
+            'Grill patties for 4-5 minutes each side for medium doneness. Add cheese in the last minute if desired.',
+      },
+      {
+        'step': '4. Toast buns',
+        'description':
+            'Lightly toast the burger buns on the grill or in a toaster.',
+      },
+      {
+        'step': '5. Assemble and serve',
+        'description':
+            'Place lettuce on bottom bun, add patty, top with tomato and pickles. Serve with your favorite condiments.',
+      },
+    ],
+    'reviews': [
+      {
+        'username': '@burgerlover',
+        'review':
+            'Simple and delicious! Sometimes you just can\'t beat a classic beef burger.',
+      },
+      {
+        'username': '@grillmaster',
+        'review':
+            'Perfect instructions for a juicy burger. I added some grilled onions - amazing!',
+      },
+      {
+        'username': '@foodiefather',
+        'review':
+            'My kids\' favorite dinner. We have a weekly burger night now!',
+      },
+      {
+        'username': '@homecook101',
+        'review':
+            'First time making burgers from scratch and they turned out great. So much better than frozen patties!',
+      },
+    ]
+  },
+  {
+    'title': 'Mediterranean Grilled Salmon',
+    'photo': 'assets/images/recom7.jpg',
+    'calories': '420 Cal',
+    'time': '30 min',
+    'categories': ['Mediterranean', 'Seafood', 'Healthy'],
+    'description':
+        'Succulent salmon fillet grilled to perfection and topped with a vibrant Mediterranean salsa. Served with a side of lemony couscous, this dish brings the flavors of the Mediterranean to your plate.',
+    'ingredients': [
+      {
+        'name': 'Salmon fillets',
+        'size': '4 (150g each)',
+      },
+      {
+        'name': 'Cherry tomatoes',
+        'size': '1 cup, chopped',
+      },
+      {
+        'name': 'Kalamata olives',
+        'size': '1/2 cup, pitted and chopped',
+      },
+      {
+        'name': 'Feta cheese',
+        'size': '1/2 cup, crumbled',
+      },
+      {
+        'name': 'Couscous',
+        'size': '1 cup',
+      }
+    ],
+    'tutorial': [
+      {
+        'step': '1. Prepare salsa',
+        'description':
+            'Mix chopped tomatoes, olives, feta, red onion, and fresh herbs. Drizzle with olive oil and lemon juice.',
+      },
+      {
+        'step': '2. Season salmon',
+        'description':
+            'Rub salmon fillets with olive oil, lemon zest, salt, and pepper.',
+      },
+      {
+        'step': '3. Grill salmon',
+        'description':
+            'Grill salmon for 4-5 minutes per side, or until cooked to your liking.',
+      },
+      {
+        'step': '4. Cook couscous',
+        'description':
+            'Prepare couscous according to package instructions, adding lemon juice and olive oil for flavor.',
+      },
+      {
+        'step': '5. Serve',
+        'description':
+            'Plate salmon over couscous, top with Mediterranean salsa, and garnish with fresh herbs.',
+      },
+    ],
+    'reviews': [
+      {
+        'username': '@seafoodenthusiast',
+        'review':
+            'This salmon is cooked perfectly! The Mediterranean salsa adds such a fresh, tangy contrast.',
+      },
+      {
+        'username': '@healthyeater',
+        'review':
+            'A delicious and nutritious meal. I love how colorful and appetizing it looks on the plate.',
+      },
+      {
+        'username': '@quickandeasy',
+        'review':
+            'Impressed my dinner guests with this recipe. It looks fancy but is actually quite simple to make!',
+      },
+      {
+        'username': '@mediterraneandiet',
+        'review':
+            'All my favorite Mediterranean flavors in one dish. Will definitely be making this again!',
+      },
+    ]
+  },
+  {
     'title': 'Brown Chopstick Bowl',
     'photo': 'assets/images/recom2.jpg',
     'calories': '1500 Cal',
@@ -1663,6 +2061,244 @@ var newlyPostedRecipeRawData = [
     ]
   },
   {
+    'title': 'Vegetarian Chickpea Curry',
+    'photo': 'assets/images/recom8.jpg',
+    'calories': '380 Cal',
+    'time': '35 min',
+    'categories': ['Indian', 'Vegetarian', 'Spicy'],
+    'description':
+        'A hearty and aromatic chickpea curry simmered in a rich tomato and coconut sauce. Packed with protein and bursting with Indian spices, this vegetarian dish is both comforting and satisfying.',
+    'ingredients': [
+      {
+        'name': 'Chickpeas',
+        'size': '2 cans',
+      },
+      {
+        'name': 'Coconut milk',
+        'size': '1 can',
+      },
+      {
+        'name': 'Diced tomatoes',
+        'size': '1 can',
+      },
+      {
+        'name': 'Onion',
+        'size': '1, chopped',
+      },
+      {
+        'name': 'Garam masala',
+        'size': '2 tsp',
+      }
+    ],
+    'tutorial': [
+      {
+        'step': '1. Sauté aromatics',
+        'description':
+            'In a large pot, sauté onion, garlic, and ginger until softened.',
+      },
+      {
+        'step': '2. Add spices',
+        'description':
+            'Stir in garam masala, cumin, turmeric, and cook until fragrant.',
+      },
+      {
+        'step': '3. Simmer curry',
+        'description':
+            'Add chickpeas, diced tomatoes, and coconut milk. Simmer for 20 minutes.',
+      },
+      {
+        'step': '4. Season',
+        'description':
+            'Add salt, pepper, and a squeeze of lemon juice to taste.',
+      },
+      {
+        'step': '5. Serve',
+        'description':
+            'Serve hot over rice or with naan bread, garnished with fresh cilantro.',
+      },
+    ],
+    'reviews': [
+      {
+        'username': '@spicelovr',
+        'review':
+            'So flavorful! I added some extra chili for more heat and it was perfect.',
+      },
+      {
+        'username': '@veggiedelight',
+        'review':
+            'A satisfying meal that doesn\'t make you miss meat at all. The coconut milk makes it so creamy.',
+      },
+      {
+        'username': '@quickmeals',
+        'review':
+            'Love how fast this comes together. Great for busy weeknights!',
+      },
+      {
+        'username': '@curryfanatic',
+        'review':
+            'Authentic flavors and so easy to make. This has become a regular in our meal rotation.',
+      },
+    ]
+  },
+  {
+    'title': 'Lemon Garlic Shrimp Pasta',
+    'photo': 'assets/images/recom9.jpg',
+    'calories': '520 Cal',
+    'time': '25 min',
+    'categories': ['Italian', 'Seafood', 'Quick Meals'],
+    'description':
+        'A light and zesty pasta dish featuring succulent shrimp tossed with linguine in a lemony garlic sauce. This quick and easy meal is perfect for busy weeknights or elegant enough for entertaining.',
+    'ingredients': [
+      {
+        'name': 'Linguine',
+        'size': '300 g',
+      },
+      {
+        'name': 'Large shrimp',
+        'size': '500 g, peeled and deveined',
+      },
+      {
+        'name': 'Lemon',
+        'size': '1, juiced and zested',
+      },
+      {
+        'name': 'Garlic cloves',
+        'size': '4, minced',
+      },
+      {
+        'name': 'Fresh parsley',
+        'size': '1/4 cup, chopped',
+      }
+    ],
+    'tutorial': [
+      {
+        'step': '1. Cook pasta',
+        'description':
+            'Boil linguine in salted water until al dente. Reserve 1 cup of pasta water before draining.',
+      },
+      {
+        'step': '2. Sauté shrimp',
+        'description':
+            'In a large skillet, sauté shrimp with garlic and red pepper flakes until pink.',
+      },
+      {
+        'step': '3. Make sauce',
+        'description':
+            'Add lemon juice, zest, and a splash of pasta water to the skillet. Simmer for 2 minutes.',
+      },
+      {
+        'step': '4. Combine',
+        'description':
+            'Toss cooked pasta with the shrimp and sauce. Add pasta water as needed for desired consistency.',
+      },
+      {
+        'step': '5. Finish and serve',
+        'description':
+            'Stir in fresh parsley and a drizzle of olive oil. Serve hot with grated Parmesan if desired.',
+      },
+    ],
+    'reviews': [
+      {
+        'username': '@pastaaddict',
+        'review':
+            'Simple yet so flavorful! The lemon really brightens up the dish.',
+      },
+      {
+        'username': '@quickcook',
+        'review':
+            'My go-to recipe for a fast and impressive dinner. Always a hit!',
+      },
+      {
+        'username': '@seafoodlover',
+        'review':
+            'The shrimp came out perfectly cooked. I added some capers for extra zing.',
+      },
+      {
+        'username': '@italianfoodie',
+        'review':
+            'Light, fresh, and delicious. Tastes like something from a high-end Italian restaurant!',
+      },
+    ]
+  },
+  {
+    'title': 'Stuffed Bell Peppers',
+    'photo': 'assets/images/recom10.jpg',
+    'calories': '350 Cal',
+    'time': '45 min',
+    'categories': ['Vegetarian', 'Low-Carb', 'Dinner'],
+    'description':
+        'Colorful bell peppers stuffed with a savory mixture of quinoa, black beans, corn, and cheese. These wholesome and flavorful stuffed peppers are a complete meal in themselves, packed with protein and vegetables.',
+    'ingredients': [
+      {
+        'name': 'Bell peppers',
+        'size': '4 large',
+      },
+      {
+        'name': 'Quinoa',
+        'size': '1 cup, cooked',
+      },
+      {
+        'name': 'Black beans',
+        'size': '1 can, drained and rinsed',
+      },
+      {
+        'name': 'Corn kernels',
+        'size': '1 cup',
+      },
+      {
+        'name': 'Shredded cheese',
+        'size': '1 cup',
+      }
+    ],
+    'tutorial': [
+      {
+        'step': '1. Prepare peppers',
+        'description':
+            'Cut tops off peppers and remove seeds. Place in a baking dish.',
+      },
+      {
+        'step': '2. Make filling',
+        'description':
+            'Mix cooked quinoa, black beans, corn, half the cheese, and spices in a bowl.',
+      },
+      {
+        'step': '3. Stuff peppers',
+        'description': 'Fill each pepper with the quinoa mixture.',
+      },
+      {
+        'step': '4. Bake',
+        'description': 'Cover with foil and bake at 375°F for 30-35 minutes.',
+      },
+      {
+        'step': '5. Finish and serve',
+        'description':
+            'Uncover, top with remaining cheese, and bake for 5 more minutes until cheese melts. Serve hot.',
+      },
+    ],
+    'reviews': [
+      {
+        'username': '@healthyeater',
+        'review':
+            'So filling and nutritious! I love that it\'s a complete meal in one pepper.',
+      },
+      {
+        'username': '@veggiechef',
+        'review':
+            'Great vegetarian option. I added some diced zucchini to the filling for extra veggies.',
+      },
+      {
+        'username': '@mealprepper',
+        'review':
+            'These reheat really well. Perfect for making ahead and having throughout the week.',
+      },
+      {
+        'username': '@glutenfreegourmet',
+        'review':
+            'Naturally gluten-free and delicious! I used a Mexican cheese blend for extra flavor.',
+      },
+    ]
+  },
+  {
     'title': 'Chocolate Pancake.',
     'photo': 'assets/images/sweetfood2.jpg',
     'calories': '870 Cal',
@@ -1749,7 +2385,7 @@ var sweetFoodRecommendationRecipeRawData = [
     'photo': 'assets/images/sweetfood1.jpg',
     'calories': '1500 Cal',
     'time': '25 min',
-    'category': 'Dessert',
+    'categories': ['Dessert'],
     'description':
         'Fluffy, golden pancakes drizzled with sweet, golden honey. This classic breakfast dish is a perfect balance of comforting carbs and natural sweetness, ideal for a leisurely weekend brunch or a special breakfast treat.',
     'ingredients': [
@@ -1901,6 +2537,698 @@ var sweetFoodRecommendationRecipeRawData = [
         'username': '@brunchclub',
         'review':
             'These were the star of our brunch party. Everyone was impressed and asked for the recipe!',
+      },
+    ]
+  },
+  {
+    'title': 'Cinnamon Roll Waffles',
+    'photo': 'assets/images/sweetfood3.jpg',
+    'calories': '650 Cal',
+    'time': '35 min',
+    'categories': ['Breakfast', 'Dessert'],
+    'description':
+        'A delightful fusion of cinnamon rolls and waffles. These crispy-on-the-outside, soft-on-the-inside waffles are swirled with cinnamon sugar and topped with a luscious cream cheese glaze. It\'s the perfect indulgent breakfast for cinnamon roll lovers.',
+    'ingredients': [
+      {
+        'name': 'All-purpose flour',
+        'size': '2 cups',
+      },
+      {
+        'name': 'Milk',
+        'size': '1 3/4 cups',
+      },
+      {
+        'name': 'Eggs',
+        'size': '2',
+      },
+      {
+        'name': 'Brown sugar',
+        'size': '1/4 cup',
+      },
+      {
+        'name': 'Ground cinnamon',
+        'size': '2 tbsp',
+      },
+      {
+        'name': 'Cream cheese',
+        'size': '133 g',
+      }
+    ],
+    'tutorial': [
+      {
+        'step': '1. Prepare waffle batter',
+        'description':
+            'Mix flour, baking powder, salt, milk, eggs, and melted butter in a large bowl until smooth.',
+      },
+      {
+        'step': '2. Make cinnamon swirl',
+        'description':
+            'In a separate bowl, mix brown sugar and cinnamon. Pour into a ziplock bag.',
+      },
+      {
+        'step': '3. Cook waffles',
+        'description':
+            'Preheat waffle iron. Pour batter, snip corner of cinnamon sugar bag and swirl over batter. Close iron and cook until golden.',
+      },
+      {
+        'step': '4. Prepare glaze',
+        'description':
+            'Mix softened cream cheese, powdered sugar, milk, and vanilla until smooth.',
+      },
+      {
+        'step': '5. Serve',
+        'description':
+            'Drizzle warm waffles with cream cheese glaze. Serve immediately for the best taste and texture.',
+      },
+    ],
+    'reviews': [
+      {
+        'username': '@waffleenthusiast',
+        'review':
+            'These waffles are game-changers! All the flavors of a cinnamon roll in a crispy waffle form. Absolutely delicious!',
+      },
+      {
+        'username': '@sweetbreakfastlover',
+        'review':
+            'Made these for a family brunch and everyone was impressed. The cream cheese glaze takes it to another level.',
+      },
+      {
+        'username': '@lazysundaymornings',
+        'review':
+            'Perfect for a cozy weekend breakfast. The house smelled amazing while cooking these!',
+      },
+      {
+        'username': '@balancedindulgence',
+        'review':
+            'A bit decadent but so worth it as an occasional treat. I added some chopped pecans for extra crunch.',
+      },
+    ]
+  },
+  {
+    'title': 'Berry Cheesecake Parfait',
+    'photo': 'assets/images/sweetfood4.jpg',
+    'calories': '420 Cal',
+    'time': '20 min',
+    'categories': ['Dessert'],
+    'description':
+        'A light and refreshing dessert featuring layers of creamy cheesecake filling, crunchy graham cracker crumbs, and fresh mixed berries. This no-bake treat is perfect for warm summer days or as an elegant finish to any meal.',
+    'ingredients': [
+      {
+        'name': 'Cream cheese',
+        'size': '226 g',
+      },
+      {
+        'name': 'Heavy cream',
+        'size': '1 cup',
+      },
+      {
+        'name': 'Powdered sugar',
+        'size': '1/2 cup',
+      },
+      {
+        'name': 'Graham crackers',
+        'size': '1 cup, crushed',
+      },
+      {
+        'name': 'Mixed berries',
+        'size': '2 cups',
+      },
+    ],
+    'tutorial': [
+      {
+        'step': '1. Prepare cheesecake filling',
+        'description':
+            'Beat cream cheese, heavy cream, and powdered sugar until smooth and fluffy.',
+      },
+      {
+        'step': '2. Crush graham crackers',
+        'description':
+            'Place graham crackers in a zip-top bag and crush with a rolling pin.',
+      },
+      {
+        'step': '3. Wash and prepare berries',
+        'description':
+            'Rinse mixed berries and pat dry. Slice larger berries if needed.',
+      },
+      {
+        'step': '4. Assemble parfaits',
+        'description':
+            'In glasses, layer graham cracker crumbs, cheesecake filling, and berries. Repeat layers.',
+      },
+      {
+        'step': '5. Chill and serve',
+        'description':
+            'Refrigerate parfaits for at least 1 hour before serving. Garnish with additional berries if desired.',
+      },
+    ],
+    'reviews': [
+      {
+        'username': '@dessertqueen',
+        'review':
+            'So easy to make and absolutely delicious! The perfect balance of creamy, crunchy, and fruity.',
+      },
+      {
+        'username': '@healthysweets',
+        'review':
+            'Love that this uses fresh berries. I substituted low-fat cream cheese and it was still amazing.',
+      },
+      {
+        'username': '@easypeasyrecipes',
+        'review':
+            'No-bake and ready in no time! This has become my go-to dessert for summer gatherings.',
+      },
+      {
+        'username': '@fancyfoodie',
+        'review':
+            'Served these at a dinner party in elegant glasses. They looked impressive and tasted even better!',
+      },
+    ]
+  },
+  {
+    'title': 'Caramel Apple French Toast',
+    'photo': 'assets/images/sweetfood5.jpg',
+    'calories': '580 Cal',
+    'time': '40 min',
+    'categories': ['Dessert', 'Breakfast'],
+    'description':
+        'A decadent twist on classic French toast, featuring thick slices of bread soaked in a rich custard, topped with caramelized apples and a homemade caramel sauce. This indulgent breakfast is perfect for special occasions or when you want to treat yourself.',
+    'ingredients': [
+      {
+        'name': 'Thick bread slices',
+        'size': '6',
+      },
+      {
+        'name': 'Eggs',
+        'size': '4',
+      },
+      {
+        'name': 'Milk',
+        'size': '1 cup',
+      },
+      {
+        'name': 'Apples, sliced',
+        'size': '2',
+      },
+      {
+        'name': 'Brown sugar',
+        'size': '1/2 cup',
+      },
+      {
+        'name': 'Heavy cream',
+        'size': '1/4 cup',
+      },
+    ],
+    'tutorial': [
+      {
+        'step': '1. Prepare custard',
+        'description':
+            'Whisk together eggs, milk, vanilla extract, and a pinch of cinnamon in a shallow dish.',
+      },
+      {
+        'step': '2. Soak bread',
+        'description':
+            'Dip each bread slice in the custard mixture, allowing it to soak for a few seconds on each side.',
+      },
+      {
+        'step': '3. Cook French toast',
+        'description':
+            'Heat butter in a skillet and cook soaked bread until golden brown on both sides.',
+      },
+      {
+        'step': '4. Caramelize apples',
+        'description':
+            'In another pan, cook sliced apples with butter and brown sugar until soft and caramelized.',
+      },
+      {
+        'step': '5. Make caramel sauce',
+        'description':
+            'In a small saucepan, heat brown sugar and cream until it forms a smooth caramel sauce.',
+      },
+      {
+        'step': '6. Assemble and serve',
+        'description':
+            'Top French toast with caramelized apples and drizzle with caramel sauce. Serve immediately.',
+      },
+    ],
+    'reviews': [
+      {
+        'username': '@breakfastchamp',
+        'review':
+            'This is the ultimate indulgent breakfast! The caramelized apples take it to another level.',
+      },
+      {
+        'username': '@sweettooth',
+        'review':
+            'Absolutely divine! It\'s like having dessert for breakfast, but so worth it.',
+      },
+      {
+        'username': '@weekendcook',
+        'review':
+            'Made this for a family brunch and everyone raved about it. Will definitely make again!',
+      },
+      {
+        'username': '@foodieforlife',
+        'review':
+            'The homemade caramel sauce is a game-changer. I could eat this every day!',
+      },
+    ]
+  },
+  {
+    'title': 'Matcha Green Tea Mochi',
+    'photo': 'assets/images/sweetfood6.jpg',
+    'calories': '180 Cal',
+    'time': '1 hour',
+    'categories': ['Dessert'],
+    'description':
+        'A Japanese-inspired sweet treat featuring chewy mochi (rice cake) infused with earthy matcha green tea flavor. These bite-sized desserts are not only delicious but also visually appealing with their vibrant green color. Perfect for matcha lovers and those looking to try something unique.',
+    'ingredients': [
+      {
+        'name': 'Glutinous rice flour',
+        'size': '1 cup',
+      },
+      {
+        'name': 'Matcha powder',
+        'size': '2 tbsp',
+      },
+      {
+        'name': 'Sugar',
+        'size': '1/2 cup',
+      },
+      {
+        'name': 'Water',
+        'size': '3/4 cup',
+      },
+      {
+        'name': 'Cornstarch',
+        'size': '1/4 cup',
+      },
+    ],
+    'tutorial': [
+      {
+        'step': '1. Mix dry ingredients',
+        'description':
+            'In a microwave-safe bowl, whisk together glutinous rice flour, matcha powder, and sugar.',
+      },
+      {
+        'step': '2. Add water',
+        'description':
+            'Gradually add water to the dry ingredients, stirring until a smooth batter forms.',
+      },
+      {
+        'step': '3. Cook mochi',
+        'description':
+            'Microwave the mixture in 30-second intervals, stirring between each, until the mochi becomes translucent and sticky (about 2-3 minutes total).',
+      },
+      {
+        'step': '4. Cool and shape',
+        'description':
+            'Let the mochi cool slightly. Dust a work surface with cornstarch and turn out the mochi. Divide and shape into small balls.',
+      },
+      {
+        'step': '5. Serve or store',
+        'description':
+            'Serve immediately or store in an airtight container with additional cornstarch to prevent sticking.',
+      },
+    ],
+    'reviews': [
+      {
+        'username': '@matchalover',
+        'review':
+            'The perfect blend of chewy texture and earthy matcha flavor. I\'m addicted!',
+      },
+      {
+        'username': '@japanesefoodie',
+        'review':
+            'Tastes just like the mochi I had in Japan. Great recipe for making it at home!',
+      },
+      {
+        'username': '@adventurouseater',
+        'review':
+            'First time trying mochi and I love it! The matcha flavor is subtle but delicious.',
+      },
+      {
+        'username': '@healthydesserts',
+        'review':
+            'Love that these are naturally gluten-free. A unique dessert that\'s not too sweet.',
+      },
+    ]
+  },
+  {
+    'title': 'Lemon Lavender Scones',
+    'photo': 'assets/images/sweetfood7.jpg',
+    'calories': '320 Cal',
+    'time': '45 min',
+    'categories': ['Dessert', 'Breakfast'],
+    'description':
+        'Delicate and fragrant scones infused with zesty lemon and aromatic lavender. These light, flaky pastries are perfect for a sophisticated afternoon tea or a special breakfast treat. The combination of citrus and floral notes creates a unique and refreshing flavor profile.',
+    'ingredients': [
+      {
+        'name': 'All-purpose flour',
+        'size': '2 cups',
+      },
+      {
+        'name': 'Sugar',
+        'size': '1/3 cup',
+      },
+      {
+        'name': 'Butter, cold and cubed',
+        'size': '1/2 cup',
+      },
+      {
+        'name': 'Heavy cream',
+        'size': '1/2 cup',
+      },
+      {
+        'name': 'Lemon zest',
+        'size': '2 tbsp',
+      },
+      {
+        'name': 'Dried lavender',
+        'size': '1 tbsp',
+      },
+    ],
+    'tutorial': [
+      {
+        'step': '1. Prepare dry ingredients',
+        'description':
+            'In a large bowl, whisk together flour, sugar, baking powder, and salt.',
+      },
+      {
+        'step': '2. Add butter',
+        'description':
+            'Cut in cold butter using a pastry cutter or your fingers until the mixture resembles coarse crumbs.',
+      },
+      {
+        'step': '3. Mix in flavors',
+        'description':
+            'Stir in lemon zest and dried lavender. Gradually add heavy cream, mixing until a soft dough forms.',
+      },
+      {
+        'step': '4. Shape and cut',
+        'description':
+            'Turn dough onto a floured surface, pat into a circle, and cut into wedges.',
+      },
+      {
+        'step': '5. Bake',
+        'description':
+            'Place scones on a baking sheet and brush with cream. Bake at 400°F (200°C) for 15-18 minutes or until golden brown.',
+      },
+      {
+        'step': '6. Glaze and serve',
+        'description':
+            'Let cool slightly, then drizzle with a lemon glaze if desired. Serve warm.',
+      },
+    ],
+    'reviews': [
+      {
+        'username': '@teatimequeen',
+        'review':
+            'These scones are a dream! The lemon and lavender combination is so elegant and delicious.',
+      },
+      {
+        'username': '@bakingnovice',
+        'review':
+            'Surprisingly easy to make and they turned out perfectly flaky. Will definitely make again!',
+      },
+      {
+        'username': '@brunchhost',
+        'review':
+            'Served these at a brunch party and they were a hit. Everyone loved the unique flavor.',
+      },
+      {
+        'username': '@aromatherapylover',
+        'review':
+            'The lavender adds such a lovely, subtle floral note. These are my new favorite scones!',
+      },
+    ]
+  },
+  {
+    'title': 'Nutella-Stuffed Churros',
+    'photo': 'assets/images/sweetfood8.jpg',
+    'calories': '420 Cal',
+    'time': '50 min',
+    'categories': ['Dessert'],
+    'description':
+        'A decadent twist on the classic Spanish treat, these churros are crispy on the outside, soft on the inside, and filled with creamy Nutella. Coated in cinnamon sugar, they\'re an irresistible indulgence perfect for satisfying your sweet tooth.',
+    'ingredients': [
+      {
+        'name': 'Water',
+        'size': '1 cup',
+      },
+      {
+        'name': 'All-purpose flour',
+        'size': '1 cup',
+      },
+      {
+        'name': 'Eggs',
+        'size': '3',
+      },
+      {
+        'name': 'Nutella',
+        'size': '1/2 cup',
+      },
+      {
+        'name': 'Sugar',
+        'size': '1/2 cup',
+      },
+      {
+        'name': 'Ground cinnamon',
+        'size': '1 tbsp',
+      },
+    ],
+    'tutorial': [
+      {
+        'step': '1. Prepare dough',
+        'description':
+            'Boil water with salt and butter. Add flour, stirring vigorously until a smooth ball forms. Let cool slightly, then beat in eggs one at a time.',
+      },
+      {
+        'step': '2. Pipe and freeze',
+        'description':
+            'Pipe 4-inch strips onto a baking sheet. Freeze for 15 minutes to firm up.',
+      },
+      {
+        'step': '3. Prepare Nutella',
+        'description':
+            'Spoon Nutella into a piping bag fitted with a small round tip.',
+      },
+      {
+        'step': '4. Fry churros',
+        'description':
+            'Deep fry the frozen churros in batches until golden brown and crispy.',
+      },
+      {
+        'step': '5. Fill and coat',
+        'description':
+            'While still warm, pipe Nutella into the center of each churro. Roll in cinnamon sugar mixture.',
+      },
+      {
+        'step': '6. Serve',
+        'description':
+            'Serve immediately while still warm for the best taste and texture.',
+      },
+    ],
+    'reviews': [
+      {
+        'username': '@chocoholicdreams',
+        'review':
+            'These are dangerously delicious! The Nutella filling takes churros to a whole new level.',
+      },
+      {
+        'username': '@dessertmaster',
+        'review':
+            'Worth every calorie! Crispy, creamy, and perfectly sweet. A new favorite in our house.',
+      },
+      {
+        'username': '@foodieadventures',
+        'review':
+            'Made these for a party and they disappeared in minutes. Everyone was raving about them!',
+      },
+      {
+        'username': '@sweettoothed',
+        'review':
+            'The perfect indulgence. I could eat these every day (but probably shouldn\'t!).',
+      },
+    ]
+  },
+  {
+    'title': 'Mango Sticky Rice',
+    'photo': 'assets/images/sweetfood9.jpg',
+    'calories': '350 Cal',
+    'time': '40 min',
+    'categories': ['Dessert', 'Dinner'],
+    'description':
+        'A popular Thai dessert featuring sweet, ripe mango served with sticky rice soaked in a rich coconut milk sauce. This tropical treat is refreshing, subtly sweet, and beautifully balances flavors and textures.',
+    'ingredients': [
+      {
+        'name': 'Glutinous rice',
+        'size': '1 cup',
+      },
+      {
+        'name': 'Coconut milk',
+        'size': '1 cup',
+      },
+      {
+        'name': 'Sugar',
+        'size': '1/4 cup',
+      },
+      {
+        'name': 'Salt',
+        'size': '1/4 tsp',
+      },
+      {
+        'name': 'Ripe mangoes',
+        'size': '2',
+      },
+      {
+        'name': 'Sesame seeds',
+        'size': '1 tbsp',
+      },
+    ],
+    'tutorial': [
+      {
+        'step': '1. Prepare rice',
+        'description':
+            'Soak glutinous rice for at least 4 hours or overnight. Steam for 20-25 minutes until tender.',
+      },
+      {
+        'step': '2. Make coconut sauce',
+        'description':
+            'In a saucepan, heat coconut milk with sugar and salt until sugar dissolves. Do not boil.',
+      },
+      {
+        'step': '3. Combine rice and sauce',
+        'description':
+            'Pour half of the warm coconut sauce over the cooked rice. Stir and let sit for 30 minutes to absorb.',
+      },
+      {
+        'step': '4. Prepare mango',
+        'description': 'Peel and slice ripe mangoes.',
+      },
+      {
+        'step': '5. Assemble',
+        'description':
+            'Place a portion of sticky rice on a plate, arrange mango slices beside it. Drizzle with remaining coconut sauce.',
+      },
+      {
+        'step': '6. Garnish and serve',
+        'description':
+            'Sprinkle with toasted sesame seeds. Serve immediately while rice is still warm.',
+      },
+    ],
+    'reviews': [
+      {
+        'username': '@tropicalfoodie',
+        'review':
+            'Tastes just like what I had in Thailand! The mango and coconut flavors are perfect together.',
+      },
+      {
+        'username': '@dessertexplorer',
+        'review':
+            'A refreshing change from heavy desserts. Love the combination of textures and flavors.',
+      },
+      {
+        'username': '@healthysweets',
+        'review':
+            'Such a satisfying dessert without being too sweet. The fresh mango makes all the difference.',
+      },
+      {
+        'username': '@worldcuisineathome',
+        'review':
+            'Easy to make and so delicious. It\'s become a regular in our dessert rotation!',
+      },
+    ]
+  },
+  {
+    'title': 'Red Velvet Cheesecake Brownies',
+    'photo': 'assets/images/sweetfood10.jpg',
+    'calories': '380 Cal',
+    'time': '55 min',
+    'categories': ['Dessert'],
+    'description':
+        'A decadent fusion dessert combining the rich flavor of red velvet cake, the fudgy texture of brownies, and the creamy indulgence of cheesecake. These visually stunning treats are perfect for special occasions or when you need a luxurious chocolate fix.',
+    'ingredients': [
+      {
+        'name': 'All-purpose flour',
+        'size': '3/4 cup',
+      },
+      {
+        'name': 'Cocoa powder',
+        'size': '2 tbsp',
+      },
+      {
+        'name': 'Butter',
+        'size': '1/2 cup',
+      },
+      {
+        'name': 'Sugar',
+        'size': '1 cup',
+      },
+      {
+        'name': 'Eggs',
+        'size': '2',
+      },
+      {
+        'name': 'Red food coloring',
+        'size': '1 tbsp',
+      },
+      {
+        'name': 'Cream cheese',
+        'size': '226 g',
+      },
+    ],
+    'tutorial': [
+      {
+        'step': '1. Prepare brownie batter',
+        'description':
+            'Mix flour, cocoa, melted butter, sugar, eggs, and red food coloring until smooth.',
+      },
+      {
+        'step': '2. Make cheesecake mixture',
+        'description':
+            'Beat cream cheese, sugar, egg, and vanilla until creamy.',
+      },
+      {
+        'step': '3. Layer the batter',
+        'description':
+            'Pour 2/3 of the brownie batter into a lined baking pan. Top with cheesecake mixture.',
+      },
+      {
+        'step': '4. Create swirls',
+        'description':
+            'Drop spoonfuls of remaining brownie batter on top. Swirl with a knife for a marbled effect.',
+      },
+      {
+        'step': '5. Bake',
+        'description':
+            'Bake at 350°F (175°C) for 30-35 minutes until set but still slightly jiggly in the center.',
+      },
+      {
+        'step': '6. Cool and serve',
+        'description':
+            'Let cool completely, then refrigerate for at least 2 hours before cutting into squares.',
+      },
+    ],
+    'reviews': [
+      {
+        'username': '@chocolateaddict',
+        'review':
+            'These are heavenly! The perfect balance of chocolate and cheesecake flavors.',
+      },
+      {
+        'username': '@bakingqueen',
+        'review':
+            'Absolutely stunning and delicious. They were the star of my dessert table!',
+      },
+      {
+        'username': '@redvelvetlover',
+        'review':
+            'Best red velvet dessert I\'ve ever had. The cheesecake swirl takes it to another level.',
+      },
+      {
+        'username': '@dessertphotographer',
+        'review':
+            'Not only do these taste amazing, but they also look gorgeous. Perfect for Instagram!',
       },
     ]
   },
@@ -3288,11 +4616,11 @@ var drinksRecipeRawData = [
     'description':
         'A refreshing Cuban highball cocktail that\'s perfect for warm weather. This classic mojito combines white rum, fresh mint, lime, sugar, and soda water for a crisp and invigorating drink.',
     'ingredients': [
-      {'name': 'White rum', 'size': '2 oz'},
+      {'name': 'White rum', 'size': '56 g'},
       {'name': 'Fresh mint leaves', 'size': '8-10'},
-      {'name': 'Lime juice', 'size': '1 oz'},
-      {'name': 'Simple syrup', 'size': '0.75 oz'},
-      {'name': 'Soda water', 'size': '2 oz'}
+      {'name': 'Lime juice', 'size': '28 g'},
+      {'name': 'Simple syrup', 'size': '21 g'},
+      {'name': 'Soda water', 'size': '56 g'}
     ],
     'tutorial': [
       {
@@ -3405,10 +4733,10 @@ var drinksRecipeRawData = [
     'description':
         'A tropical twist on the classic margarita, this spicy mango version balances sweet fruit flavors with a kick of heat. Perfect for those who like their cocktails with a bit of a punch.',
     'ingredients': [
-      {'name': 'Tequila', 'size': '2 oz'},
-      {'name': 'Fresh mango puree', 'size': '1.5 oz'},
-      {'name': 'Lime juice', 'size': '1 oz'},
-      {'name': 'Agave nectar', 'size': '0.5 oz'},
+      {'name': 'Tequila', 'size': '56 g'},
+      {'name': 'Fresh mango puree', 'size': '42 g'},
+      {'name': 'Lime juice', 'size': '28 g'},
+      {'name': 'Agave nectar', 'size': '14 g'},
       {'name': 'Jalapeño slices', 'size': '2-3'},
       {'name': 'Tajín seasoning', 'size': 'for rim'}
     ],
@@ -3529,12 +4857,12 @@ var drinksRecipeRawData = [
     'description':
         'A light and refreshing cocktail that combines the crispness of cucumber with the bright flavors of mint and lime. This gin fizz variation is perfect for warm weather and garden parties.',
     'ingredients': [
-      {'name': 'Gin', 'size': '2 oz'},
-      {'name': 'Fresh cucumber juice', 'size': '1 oz'},
-      {'name': 'Lime juice', 'size': '0.75 oz'},
-      {'name': 'Simple syrup', 'size': '0.5 oz'},
+      {'name': 'Gin', 'size': '56 g'},
+      {'name': 'Fresh cucumber juice', 'size': '28 g'},
+      {'name': 'Lime juice', 'size': '21 g'},
+      {'name': 'Simple syrup', 'size': '14 g'},
       {'name': 'Fresh mint leaves', 'size': '6-8'},
-      {'name': 'Soda water', 'size': '2 oz'},
+      {'name': 'Soda water', 'size': '56 g'},
       {'name': 'Cucumber slice and mint sprig', 'size': 'for garnish'}
     ],
     'tutorial': [
@@ -3666,6 +4994,262 @@ var seafoodRecipeRawData = [
         'review':
             'I used whole wheat pasta and a bit less butter. Still delicious and a bit more nutritious!',
       },
+    ]
+  },
+  {
+    'title': 'Grilled Salmon with Dill Sauce',
+    'photo': 'assets/images/seafood2.jpg',
+    'calories': '420 Cal',
+    'time': '30 min',
+    'categories': ['Seafood', 'Grilled'],
+    'description':
+        'Succulent grilled salmon fillets paired with a creamy dill sauce. This healthy and flavorful dish is perfect for a summer barbecue or a quick weeknight dinner.',
+    'ingredients': [
+      {'name': 'Salmon fillets', 'size': '600 g'},
+      {'name': 'Greek yogurt', 'size': '200 g'},
+      {'name': 'Fresh dill, chopped', 'size': '15 g'},
+      {'name': 'Lemon juice', 'size': '30 ml'},
+      {'name': 'Olive oil', 'size': '30 ml'}
+    ],
+    'tutorial': [
+      {
+        'step': '1. Prepare grill',
+        'description': 'Preheat grill to medium-high heat.'
+      },
+      {
+        'step': '2. Season salmon',
+        'description':
+            'Brush salmon with olive oil and season with salt and pepper.'
+      },
+      {
+        'step': '3. Grill salmon',
+        'description':
+            'Grill salmon for 4-5 minutes per side, or until cooked through.'
+      },
+      {
+        'step': '4. Make sauce',
+        'description':
+            'Mix Greek yogurt, chopped dill, lemon juice, salt, and pepper.'
+      },
+      {
+        'step': '5. Serve',
+        'description':
+            'Serve grilled salmon with a dollop of dill sauce on top.'
+      }
+    ],
+    'reviews': [
+      {
+        'username': '@healthyeater',
+        'review':
+            'Delicious and nutritious! The dill sauce complements the salmon perfectly.'
+      },
+      {
+        'username': '@grillmaster',
+        'review':
+            'Easy to grill and the sauce adds a great flavor boost. A summer favorite!'
+      },
+      {
+        'username': '@quickcook',
+        'review':
+            'Love how fast this comes together. Great for busy weeknights.'
+      },
+      {
+        'username': '@flavorfanatic',
+        'review':
+            'The dill sauce is a game-changer. I could eat this every week!'
+      }
+    ]
+  },
+  {
+    'title': 'Spicy Tuna Poke Bowl',
+    'photo': 'assets/images/seafood3.jpg',
+    'calories': '380 Cal',
+    'time': '20 min',
+    'categories': ['Seafood', 'Asian', 'Raw'],
+    'description':
+        'A refreshing and colorful Hawaiian-inspired dish featuring cubes of raw tuna marinated in a spicy sauce, served over rice with fresh vegetables.',
+    'ingredients': [
+      {'name': 'Sushi-grade tuna', 'size': '400 g'},
+      {'name': 'Sushi rice', 'size': '300 g'},
+      {'name': 'Soy sauce', 'size': '45 ml'},
+      {'name': 'Sriracha sauce', 'size': '15 ml'},
+      {'name': 'Sesame oil', 'size': '10 ml'},
+      {'name': 'Cucumber, diced', 'size': '100 g'},
+      {'name': 'Avocado, sliced', 'size': '100 g'}
+    ],
+    'tutorial': [
+      {
+        'step': '1. Prepare rice',
+        'description':
+            'Cook sushi rice according to package instructions and let it cool.'
+      },
+      {'step': '2. Cut tuna', 'description': 'Cut tuna into 1 cm cubes.'},
+      {
+        'step': '3. Make marinade',
+        'description': 'Mix soy sauce, sriracha, and sesame oil in a bowl.'
+      },
+      {
+        'step': '4. Marinate tuna',
+        'description': 'Add tuna to the marinade and gently toss to coat.'
+      },
+      {
+        'step': '5. Assemble bowl',
+        'description':
+            'Place rice in bowls, top with marinated tuna, cucumber, and avocado.'
+      }
+    ],
+    'reviews': [
+      {
+        'username': '@sushilover',
+        'review':
+            'Restaurant-quality poke at home! Fresh, delicious, and so easy to make.'
+      },
+      {
+        'username': '@healthytrends',
+        'review': 'A perfect light meal. I add edamame for extra protein.'
+      },
+      {
+        'username': '@spicefanatic',
+        'review':
+            'Love the kick from the sriracha. Adjust to your spice preference!'
+      },
+      {
+        'username': '@quicklunch',
+        'review':
+            'My go-to for a fast, fresh lunch. Feels like a treat every time.'
+      }
+    ]
+  },
+  {
+    'title': 'Creamy Seafood Chowder',
+    'photo': 'assets/images/seafood4.jpg',
+    'calories': '480 Cal',
+    'time': '45 min',
+    'categories': ['Seafood', 'Soup', 'Comfort Food'],
+    'description':
+        'A rich and hearty chowder loaded with a variety of seafood, potatoes, and vegetables in a creamy broth. Perfect for cold days or when you\'re craving a comforting bowl of soup.',
+    'ingredients': [
+      {'name': 'Mixed seafood (shrimp, cod, clams)', 'size': '500 g'},
+      {'name': 'Potatoes, diced', 'size': '300 g'},
+      {'name': 'Onion, chopped', 'size': '100 g'},
+      {'name': 'Celery, chopped', 'size': '100 g'},
+      {'name': 'Heavy cream', 'size': '250 ml'},
+      {'name': 'Fish stock', 'size': '500 ml'},
+      {'name': 'Butter', 'size': '50 g'},
+      {'name': 'All-purpose flour', 'size': '30 g'}
+    ],
+    'tutorial': [
+      {
+        'step': '1. Sauté vegetables',
+        'description':
+            'In a large pot, sauté onion and celery in butter until soft.'
+      },
+      {
+        'step': '2. Make roux',
+        'description':
+            'Add flour to the pot and cook for 1 minute, stirring constantly.'
+      },
+      {
+        'step': '3. Add liquids',
+        'description':
+            'Gradually add fish stock and cream, stirring to prevent lumps.'
+      },
+      {
+        'step': '4. Cook potatoes',
+        'description':
+            'Add diced potatoes and simmer until tender, about 15 minutes.'
+      },
+      {
+        'step': '5. Add seafood',
+        'description':
+            'Add mixed seafood and cook until just done, about 5 minutes. Season to taste.'
+      }
+    ],
+    'reviews': [
+      {
+        'username': '@soupmaster',
+        'review':
+            'So creamy and satisfying! The mix of seafood makes every bite interesting.'
+      },
+      {
+        'username': '@comfortfoodie',
+        'review':
+            'Perfect for a chilly evening. I add some corn for extra sweetness.'
+      },
+      {
+        'username': '@seafoodfiend',
+        'review':
+            'Restaurant quality chowder at home. Will definitely make again!'
+      },
+      {
+        'username': '@easycooking',
+        'review':
+            'Simpler than I expected and so delicious. A new family favorite.'
+      }
+    ]
+  },
+  {
+    'title': 'Mediterranean Grilled Octopus',
+    'photo': 'assets/images/seafood5.jpg',
+    'calories': '220 Cal',
+    'time': '1 hr 30 min',
+    'categories': ['Seafood', 'Mediterranean', 'Grilled'],
+    'description':
+        'Tender grilled octopus seasoned with Mediterranean herbs and lemon. This impressive dish is surprisingly simple to prepare and perfect for seafood enthusiasts looking to try something new.',
+    'ingredients': [
+      {'name': 'Octopus, cleaned', 'size': '1 kg'},
+      {'name': 'Olive oil', 'size': '60 ml'},
+      {'name': 'Lemon juice', 'size': '45 ml'},
+      {'name': 'Garlic cloves, minced', 'size': '15 g'},
+      {'name': 'Fresh oregano, chopped', 'size': '10 g'},
+      {'name': 'Red wine vinegar', 'size': '30 ml'}
+    ],
+    'tutorial': [
+      {
+        'step': '1. Prepare octopus',
+        'description':
+            'Simmer octopus in salted water for 45-60 minutes until tender. Let cool.'
+      },
+      {
+        'step': '2. Make marinade',
+        'description':
+            'Mix olive oil, lemon juice, garlic, oregano, and vinegar in a bowl.'
+      },
+      {
+        'step': '3. Marinate',
+        'description':
+            'Cut cooled octopus into pieces and marinate for 30 minutes.'
+      },
+      {
+        'step': '4. Grill',
+        'description':
+            'Grill octopus over high heat for 3-4 minutes per side until charred.'
+      },
+      {
+        'step': '5. Serve',
+        'description':
+            'Drizzle with extra marinade and serve with lemon wedges.'
+      }
+    ],
+    'reviews': [
+      {
+        'username': '@adventurouseater',
+        'review': 'Wow! Never thought I could make octopus this good at home.'
+      },
+      {
+        'username': '@greekcuisine',
+        'review':
+            'Just like in Greece! The marinade is key for authentic flavor.'
+      },
+      {
+        'username': '@grillking',
+        'review': 'Perfectly tender with a nice char. A showstopper at my BBQ!'
+      },
+      {
+        'username': '@healthyprotein',
+        'review':
+            'Great lean protein option. I serve it with a Greek salad for a complete meal.'
+      }
     ]
   },
 ];
