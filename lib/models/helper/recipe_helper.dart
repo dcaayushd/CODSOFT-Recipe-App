@@ -135,6 +135,61 @@ class RecipeHelper {
                 (data['categories'] as List<dynamic>?)?.cast<String>() ?? [],
           ))
       .toList();
+
+  static List<Recipe> drinksRecipe = (drinksRecipeRawData)
+      .map((data) => Recipe(
+            title: data['title'] as String? ?? '',
+            photo: data['photo'] as String? ?? '',
+            calories: data['calories'] as String? ?? '',
+            time: data['time'] as String? ?? '',
+            description: data['description'] as String? ?? '',
+            reviews: Review.toList(data['reviews'] as List<dynamic>? ?? []),
+            tutorial:
+                TutorialStep.toList(data['tutorial'] as List<dynamic>? ?? []),
+            ingredients:
+                Ingredient.toList(data['ingredients'] as List<dynamic>? ?? []),
+            createdAt: DateTime.parse(data['createdAt'] as String? ??
+                DateTime.now().toIso8601String()),
+            categories:
+                (data['categories'] as List<dynamic>?)?.cast<String>() ?? [],
+          ))
+      .toList();
+  static List<Recipe> spicyRecipe = (spicyRecipeRawData)
+      .map((data) => Recipe(
+            title: data['title'] as String? ?? '',
+            photo: data['photo'] as String? ?? '',
+            calories: data['calories'] as String? ?? '',
+            time: data['time'] as String? ?? '',
+            description: data['description'] as String? ?? '',
+            reviews: Review.toList(data['reviews'] as List<dynamic>? ?? []),
+            tutorial:
+                TutorialStep.toList(data['tutorial'] as List<dynamic>? ?? []),
+            ingredients:
+                Ingredient.toList(data['ingredients'] as List<dynamic>? ?? []),
+            createdAt: DateTime.parse(data['createdAt'] as String? ??
+                DateTime.now().toIso8601String()),
+            categories:
+                (data['categories'] as List<dynamic>?)?.cast<String>() ?? [],
+          ))
+      .toList();
+  static List<Recipe> seafoodRecipe = (seafoodRecipeRawData)
+      .map((data) => Recipe(
+            title: data['title'] as String? ?? '',
+            photo: data['photo'] as String? ?? '',
+            calories: data['calories'] as String? ?? '',
+            time: data['time'] as String? ?? '',
+            description: data['description'] as String? ?? '',
+            reviews: Review.toList(data['reviews'] as List<dynamic>? ?? []),
+            tutorial:
+                TutorialStep.toList(data['tutorial'] as List<dynamic>? ?? []),
+            ingredients:
+                Ingredient.toList(data['ingredients'] as List<dynamic>? ?? []),
+            createdAt: DateTime.parse(data['createdAt'] as String? ??
+                DateTime.now().toIso8601String()),
+            categories:
+                (data['categories'] as List<dynamic>?)?.cast<String>() ?? [],
+          ))
+      .toList();
 }
 
 var popularRecipeRawData = [
@@ -1851,19 +1906,6 @@ var sweetFoodRecommendationRecipeRawData = [
   },
 ];
 
-// var popularRecipeKeyword = [
-//   'Noodles',
-//   'Ice Cream',
-//   'Meat',
-//   'Spaghetti',
-//   'Pizza',
-//   'Nugget',
-//   'Kwetiaw',
-//   'Nasi Goreng',
-//   'Rujak',
-//   'Bakmi'
-// ];
-
 var recipeSearchResultRawData = [
   {
     'title': 'Healthy Vege Green Egg.',
@@ -2108,7 +2150,7 @@ var recipeSearchResultRawData = [
     'photo': 'assets/images/list5.jpg',
     'calories': '1100 Cal',
     'time': '30 min',
-    'categories':['Meat', 'Dinner','Eggs'],
+    'categories': ['Meat', 'Dinner', 'Eggs'],
     'description':
         'A protein-packed dish featuring lean beef and perfectly cooked eggs. This balanced meal combines savory flavors with nutritious ingredients for a satisfying and healthy option any time of day.',
     'ingredients': [
@@ -2586,7 +2628,7 @@ var bookmarkedRecipeRawData = [
     'photo': 'assets/images/list5.jpg',
     'calories': '1100 Cal',
     'time': '30 min',
-    'categories':['Meat', 'Dinner'],
+    'categories': ['Meat', 'Dinner'],
     'description':
         'A protein-packed dish featuring lean beef and perfectly cooked eggs. This balanced meal combines savory flavors with nutritious ingredients for a satisfying and healthy option any time of day.',
     'ingredients': [
@@ -2817,6 +2859,812 @@ var bookmarkedRecipeRawData = [
         'username': '@healthnut',
         'review':
             'Nutritionally balanced and delicious. I added a sprinkle of chia seeds for extra omega-3s.',
+      },
+    ]
+  },
+];
+
+var spicyRecipeRawData = [
+  {
+    'title': 'Spicy Jalapeño Popper Dip',
+    'photo': 'assets/images/spicy1.jpg',
+    'calories': '350 Cal',
+    'time': '40 min',
+    'categories': ['Spicy', 'Appetizer'],
+    'description':
+        'A creamy, cheesy dip with a spicy kick from fresh jalapeños. This crowd-pleasing appetizer is perfect for parties or game day gatherings.',
+    'ingredients': [
+      {
+        'name': 'Cream cheese',
+        'size': '450 g',
+      },
+      {
+        'name': 'Jalapeños, diced',
+        'size': '4-5',
+      },
+      {
+        'name': 'Shredded cheddar cheese',
+        'size': '1 cup',
+      },
+      {
+        'name': 'Bacon, cooked and crumbled',
+        'size': '6 slices',
+      },
+      {
+        'name': 'Green onions, chopped',
+        'size': '1/4 cup',
+      }
+    ],
+    'tutorial': [
+      {
+        'step': '1. Preheat oven',
+        'description': 'Preheat your oven to 375°F (190°C).',
+      },
+      {
+        'step': '2. Mix ingredients',
+        'description':
+            'In a large bowl, mix cream cheese, diced jalapeños, cheddar cheese, and half of the bacon and green onions.',
+      },
+      {
+        'step': '3. Transfer to baking dish',
+        'description': 'Spread the mixture in a 9-inch baking dish.',
+      },
+      {
+        'step': '4. Bake',
+        'description': 'Bake for 20-25 minutes until hot and bubbly.',
+      },
+      {
+        'step': '5. Garnish and serve',
+        'description':
+            'Top with remaining bacon and green onions. Serve hot with tortilla chips or crackers.',
+      },
+    ],
+    'reviews': [
+      {
+        'username': '@spicylover',
+        'review':
+            'This dip is addictive! Just the right amount of heat and so creamy.',
+      },
+      {
+        'username': '@partyhostextraordinaire',
+        'review':
+            'Made this for a potluck and it was gone in minutes! Definitely a crowd-pleaser.',
+      },
+      {
+        'username': '@cheesefanatic',
+        'review':
+            'The combination of cream cheese and cheddar is perfection. I added extra jalapeños for more kick!',
+      },
+      {
+        'username': '@easycooking101',
+        'review':
+            'Simple to make but tastes like it took hours. Will be my go-to party dip from now on.',
+      },
+    ]
+  },
+  {
+    'title': 'Fiery Thai Red Curry',
+    'photo': 'assets/images/spicy2.jpg',
+    'calories': '450 Cal',
+    'time': '35 min',
+    'categories': ['Spicy', 'Thai', 'Main Course'],
+    'description':
+        'A bold and spicy Thai red curry packed with vegetables and your choice of protein. This dish brings the heat and flavor of authentic Thai cuisine to your home kitchen.',
+    'ingredients': [
+      {'name': 'Red curry paste', 'size': '3 tbsp'},
+      {'name': 'Coconut milk', 'size': '2 cans'},
+      {'name': 'Mixed vegetables', 'size': '2 cups'},
+      {'name': 'Protein (chicken, tofu, or shrimp)', 'size': '1 lb'},
+      {'name': 'Fish sauce', 'size': '2 tbsp'}
+    ],
+    'tutorial': [
+      {
+        'step': '1. Prepare ingredients',
+        'description': 'Cut vegetables and protein into bite-sized pieces.'
+      },
+      {
+        'step': '2. Cook curry paste',
+        'description':
+            'In a large pot, cook red curry paste in a little oil until fragrant.'
+      },
+      {
+        'step': '3. Add coconut milk',
+        'description': 'Stir in coconut milk and bring to a simmer.'
+      },
+      {
+        'step': '4. Cook protein and vegetables',
+        'description':
+            'Add your chosen protein and vegetables, simmer until cooked through.'
+      },
+      {
+        'step': '5. Season and serve',
+        'description':
+            'Stir in fish sauce, adjust seasonings, and serve hot with rice.'
+      },
+    ],
+    'reviews': [
+      {
+        'username': '@thaifoodfanatic',
+        'review':
+            'Tastes just like the curry I had in Thailand! So spicy and delicious.'
+      },
+      {
+        'username': '@spiceaddict',
+        'review':
+            'The heat level is perfect. I added some extra chili flakes for an extra kick.'
+      },
+      {
+        'username': '@quickandeasy',
+        'review':
+            'Surprisingly easy to make and packed with flavor. A new weeknight favorite!'
+      },
+      {
+        'username': '@veggielover',
+        'review':
+            'I made this with tofu and extra veggies. So good and adaptable!'
+      },
+    ]
+  },
+  {
+    'title': 'Spicy Buffalo Chicken Wings',
+    'photo': 'assets/images/spicy3.jpg',
+    'calories': '300 Cal',
+    'time': '45 min',
+    'categories': ['Spicy', 'Appetizer', 'American'],
+    'description':
+        'Crispy, tangy, and fiery hot buffalo wings that are perfect for game day or any casual gathering. These wings pack a serious flavor punch!',
+    'ingredients': [
+      {'name': 'Chicken wings', 'size': '2 lbs'},
+      {'name': 'Hot sauce', 'size': '1/2 cup'},
+      {'name': 'Butter', 'size': '1/4 cup'},
+      {'name': 'Garlic powder', 'size': '1 tsp'},
+      {'name': 'Blue cheese or ranch dressing', 'size': 'for serving'}
+    ],
+    'tutorial': [
+      {
+        'step': '1. Prepare oven',
+        'description':
+            'Preheat oven to 400°F (200°C) and line a baking sheet with parchment paper.'
+      },
+      {
+        'step': '2. Season wings',
+        'description': 'Toss wings with salt, pepper, and garlic powder.'
+      },
+      {
+        'step': '3. Bake wings',
+        'description':
+            'Arrange wings on the baking sheet and bake for 40-45 minutes, flipping halfway through.'
+      },
+      {
+        'step': '4. Prepare sauce',
+        'description': 'In a saucepan, melt butter and mix with hot sauce.'
+      },
+      {
+        'step': '5. Coat and serve',
+        'description':
+            'Toss baked wings in the buffalo sauce and serve with blue cheese or ranch dressing.'
+      },
+    ],
+    'reviews': [
+      {
+        'username': '@wingking',
+        'review':
+            'These wings are finger-licking good! The perfect level of heat and tang.'
+      },
+      {
+        'username': '@sportsfan',
+        'review':
+            'Made these for the big game and they were a touchdown with my friends!'
+      },
+      {
+        'username': '@spicequeen',
+        'review':
+            'Love how crispy these get in the oven. I added extra hot sauce for more heat.'
+      },
+      {
+        'username': '@easypeasy',
+        'review':
+            'So much easier than deep frying and just as delicious. Will make again!'
+      },
+    ]
+  },
+  {
+    'title': 'Spicy Kimchi Fried Rice',
+    'photo': 'assets/images/spicy4.jpg',
+    'calories': '400 Cal',
+    'time': '20 min',
+    'categories': ['Spicy', 'Korean', 'Main Course'],
+    'description':
+        'A quick and satisfying Korean-inspired dish that transforms leftover rice into a spicy, savory meal. The kimchi adds a delicious tang and heat to this comforting fried rice.',
+    'ingredients': [
+      {'name': 'Cooked rice', 'size': '3 cups'},
+      {'name': 'Kimchi, chopped', 'size': '1 cup'},
+      {'name': 'Spam or bacon, diced', 'size': '1/2 cup'},
+      {'name': 'Eggs', 'size': '2'},
+      {'name': 'Green onions, chopped', 'size': '1/4 cup'}
+    ],
+    'tutorial': [
+      {
+        'step': '1. Prepare ingredients',
+        'description': 'Chop kimchi, dice meat, and beat eggs.'
+      },
+      {
+        'step': '2. Cook meat',
+        'description':
+            'In a large skillet, cook diced spam or bacon until crispy.'
+      },
+      {
+        'step': '3. Add kimchi',
+        'description':
+            'Add chopped kimchi to the skillet and stir-fry for a few minutes.'
+      },
+      {
+        'step': '4. Fry rice',
+        'description':
+            'Add rice to the skillet and stir-fry until heated through and slightly crispy.'
+      },
+      {
+        'step': '5. Add egg and serve',
+        'description':
+            'Push rice to one side, scramble eggs in the empty space. Mix everything together, top with green onions, and serve.'
+      },
+    ],
+    'reviews': [
+      {
+        'username': '@koreanfoodie',
+        'review':
+            'This tastes just like the kimchi fried rice I had in Seoul. So good!'
+      },
+      {
+        'username': '@leftoversqueen',
+        'review':
+            'Great way to use up leftover rice. I added some extra gochujang for more spice.'
+      },
+      {
+        'username': '@quickmeals',
+        'review':
+            'Fast, easy, and delicious. Perfect for a weeknight dinner when I\'m short on time.'
+      },
+      {
+        'username': '@spicyobsessed',
+        'review':
+            'The kimchi adds such a great flavor and heat. I could eat this every day!'
+      },
+    ]
+  },
+  {
+    'title': 'Fiery Habanero Salsa',
+    'photo': 'assets/images/spicy5.jpg',
+    'calories': '30 Cal',
+    'time': '15 min',
+    'categories': ['Spicy', 'Mexican', 'Condiment'],
+    'description':
+        'An extremely hot and flavorful salsa featuring fiery habanero peppers. This salsa is not for the faint of heart, but perfect for true heat seekers!',
+    'ingredients': [
+      {'name': 'Habanero peppers', 'size': '3-4'},
+      {'name': 'Tomatoes, diced', 'size': '2 cups'},
+      {'name': 'Onion, chopped', 'size': '1/2 cup'},
+      {'name': 'Cilantro, chopped', 'size': '1/4 cup'},
+      {'name': 'Lime juice', 'size': '2 tbsp'}
+    ],
+    'tutorial': [
+      {
+        'step': '1. Prepare peppers',
+        'description':
+            'Carefully remove seeds from habaneros (wear gloves!) and finely chop.'
+      },
+      {
+        'step': '2. Combine ingredients',
+        'description':
+            'In a bowl, mix chopped habaneros, tomatoes, onion, and cilantro.'
+      },
+      {
+        'step': '3. Add lime juice',
+        'description': 'Stir in lime juice and season with salt to taste.'
+      },
+      {
+        'step': '4. Let flavors meld',
+        'description':
+            'Allow salsa to sit for at least 30 minutes for flavors to combine.'
+      },
+      {
+        'step': '5. Serve or store',
+        'description':
+            'Serve with chips or use as a fiery condiment. Can be stored in the refrigerator for up to a week.'
+      },
+    ],
+    'reviews': [
+      {
+        'username': '@chilihead',
+        'review':
+            'This salsa brings the heat! Absolutely love the flavor of habaneros.'
+      },
+      {
+        'username': '@mexicancuisineexpert',
+        'review':
+            'Authentic taste and serious spice. Perfect on tacos or with grilled meats.'
+      },
+      {
+        'username': '@bravesoul',
+        'review':
+            'Whew! This is hot but so addictive. I can\'t stop eating it despite the burn.'
+      },
+      {
+        'username': '@salsaqueen',
+        'review':
+            'Great recipe! I roasted the habaneros first for a slightly smoky flavor.'
+      },
+    ]
+  },
+];
+
+var drinksRecipeRawData = [
+  {
+    'title': 'Refreshing Cucumber Mint Cooler',
+    'photo': 'assets/images/drink1.jpg',
+    'calories': '120 Cal',
+    'time': '10 min',
+    'categories': ['Drinks', 'Summer'],
+    'description':
+        'A cool, refreshing drink perfect for hot summer days. This cucumber mint cooler is hydrating, low in calories, and bursting with fresh flavors.',
+    'ingredients': [
+      {
+        'name': 'Cucumber, sliced',
+        'size': '1',
+      },
+      {
+        'name': 'Fresh mint leaves',
+        'size': '1/4 cup',
+      },
+      {
+        'name': 'Lime juice',
+        'size': '2 tbsp',
+      },
+      {
+        'name': 'Honey',
+        'size': '2 tbsp',
+      },
+      {
+        'name': 'Sparkling water',
+        'size': '4 cups',
+      }
+    ],
+    'tutorial': [
+      {
+        'step': '1. Muddle cucumber and mint',
+        'description':
+            'In a pitcher, gently muddle cucumber slices and mint leaves to release their flavors.',
+      },
+      {
+        'step': '2. Add sweetener',
+        'description':
+            'Stir in lime juice and honey until the honey is dissolved.',
+      },
+      {
+        'step': '3. Add sparkling water',
+        'description':
+            'Pour in the sparkling water and stir gently to combine.',
+      },
+      {
+        'step': '4. Chill',
+        'description':
+            'Refrigerate for at least 30 minutes to allow flavors to meld.',
+      },
+      {
+        'step': '5. Serve',
+        'description':
+            'Serve over ice, garnished with additional cucumber slices and mint leaves if desired.',
+      },
+    ],
+    'reviews': [
+      {
+        'username': '@summersipper',
+        'review':
+            'So refreshing! This is my new favorite non-alcoholic drink for summer parties.',
+      },
+      {
+        'username': '@healthylifestyle',
+        'review':
+            'Love how light and hydrating this is. Perfect for post-workout refreshment.',
+      },
+      {
+        'username': '@mintaddict',
+        'review':
+            'The mint really makes this drink special. I added a splash of gin for an adult version - delicious!',
+      },
+      {
+        'username': '@easypeasy',
+        'review':
+            'Quick to make and so tasty. My kids love helping to muddle the cucumbers and mint.',
+      },
+    ]
+  },
+  {
+    'title': 'Classic Mojito',
+    'photo': 'assets/images/drink2.jpg',
+    'calories': '170 Cal',
+    'time': '5 min',
+    'categories': ['Drinks', 'Cocktail'],
+    'description':
+        'A refreshing Cuban highball cocktail that\'s perfect for warm weather. This classic mojito combines white rum, fresh mint, lime, sugar, and soda water for a crisp and invigorating drink.',
+    'ingredients': [
+      {'name': 'White rum', 'size': '2 oz'},
+      {'name': 'Fresh mint leaves', 'size': '8-10'},
+      {'name': 'Lime juice', 'size': '1 oz'},
+      {'name': 'Simple syrup', 'size': '0.75 oz'},
+      {'name': 'Soda water', 'size': '2 oz'}
+    ],
+    'tutorial': [
+      {
+        'step': '1. Muddle mint',
+        'description':
+            'In a glass, gently muddle mint leaves with simple syrup.'
+      },
+      {
+        'step': '2. Add rum and lime',
+        'description': 'Pour in rum and fresh lime juice.'
+      },
+      {'step': '3. Add ice', 'description': 'Fill the glass with ice cubes.'},
+      {
+        'step': '4. Top with soda',
+        'description': 'Top off with soda water and stir gently.'
+      },
+      {
+        'step': '5. Garnish and serve',
+        'description':
+            'Garnish with a sprig of mint and a lime wheel. Serve immediately.'
+      },
+    ],
+    'reviews': [
+      {
+        'username': '@cocktailconnoisseur',
+        'review':
+            'Perfect balance of flavors. This recipe nails the classic mojito taste.'
+      },
+      {
+        'username': '@summersipper',
+        'review': 'So refreshing! My go-to drink for hot days.'
+      },
+      {
+        'username': '@mixologymaster',
+        'review': 'Authentic and well-proportioned. A true Cuban classic.'
+      },
+      {
+        'username': '@casualdrinker',
+        'review': 'Easy to make and always a crowd-pleaser at parties.'
+      }
+    ]
+  },
+  {
+    'title': 'Strawberry Basil Lemonade',
+    'photo': 'assets/images/drink3.jpg',
+    'calories': '120 Cal',
+    'time': '10 min',
+    'categories': ['Drinks', 'Non-Alcoholic', 'Summer'],
+    'description':
+        'A refreshing twist on classic lemonade, this strawberry basil version is perfect for summer gatherings. The combination of sweet strawberries and aromatic basil creates a unique and delightful flavor profile.',
+    'ingredients': [
+      {'name': 'Fresh strawberries', 'size': '1 cup'},
+      {'name': 'Fresh basil leaves', 'size': '10-12'},
+      {'name': 'Lemon juice', 'size': '1 cup'},
+      {'name': 'Simple syrup', 'size': '3/4 cup'},
+      {'name': 'Water', 'size': '4 cups'},
+      {'name': 'Ice cubes', 'size': 'as needed'}
+    ],
+    'tutorial': [
+      {
+        'step': '1. Blend strawberries',
+        'description': 'Puree strawberries in a blender until smooth.'
+      },
+      {
+        'step': '2. Muddle basil',
+        'description':
+            'In a pitcher, gently muddle basil leaves to release their flavor.'
+      },
+      {
+        'step': '3. Combine ingredients',
+        'description':
+            'Add strawberry puree, lemon juice, simple syrup, and water to the pitcher.'
+      },
+      {
+        'step': '4. Stir and chill',
+        'description':
+            'Stir well and refrigerate for at least 1 hour to let flavors meld.'
+      },
+      {
+        'step': '5. Serve',
+        'description':
+            'Pour over ice, garnish with fresh strawberries and basil leaves, and serve.'
+      }
+    ],
+    'reviews': [
+      {
+        'username': '@freshdrinkfan',
+        'review': 'The basil adds such a lovely twist to this lemonade!'
+      },
+      {
+        'username': '@summerpartyhost',
+        'review': 'Always a hit at my barbecues. Refreshing and not too sweet.'
+      },
+      {
+        'username': '@healthysipper',
+        'review': 'Love that it\'s naturally sweetened with fruit. So good!'
+      },
+      {
+        'username': '@mocktailmaven',
+        'review': 'A sophisticated non-alcoholic option. Delicious!'
+      }
+    ],
+  },
+  {
+    'title': 'Spicy Mango Margarita',
+    'photo': 'assets/images/drink4.jpg',
+    'calories': '210 Cal',
+    'time': '7 min',
+    'categories': ['Drinks', 'Cocktail', 'Spicy'],
+    'description':
+        'A tropical twist on the classic margarita, this spicy mango version balances sweet fruit flavors with a kick of heat. Perfect for those who like their cocktails with a bit of a punch.',
+    'ingredients': [
+      {'name': 'Tequila', 'size': '2 oz'},
+      {'name': 'Fresh mango puree', 'size': '1.5 oz'},
+      {'name': 'Lime juice', 'size': '1 oz'},
+      {'name': 'Agave nectar', 'size': '0.5 oz'},
+      {'name': 'Jalapeño slices', 'size': '2-3'},
+      {'name': 'Tajín seasoning', 'size': 'for rim'}
+    ],
+    'tutorial': [
+      {
+        'step': '1. Prepare glass',
+        'description': 'Rim a glass with Tajín seasoning and set aside.'
+      },
+      {
+        'step': '2. Muddle jalapeño',
+        'description': 'In a shaker, muddle jalapeño slices with agave nectar.'
+      },
+      {
+        'step': '3. Add ingredients',
+        'description':
+            'Add tequila, mango puree, and lime juice to the shaker with ice.'
+      },
+      {
+        'step': '4. Shake and strain',
+        'description':
+            'Shake vigorously and strain into the prepared glass over fresh ice.'
+      },
+      {
+        'step': '5. Garnish',
+        'description':
+            'Garnish with a mango slice and a jalapeño round. Serve immediately.'
+      }
+    ],
+    'reviews': [
+      {
+        'username': '@spicycocktaillover',
+        'review': 'The perfect balance of sweet and heat. Absolutely addictive!'
+      },
+      {
+        'username': '@tequilaenthusiast',
+        'review':
+            'A unique take on the margarita. The mango really shines through.'
+      },
+      {
+        'username': '@tropicalvibes',
+        'review': 'Feels like a vacation in a glass. Love the spicy kick!'
+      },
+      {
+        'username': '@mixitupbarkeep',
+        'review':
+            'Great recipe, always impresses my guests with its complex flavors.'
+      }
+    ]
+  },
+  {
+    'title': 'Lavender Earl Grey Iced Tea',
+    'photo': 'assets/images/drink5.jpg',
+    'calories': '80 Cal',
+    'time': '15 min',
+    'categories': ['Drinks', 'Non-Alcoholic', 'Tea'],
+    'description':
+        'A sophisticated and fragrant iced tea that combines the bold flavors of Earl Grey with the soothing notes of lavender. This refreshing drink is perfect for afternoon sipping or elegant gatherings.',
+    'ingredients': [
+      {'name': 'Earl Grey tea bags', 'size': '4'},
+      {'name': 'Dried lavender buds', 'size': '1 tbsp'},
+      {'name': 'Hot water', 'size': '4 cups'},
+      {'name': 'Honey', 'size': '2 tbsp'},
+      {'name': 'Lemon juice', 'size': '2 tbsp'},
+      {'name': 'Ice cubes', 'size': 'as needed'}
+    ],
+    'tutorial': [
+      {
+        'step': '1. Steep tea',
+        'description':
+            'In a heat-proof pitcher, steep Earl Grey tea bags and lavender buds in hot water for 5 minutes.'
+      },
+      {
+        'step': '2. Remove tea bags',
+        'description': 'Remove tea bags, but leave lavender buds in the tea.'
+      },
+      {
+        'step': '3. Add sweetener',
+        'description': 'Stir in honey and lemon juice until fully dissolved.'
+      },
+      {
+        'step': '4. Chill',
+        'description': 'Refrigerate the tea until cold, about 2 hours.'
+      },
+      {
+        'step': '5. Serve',
+        'description':
+            'Strain out lavender buds, pour over ice, and garnish with a lemon slice and a sprig of fresh lavender.'
+      }
+    ],
+    'reviews': [
+      {
+        'username': '@teaconnoisseur',
+        'review':
+            'The lavender adds such a lovely floral note to the Earl Grey. Delightful!'
+      },
+      {
+        'username': '@afternoonteafan',
+        'review':
+            'A sophisticated iced tea that\'s perfect for warm days. Love it!'
+      },
+      {
+        'username': '@aromatherapylover',
+        'review': 'The scent alone is so calming. A new favorite for sure.'
+      },
+      {
+        'username': '@fancydrinkmaker',
+        'review':
+            'Impressed my book club with this elegant iced tea. It\'s a winner!'
+      }
+    ]
+  },
+  {
+    'title': 'Cucumber Mint Gin Fizz',
+    'photo': 'assets/images/drink6.jpg',
+    'calories': '160 Cal',
+    'time': '8 min',
+    'categories': ['Drinks', 'Cocktail', 'Refreshing'],
+    'description':
+        'A light and refreshing cocktail that combines the crispness of cucumber with the bright flavors of mint and lime. This gin fizz variation is perfect for warm weather and garden parties.',
+    'ingredients': [
+      {'name': 'Gin', 'size': '2 oz'},
+      {'name': 'Fresh cucumber juice', 'size': '1 oz'},
+      {'name': 'Lime juice', 'size': '0.75 oz'},
+      {'name': 'Simple syrup', 'size': '0.5 oz'},
+      {'name': 'Fresh mint leaves', 'size': '6-8'},
+      {'name': 'Soda water', 'size': '2 oz'},
+      {'name': 'Cucumber slice and mint sprig', 'size': 'for garnish'}
+    ],
+    'tutorial': [
+      {
+        'step': '1. Muddle mint',
+        'description':
+            'In a shaker, gently muddle mint leaves with simple syrup.'
+      },
+      {
+        'step': '2. Add ingredients',
+        'description':
+            'Add gin, cucumber juice, and lime juice to the shaker with ice.'
+      },
+      {
+        'step': '3. Shake',
+        'description': 'Shake vigorously for about 10 seconds.'
+      },
+      {
+        'step': '4. Strain and top',
+        'description':
+            'Double strain into a tall glass filled with ice and top with soda water.'
+      },
+      {
+        'step': '5. Garnish and serve',
+        'description':
+            'Garnish with a cucumber slice and a sprig of mint. Serve immediately.'
+      }
+    ],
+    'reviews': [
+      {
+        'username': '@gardentoglass',
+        'review':
+            'So refreshing! The cucumber and mint make it taste like summer.'
+      },
+      {
+        'username': '@ginlover',
+        'review':
+            'A delightful twist on a gin fizz. The cucumber adds a lovely crispness.'
+      },
+      {
+        'username': '@cocktailhour',
+        'review': 'Elegant and easy to drink. Perfect for outdoor parties!'
+      },
+      {
+        'username': '@freshingredientfan',
+        'review':
+            'Love how light and refreshing this is. A new favorite for sure.'
+      }
+    ],
+  },
+];
+
+var seafoodRecipeRawData = [
+  {
+    'title': 'Lemon Garlic Butter Shrimp Pasta',
+    'photo': 'assets/images/seafood1.jpg',
+    'calories': '650 Cal',
+    'time': '25 min',
+    'categories': ['Seafood', 'Pasta'],
+    'description':
+        'A delightful shrimp pasta dish with a light, flavorful lemon garlic butter sauce. Quick to prepare, this meal is perfect for busy weeknights or elegant enough for entertaining.',
+    'ingredients': [
+      {
+        'name': 'Large shrimp, peeled and deveined',
+        'size': '1 lb',
+      },
+      {
+        'name': 'Spaghetti or linguine',
+        'size': '340 g',
+      },
+      {
+        'name': 'Butter',
+        'size': '1/4 cup',
+      },
+      {
+        'name': 'Garlic, minced',
+        'size': '4 cloves',
+      },
+      {
+        'name': 'Lemon juice',
+        'size': '2 tbsp',
+      }
+    ],
+    'tutorial': [
+      {
+        'step': '1. Cook pasta',
+        'description':
+            'Cook the pasta in salted water according to package instructions. Reserve 1/2 cup of pasta water before draining.',
+      },
+      {
+        'step': '2. Prepare sauce',
+        'description':
+            'In a large skillet, melt butter over medium heat. Add minced garlic and cook until fragrant.',
+      },
+      {
+        'step': '3. Cook shrimp',
+        'description':
+            'Add shrimp to the skillet and cook until pink and opaque, about 2-3 minutes per side.',
+      },
+      {
+        'step': '4. Combine',
+        'description':
+            'Add cooked pasta to the skillet with shrimp. Toss with lemon juice and pasta water as needed to create a light sauce.',
+      },
+      {
+        'step': '5. Serve',
+        'description':
+            'Serve hot, garnished with parsley and lemon wedges if desired.',
+      },
+    ],
+    'reviews': [
+      {
+        'username': '@pastaenthusiast',
+        'review':
+            'Simple yet so flavorful! The lemon garlic butter sauce is perfect with the shrimp.',
+      },
+      {
+        'username': '@quickmeals',
+        'review':
+            'Impressed by how fast this came together. Restaurant quality in less than 30 minutes!',
+      },
+      {
+        'username': '@seafoodlover',
+        'review':
+            'The shrimp were perfectly cooked and the sauce was light but satisfying. Will make again!',
+      },
+      {
+        'username': '@healthyswaps',
+        'review':
+            'I used whole wheat pasta and a bit less butter. Still delicious and a bit more nutritious!',
       },
     ]
   },

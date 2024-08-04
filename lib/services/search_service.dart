@@ -34,6 +34,9 @@ class SearchService {
     addUniqueRecipes(RecipeHelper.popularRecipes);
     addUniqueRecipes(RecipeHelper.searchResultRecipe);
     addUniqueRecipes(RecipeHelper.bookmarkedRecipe);
+    addUniqueRecipes(RecipeHelper.drinksRecipe);
+    addUniqueRecipes(RecipeHelper.seafoodRecipe);
+    addUniqueRecipes(RecipeHelper.spicyRecipe);
 
     return allUniqueRecipes;
   }

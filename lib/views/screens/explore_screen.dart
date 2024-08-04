@@ -91,9 +91,9 @@ class ExploreScreen extends StatelessWidget {
                   onTap: () => _navigateToSearchScreen(context, 'Healthy'),
                 ),
                 CategoryCard(
-                  title: 'Drink',
+                  title: 'Drinks',
                   image: const AssetImage('assets/images/drink.jpg'),
-                  onTap: () => _navigateToSearchScreen(context, 'Drink'),
+                  onTap: () => _navigateToSearchScreen(context, 'Drinks'),
                 ),
                 CategoryCard(
                   title: 'Seafood',
