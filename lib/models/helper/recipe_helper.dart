@@ -2378,6 +2378,647 @@ var newlyPostedRecipeRawData = [
       },
     ]
   },
+  {
+    'title': 'Classic Margherita Pizza',
+    'photo': 'assets/images/pizza1.jpg',
+    'calories': '900 Cal',
+    'time': '25 min',
+    'categories': ['Italian', 'Vegetarian', 'Pizza'],
+    'description':
+        'A traditional Neapolitan pizza featuring a thin crust topped with fresh tomatoes, mozzarella cheese, basil, and extra virgin olive oil. This simple yet delicious pizza showcases the flavors of Italy.',
+    'ingredients': [
+      {
+        'name': 'Pizza dough',
+        'size': '1 ball',
+      },
+      {
+        'name': 'San Marzano tomatoes',
+        'size': '200 g, crushed',
+      },
+      {
+        'name': 'Fresh mozzarella',
+        'size': '125 g, sliced',
+      },
+      {
+        'name': 'Fresh basil leaves',
+        'size': '10-12',
+      },
+      {
+        'name': 'Extra virgin olive oil',
+        'size': '2 tbsp',
+      }
+    ],
+    'tutorial': [
+      {
+        'step': '1. Prepare the oven',
+        'description':
+            'Preheat your oven to the highest temperature, typically 450-500°F (230-260°C).',
+      },
+      {
+        'step': '2. Shape the dough',
+        'description':
+            'Stretch or roll out the pizza dough into a 12-inch circle on a floured surface.',
+      },
+      {
+        'step': '3. Add toppings',
+        'description':
+            'Spread crushed tomatoes over the dough, leaving a border for the crust. Add sliced mozzarella.',
+      },
+      {
+        'step': '4. Bake',
+        'description':
+            'Bake the pizza for 10-12 minutes, or until the crust is golden and the cheese is bubbly.',
+      },
+      {
+        'step': '5. Finish and serve',
+        'description':
+            'Remove from oven, add fresh basil leaves, drizzle with olive oil, and serve hot.',
+      },
+    ],
+    'reviews': [
+      {
+        'username': '@pizzalover',
+        'review':
+            'Simple perfection! The fresh ingredients really shine in this classic pizza.',
+      },
+      {
+        'username': '@italianfoodie',
+        'review':
+            'Tastes just like the pizzas I had in Naples. The San Marzano tomatoes make a big difference.',
+      },
+      {
+        'username': '@homechef',
+        'review':
+            'Easy to make and absolutely delicious. My family\'s new favorite pizza!',
+      },
+      {
+        'username': '@vegetarianeats',
+        'review':
+            'A great vegetarian option that doesn\'t skimp on flavor. I added some cherry tomatoes for extra freshness.',
+      },
+    ]
+  },
+  {
+    'title': 'BBQ Chicken Pizza',
+    'photo': 'assets/images/pizza2.jpg',
+    'calories': '1100 Cal',
+    'time': '35 min',
+    'categories': ['American', 'Meat', 'Pizza'],
+    'description':
+        'A tangy and savory pizza topped with BBQ sauce, grilled chicken, red onions, and a blend of cheeses. This American-style pizza offers a delicious twist on the traditional tomato-based pie.',
+    'ingredients': [
+      {
+        'name': 'Pizza dough',
+        'size': '1 ball',
+      },
+      {
+        'name': 'BBQ sauce',
+        'size': '1/2 cup',
+      },
+      {
+        'name': 'Grilled chicken breast',
+        'size': '1 cup, diced',
+      },
+      {
+        'name': 'Red onion',
+        'size': '1/2, thinly sliced',
+      },
+      {
+        'name': 'Mozzarella and cheddar cheese',
+        'size': '1 1/2 cups, shredded',
+      }
+    ],
+    'tutorial': [
+      {
+        'step': '1. Preheat oven',
+        'description':
+            'Heat your oven to 450°F (230°C) with a pizza stone or baking sheet inside.',
+      },
+      {
+        'step': '2. Prepare the base',
+        'description':
+            'Roll out the dough and spread BBQ sauce evenly, leaving a border for the crust.',
+      },
+      {
+        'step': '3. Add toppings',
+        'description':
+            'Sprinkle cheese over the sauce, then add diced chicken and sliced red onions.',
+      },
+      {
+        'step': '4. Bake the pizza',
+        'description':
+            'Carefully transfer the pizza to the preheated stone or sheet. Bake for 12-15 minutes until the crust is golden.',
+      },
+      {
+        'step': '5. Serve',
+        'description':
+            'Remove from oven, let cool for a few minutes, then slice and serve.',
+      },
+    ],
+    'reviews': [
+      {
+        'username': '@bbqfanatic',
+        'review':
+            'The perfect combination of tangy BBQ and cheesy goodness. A real crowd-pleaser!',
+      },
+      {
+        'username': '@pizzaexplorer',
+        'review':
+            'Love this twist on traditional pizza. The red onions add a nice crunch.',
+      },
+      {
+        'username': '@familycook',
+        'review':
+            'My kids\' favorite pizza night option. I sometimes add pineapple for a Hawaiian twist.',
+      },
+      {
+        'username': '@proteinhunter',
+        'review':
+            'Great high-protein option. I use a cauliflower crust to make it even healthier.',
+      },
+    ]
+  },
+  {
+    'title': 'Quattro Formaggi',
+    'photo': 'assets/images/pizza3.jpg',
+    'calories': '1200 Cal',
+    'time': '30 min',
+    'categories': ['Italian', 'Vegetarian', 'Pizza'],
+    'description':
+        'A luxurious four-cheese pizza that\'s a cheese lover\'s dream. This Italian classic combines mozzarella, gorgonzola, parmesan, and goat cheese for a rich and flavorful experience.',
+    'ingredients': [
+      {
+        'name': 'Pizza dough',
+        'size': '1 ball',
+      },
+      {
+        'name': 'Mozzarella cheese',
+        'size': '1/2 cup, shredded',
+      },
+      {
+        'name': 'Gorgonzola cheese',
+        'size': '1/4 cup, crumbled',
+      },
+      {
+        'name': 'Parmesan cheese',
+        'size': '1/4 cup, grated',
+      },
+      {
+        'name': 'Goat cheese',
+        'size': '1/4 cup, crumbled',
+      }
+    ],
+    'tutorial': [
+      {
+        'step': '1. Prepare oven',
+        'description':
+            'Preheat your oven to 475°F (245°C) with a pizza stone if available.',
+      },
+      {
+        'step': '2. Shape the dough',
+        'description':
+            'Roll out the pizza dough into a 12-inch circle on a floured surface.',
+      },
+      {
+        'step': '3. Add cheeses',
+        'description':
+            'Sprinkle mozzarella evenly over the dough, then add dollops of gorgonzola and goat cheese. Finish with grated parmesan.',
+      },
+      {
+        'step': '4. Bake',
+        'description':
+            'Transfer the pizza to the oven and bake for 10-12 minutes, until the crust is golden and the cheese is bubbly and slightly browned.',
+      },
+      {
+        'step': '5. Serve',
+        'description':
+            'Remove from oven, let cool slightly, then slice and serve. Optional: drizzle with honey for a sweet contrast.',
+      },
+    ],
+    'reviews': [
+      {
+        'username': '@cheesehead',
+        'review':
+            'Heaven on a plate for cheese lovers! The combination of cheeses is perfectly balanced.',
+      },
+      {
+        'username': '@italiantraveler',
+        'review':
+            'Reminds me of the quattro formaggi I had in Rome. Authentic and delicious!',
+      },
+      {
+        'username': '@gourmetathome',
+        'review':
+            'A luxurious treat. I added some fresh figs on top after baking for an extra touch.',
+      },
+      {
+        'username': '@simplecook',
+        'review':
+            'Surprisingly easy to make and so much better than takeout. Will definitely make again!',
+      },
+    ]
+  },
+  {
+    'title': 'Vegan Supreme Pizza',
+    'photo': 'assets/images/pizza4.jpg',
+    'calories': '850 Cal',
+    'time': '40 min',
+    'categories': ['Vegan', 'Healthy', 'Pizza', 'Vegetarian'],
+    'description':
+        'A colorful and nutritious vegan pizza loaded with a variety of vegetables and plant-based cheese. This pizza proves that vegan options can be just as delicious and satisfying as traditional pizzas.',
+    'ingredients': [
+      {
+        'name': 'Whole wheat pizza dough',
+        'size': '1 ball',
+      },
+      {
+        'name': 'Tomato sauce',
+        'size': '1/2 cup',
+      },
+      {
+        'name': 'Vegan mozzarella',
+        'size': '1 cup, shredded',
+      },
+      {
+        'name': 'Bell peppers',
+        'size': '1/2 cup, sliced',
+      },
+      {
+        'name': 'Mushrooms',
+        'size': '1/2 cup, sliced',
+      }
+    ],
+    'tutorial': [
+      {
+        'step': '1. Preheat oven',
+        'description':
+            'Heat your oven to 450°F (230°C) with a pizza stone or baking sheet inside.',
+      },
+      {
+        'step': '2. Prepare the base',
+        'description':
+            'Roll out the whole wheat dough and spread tomato sauce evenly.',
+      },
+      {
+        'step': '3. Add toppings',
+        'description':
+            'Sprinkle vegan cheese over the sauce, then add sliced vegetables of your choice.',
+      },
+      {
+        'step': '4. Bake the pizza',
+        'description':
+            'Transfer the pizza to the preheated oven and bake for 15-18 minutes until the crust is crispy and toppings are cooked.',
+      },
+      {
+        'step': '5. Finish and serve',
+        'description':
+            'Remove from oven, add fresh herbs if desired, slice, and serve hot.',
+      },
+    ],
+    'reviews': [
+      {
+        'username': '@veganfoodie',
+        'review':
+            'Finally, a vegan pizza that doesn\'t compromise on flavor! The variety of veggies makes it so satisfying.',
+      },
+      {
+        'username': '@healthnut',
+        'review':
+            'Love the whole wheat crust option. It adds a nice nutty flavor and extra fiber.',
+      },
+      {
+        'username': '@flexitarian',
+        'review':
+            'I\'m not vegan but I love this pizza! It\'s a great way to pack in more veggies.',
+      },
+      {
+        'username': '@plantbasedchef',
+        'review':
+            'Great base recipe. I like to add some nutritional yeast for an extra cheesy flavor.',
+      },
+    ]
+  },
+  {
+    'title': 'Pepperoni Pizza',
+    'photo': 'assets/images/pizza5.jpg',
+    'calories': '1050 Cal',
+    'time': '25 min',
+    'categories': ['American', 'Meat', 'Pizza'],
+    'description':
+        'A classic American-style pizza topped with zesty tomato sauce, mozzarella cheese, and crispy pepperoni slices. This timeless favorite delivers a perfect balance of flavors and textures.',
+    'ingredients': [
+      {
+        'name': 'Pizza dough',
+        'size': '1 ball',
+      },
+      {
+        'name': 'Tomato sauce',
+        'size': '1/2 cup',
+      },
+      {
+        'name': 'Mozzarella cheese',
+        'size': '1 1/2 cups, shredded',
+      },
+      {
+        'name': 'Pepperoni slices',
+        'size': '3 oz',
+      },
+      {
+        'name': 'Dried oregano',
+        'size': '1 tsp',
+      }
+    ],
+    'tutorial': [
+      {
+        'step': '1. Heat oven',
+        'description':
+            'Preheat your oven to 475°F (245°C) with a pizza stone or baking sheet inside.',
+      },
+      {
+        'step': '2. Prepare the base',
+        'description':
+            'Roll out the dough and spread tomato sauce evenly, leaving a border for the crust.',
+      },
+      {
+        'step': '3. Add cheese and pepperoni',
+        'description':
+            'Sprinkle mozzarella cheese over the sauce, then arrange pepperoni slices on top.',
+      },
+      {
+        'step': '4. Bake',
+        'description':
+            'Transfer the pizza to the preheated oven and bake for 12-15 minutes until the crust is golden and the cheese is bubbly.',
+      },
+      {
+        'step': '5. Finish and serve',
+        'description':
+            'Remove from oven, sprinkle with dried oregano, let cool slightly, then slice and serve.',
+      },
+    ],
+    'reviews': [
+      {
+        'username': '@pizzaclassicist',
+        'review':
+            'You can\'t go wrong with a good pepperoni pizza. This recipe nails it!',
+      },
+      {
+        'username': '@familyman',
+        'review':
+            'A hit with the whole family. We make this almost every Friday for our pizza night.',
+      },
+      {
+        'username': '@crispyedgelover',
+        'review':
+            'Perfect ratio of sauce to cheese to pepperoni. I like to add a bit of crushed red pepper for some heat.',
+      },
+      {
+        'username': '@easycooking',
+        'review':
+            'So much better than delivery and surprisingly easy to make at home. Will be my go-to recipe from now on.',
+      },
+    ]
+  },
+  {
+    'title': 'Mediterranean Veggie Pizza',
+    'photo': 'assets/images/pizza6.jpg',
+    'calories': '900 Cal',
+    'time': '35 min',
+    'categories': ['Mediterranean', 'Vegetarian', 'Pizza'],
+    'description':
+        'A light and fresh pizza inspired by Mediterranean flavors, topped with a variety of colorful vegetables, feta cheese, and a drizzle of olive oil. This pizza offers a delightful and healthier alternative to traditional recipes.',
+    'ingredients': [
+      {
+        'name': 'Thin crust pizza dough',
+        'size': '1 ball',
+      },
+      {
+        'name': 'Olive oil',
+        'size': '2 tbsp',
+      },
+      {
+        'name': 'Cherry tomatoes',
+        'size': '1 cup, halved',
+      },
+      {
+        'name': 'Kalamata olives',
+        'size': '1/4 cup, sliced',
+      },
+      {
+        'name': 'Feta cheese',
+        'size': '1/2 cup, crumbled',
+      }
+    ],
+   'tutorial': [
+      {
+        'step': '1. Preheat oven',
+        'description':
+            'Heat your oven to 450°F (230°C) with a pizza stone or baking sheet inside.',
+      },
+      {
+        'step': '2. Prepare the base',
+        'description':
+            'Roll out the thin crust dough and brush with olive oil.',
+      },
+      {
+        'step': '3. Add toppings',
+        'description':
+            'Arrange cherry tomatoes, sliced olives, and any other Mediterranean vegetables of your choice. Sprinkle with crumbled feta.',
+      },
+      {
+        'step': '4. Bake',
+        'description':
+            'Transfer the pizza to the preheated oven and bake for 12-15 minutes until the crust is crispy and the cheese is slightly melted.',
+      },
+      {
+        'step': '5. Finish and serve',
+        'description':
+            'Remove from oven, drizzle with extra olive oil, and sprinkle with fresh herbs like basil or oregano. Slice and serve.',
+      },
+    ],
+    'reviews': [
+      {
+        'username': '@healthyeater',
+        'review':
+            'So fresh and flavorful! I love how light yet satisfying this pizza is.',
+      },
+      {
+        'username': '@mediterraneandiet',
+        'review':
+            'Authentic Mediterranean flavors. I added some artichoke hearts for extra zest.',
+      },
+      {
+        'username': '@summervibes',
+        'review':
+            'Perfect for a summer dinner. The combination of feta and olives is delicious.',
+      },
+      {
+        'username': '@veggiefan',
+        'review':
+            'A great way to use up garden vegetables. I love how customizable this recipe is.',
+      },
+    ]
+  },
+  {
+    'title': 'Buffalo Chicken Pizza',
+    'photo': 'assets/images/pizza7.jpg',
+    'calories': '1150 Cal',
+    'time': '40 min',
+    'categories': ['American', 'Spicy', 'Pizza', 'Meat'],
+    'description':
+        'A spicy and tangy pizza that brings the flavors of buffalo wings to a pizza crust. Topped with buffalo sauce, chicken, and a blend of cheeses, this pizza is perfect for those who like a kick in their meals.',
+    'ingredients': [
+      {
+        'name': 'Pizza dough',
+        'size': '1 ball',
+      },
+      {
+        'name': 'Buffalo sauce',
+        'size': '1/2 cup',
+      },
+      {
+        'name': 'Cooked chicken breast',
+        'size': '1 cup, shredded',
+      },
+      {
+        'name': 'Mozzarella cheese',
+        'size': '1 cup, shredded',
+      },
+      {
+        'name': 'Blue cheese',
+        'size': '1/4 cup, crumbled',
+      }
+    ],
+    'tutorial': [
+      {
+        'step': '1. Preheat oven',
+        'description':
+            'Heat your oven to 475°F (245°C) with a pizza stone or baking sheet inside.',
+      },
+      {
+        'step': '2. Prepare the base',
+        'description':
+            'Roll out the dough and spread buffalo sauce evenly over the surface.',
+      },
+      {
+        'step': '3. Add toppings',
+        'description':
+            'Sprinkle mozzarella cheese, then add shredded chicken tossed in additional buffalo sauce.',
+      },
+      {
+        'step': '4. Bake',
+        'description':
+            'Transfer the pizza to the preheated oven and bake for 12-15 minutes until the crust is golden and cheese is bubbly.',
+      },
+      {
+        'step': '5. Finish and serve',
+        'description':
+            'Remove from oven, sprinkle with crumbled blue cheese, and drizzle with extra buffalo sauce if desired. Slice and serve hot.',
+      },
+    ],
+    'reviews': [
+      {
+        'username': '@spicylover',
+        'review':
+            'This pizza packs a punch! Love the combination of tangy buffalo sauce and creamy blue cheese.',
+      },
+      {
+        'username': '@wingfanatic',
+        'review':
+            'All the flavors of buffalo wings without the mess. This is now my go-to game day pizza.',
+      },
+      {
+        'username': '@creativecook',
+        'review':
+            'Great base recipe. I added some celery and carrots on top after baking for extra crunch and authenticity.',
+      },
+      {
+        'username': '@cheesehead',
+        'review':
+            'The blend of mozzarella and blue cheese is perfect. I like to add a ranch drizzle for dipping the crust.',
+      },
+    ]
+  },
+  {
+    'title': 'Prosciutto and Arugula Pizza',
+    'photo': 'assets/images/pizza8.jpg',
+    'calories': '980 Cal',
+    'time': '30 min',
+    'categories': ['Italian', 'Gourmet', 'Pizza'],
+    'description':
+        'An elegant Italian-inspired pizza featuring a crispy crust topped with prosciutto, fresh arugula, and shaved Parmesan. This pizza offers a perfect balance of salty, peppery, and savory flavors.',
+    'ingredients': [
+      {
+        'name': 'Pizza dough',
+        'size': '1 ball',
+      },
+      {
+        'name': 'Olive oil',
+        'size': '2 tbsp',
+      },
+      {
+        'name': 'Mozzarella cheese',
+        'size': '1 cup, shredded',
+      },
+      {
+        'name': 'Prosciutto',
+        'size': '4 oz, thinly sliced',
+      },
+      {
+        'name': 'Fresh arugula',
+        'size': '2 cups',
+      }
+    ],
+    'tutorial': [
+      {
+        'step': '1. Preheat oven',
+        'description':
+            'Heat your oven to 500°F (260°C) with a pizza stone or baking sheet inside.',
+      },
+      {
+        'step': '2. Prepare the base',
+        'description':
+            'Roll out the dough, brush with olive oil, and sprinkle with mozzarella cheese.',
+      },
+      {
+        'step': '3. Bake the crust',
+        'description':
+            'Transfer the pizza to the preheated oven and bake for 8-10 minutes until the crust is golden and cheese is melted.',
+      },
+      {
+        'step': '4. Add prosciutto',
+        'description':
+            'Remove the pizza from the oven and immediately drape the prosciutto slices over the hot surface.',
+      },
+      {
+        'step': '5. Finish and serve',
+        'description':
+            'Top with fresh arugula, shave Parmesan cheese over the top, and drizzle with extra virgin olive oil. Slice and serve immediately.',
+      },
+    ],
+    'reviews': [
+      {
+        'username': '@italianfoodie',
+        'review':
+            'Bellissimo! This pizza reminds me of the ones I had in Italy. The prosciutto and arugula are a perfect match.',
+      },
+      {
+        'username': '@gourmetathome',
+        'review':
+            'An elegant pizza that\'s surprisingly easy to make. Great for impressing dinner guests.',
+      },
+      {
+        'username': '@freshingredients',
+        'review':
+            'The contrast between the warm crust and cool, crisp arugula is delightful. I added some fig jam for a touch of sweetness.',
+      },
+      {
+        'username': '@simplepleasures',
+        'review':
+            'Sometimes less is more, and this pizza proves it. The quality ingredients really shine through.',
+      },
+    ]
+  },
+
 ];
 var sweetFoodRecommendationRecipeRawData = [
   {
@@ -4198,7 +4839,7 @@ var spicyRecipeRawData = [
     'photo': 'assets/images/spicy1.jpg',
     'calories': '350 Cal',
     'time': '40 min',
-    'categories': ['Spicy', 'Appetizer'],
+    'categories': ['Spicy', 'Appetizer', 'Bacon'],
     'description':
         'A creamy, cheesy dip with a spicy kick from fresh jalapeños. This crowd-pleasing appetizer is perfect for parties or game day gatherings.',
     'ingredients': [
