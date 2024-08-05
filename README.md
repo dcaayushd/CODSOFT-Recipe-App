@@ -30,6 +30,10 @@ Recipo is a Free Flutter Recipe App that can help you prepare any food much fast
 - User Info Tile Widget
 - Ingredient Tile Widget
 
+## Screenshots
+
+![App SS](screenshots/app_ss.jpg)
+
 ## Installation
 
 **Step 1:**
